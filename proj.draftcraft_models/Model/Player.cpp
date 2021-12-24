@@ -1,6 +1,6 @@
 #include "Player.h"
 
-void Player::AddCardToHand(const Card* card)
+void Player::addCardToHand(const Card* card)
 {
     m_cardsInHand.push_back(card);
     notifyToUpdate();

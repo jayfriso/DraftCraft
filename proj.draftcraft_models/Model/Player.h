@@ -17,6 +17,6 @@ public:
 
     const vector<const Card*>& cardsInHand() const { return m_cardsInHand; }
 
-    void AddCardToHand(const Card* card);
+    void addCardToHand(const Card* card);
 };
 

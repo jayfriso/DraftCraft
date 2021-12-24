@@ -9,7 +9,6 @@ class DraftPile : public DispatcherViewModel
 {
 private:
     DraftDeck& m_draftDeck;
-
     vector<const Card*> m_cardsInPile;
     
 public:
