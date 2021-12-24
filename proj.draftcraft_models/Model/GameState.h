@@ -15,7 +15,6 @@ private:
     unsigned int m_clientPlayerIndex;
 
 public:
-    // TODO : 
-    //GameState()
+    GameState(IStaticDataManager& staticDataManager, string player1Name, string player2Name, unsigned int clientPlayerIndex);
 };
 
