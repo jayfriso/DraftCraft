@@ -11,11 +11,11 @@
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{8ca08654-565e-4e63-8fe0-61d056f0df6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ViewModel">
+      <UniqueIdentifier>{25d7ad59-6505-4596-b143-477060aa73cc}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\StaticData">
       <UniqueIdentifier>{52f26ddf-64d6-4108-b544-d3d0d2194835}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models\ViewModel">
-      <UniqueIdentifier>{d49f07ca-10df-4cb5-945a-1571f47cb3fc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,14 +43,18 @@
     <ClInclude Include="Model\Player.h">
       <Filter>Source Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Model\IViewModel.h">
-      <Filter>Source Files\Models\ViewModel</Filter>
+    <ClInclude Include="Model\GameState.h">
+      <Filter>Source Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Model\FlaggableViewModel.h">
-      <Filter>Source Files\Models\ViewModel</Filter>
+    <ClInclude Include="Model\DraftBoard.h">
+      <Filter>Source Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Model\GameState.h" />
-    <ClInclude Include="Model\DraftBoard.h" />
+    <ClInclude Include="ViewModel\DispatcherViewModel.h">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModel\IListenerView.h">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Model\DraftDeck.cpp">
@@ -77,7 +81,14 @@
     <ClCompile Include="Model\Player.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
-    <ClCompile Include="Model\GameState.cpp" />
-    <ClCompile Include="Model\DraftBoard.cpp" />
+    <ClCompile Include="Model\DraftBoard.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\GameState.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModel\DispatcherViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

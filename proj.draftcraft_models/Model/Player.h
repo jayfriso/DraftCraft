@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include "../StaticData/Card.h"
-#include "FlaggableViewModel.h"
+#include "../ViewModel/DispatcherViewModel.h"
 
 using namespace std;
 
-class Player : FlaggableViewModel
+class Player : public DispatcherViewModel
 {
 private:
     string m_userName;

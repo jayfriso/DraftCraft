@@ -27,7 +27,7 @@ const Card* DraftDeck::drawCard()
 {
     unsigned int cardIndex = m_cardIndices.at(m_cardIndices.size() - 1);
     m_cardIndices.pop_back();
-    flagViewDirty();
+    notifyToUpdate();
     return m_staticDataManager.getCardByIndex(cardIndex);
 }
 

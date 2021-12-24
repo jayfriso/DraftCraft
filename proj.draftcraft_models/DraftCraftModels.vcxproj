@@ -21,8 +21,6 @@
   <ItemGroup>
     <ClInclude Include="Model\DraftBoard.h" />
     <ClInclude Include="Model\GameState.h" />
-    <ClInclude Include="Model\IViewModel.h" />
-    <ClInclude Include="Model\FlaggableViewModel.h" />
     <ClInclude Include="Model\DraftDeck.h" />
     <ClInclude Include="Model\DraftPile.h" />
     <ClInclude Include="Model\Player.h" />
@@ -31,6 +29,8 @@
     <ClInclude Include="StaticData\IStaticDataManager.h" />
     <ClInclude Include="StaticData\JsonStaticDataManager.h" />
     <ClInclude Include="StaticData\TestStaticDataManager.h" />
+    <ClInclude Include="ViewModel\DispatcherViewModel.h" />
+    <ClInclude Include="ViewModel\IListenerView.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Model\DraftBoard.cpp" />
@@ -43,6 +43,7 @@
     <ClCompile Include="StaticData\IStaticDataManager.cpp" />
     <ClCompile Include="StaticData\JsonStaticDataManager.cpp" />
     <ClCompile Include="StaticData\TestStaticDataManager.cpp" />
+    <ClCompile Include="ViewModel\DispatcherViewModel.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

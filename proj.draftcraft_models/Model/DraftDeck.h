@@ -3,9 +3,9 @@
 #include <vector>
 #include <cstdlib>
 #include "../StaticData/IStaticDataManager.h"
-#include "FlaggableViewModel.h"
+#include "../ViewModel/DispatcherViewModel.h"
 
-class DraftDeck : public FlaggableViewModel
+class DraftDeck : public DispatcherViewModel
 {
 private:
     IStaticDataManager& m_staticDataManager;
