@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{29a16444-051d-4cbb-90d7-a90908ee0f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{8ca08654-565e-4e63-8fe0-61d056f0df6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StaticData">
+      <UniqueIdentifier>{52f26ddf-64d6-4108-b544-d3d0d2194835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\ViewModel">
+      <UniqueIdentifier>{d49f07ca-10df-4cb5-945a-1571f47cb3fc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Model\DraftDeck.h">
+      <Filter>Source Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticData\JsonStaticDataManager.h">
+      <Filter>Source Files\StaticData</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticData\TestStaticDataManager.h">
+      <Filter>Source Files\StaticData</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticData\Card.h">
+      <Filter>Source Files\StaticData</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticData\GameConfig.h">
+      <Filter>Source Files\StaticData</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticData\IStaticDataManager.h">
+      <Filter>Source Files\StaticData</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\DraftPile.h">
+      <Filter>Source Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Player.h">
+      <Filter>Source Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\IViewModel.h">
+      <Filter>Source Files\Models\ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\FlaggableViewModel.h">
+      <Filter>Source Files\Models\ViewModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\GameState.h" />
+    <ClInclude Include="Model\DraftBoard.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Model\DraftDeck.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticData\TestStaticDataManager.cpp">
+      <Filter>Source Files\StaticData</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticData\Card.cpp">
+      <Filter>Source Files\StaticData</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticData\GameConfig.cpp">
+      <Filter>Source Files\StaticData</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticData\IStaticDataManager.cpp">
+      <Filter>Source Files\StaticData</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticData\JsonStaticDataManager.cpp">
+      <Filter>Source Files\StaticData</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\DraftPile.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Player.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\GameState.cpp" />
+    <ClCompile Include="Model\DraftBoard.cpp" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,28 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.22/Modules/Platform/WindowsPaths.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/CMakeLists.txt
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/cocos2d/cmake/Modules/CocosBuildHelpers.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/cocos2d/cmake/Modules/CocosBuildSet.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/cocos2d/cmake/Modules/CocosConfigDefine.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/cocos2d/cmake/Modules/CocosConfigDepend.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/proj.win32/CMakeFiles/3.22.0-rc3/CMakeCCompiler.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/proj.win32/CMakeFiles/3.22.0-rc3/CMakeCXXCompiler.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/proj.win32/CMakeFiles/3.22.0-rc3/CMakeRCCompiler.cmake
+C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/proj.win32/CMakeFiles/3.22.0-rc3/CMakeSystem.cmake

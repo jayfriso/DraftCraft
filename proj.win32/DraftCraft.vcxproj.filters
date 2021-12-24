@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\AppDelegate.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\HelloWorldScene.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.cpp">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\cocos2d\cocos\precheader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\AppDelegate.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\HelloWorldScene.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.h">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\resource.h">
+      <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\CloseNormal.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\CloseSelected.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\HelloWorld.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\fonts\Marker Felt.ttf">
+      <Filter>Resources\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\fonts\arial.ttf">
+      <Filter>Resources\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\res\.gitkeep">
+      <Filter>Resources\res</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\thirdparty\json-3.10.4\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\game.rc">
+      <Filter>Source Files\proj.win32</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{12FABE8E-0777-334C-887A-797A376312D3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\fonts">
+      <UniqueIdentifier>{327ED9ED-06C6-3CC7-A663-09B5AC2EA6E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\res">
+      <UniqueIdentifier>{F75AE009-1F37-3790-A8A7-7442CA8E2EAC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9751EB1F-CF06-3C16-874D-5C7F5F80A663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proj.win32">
+      <UniqueIdentifier>{98E94E68-9EAC-3E85-8093-D75BC0DFF2FC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes">
+      <UniqueIdentifier>{64D47D5E-AB91-3A1A-B545-80B5978D38A3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
