@@ -23,7 +23,11 @@
  ****************************************************************************/
 
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "UI/MainGameScene.h"
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#include <Windows.h>
+#endif
 
 // #define USE_AUDIO_ENGINE 1
 
@@ -34,10 +38,9 @@ using namespace cocos2d::experimental;
 
 USING_NS_CC;
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
-static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
-static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
-static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
+
+static cocos2d::Size DESIGN_RESOLUTION = cocos2d::Size(1920, 1080);
+static constexpr double WINDOW_DESKTOP_SCALE{ 0.9 };
 
 AppDelegate::AppDelegate()
 {
@@ -67,13 +70,60 @@ static int register_all_packages()
     return 0; //flag for packages manager
 }
 
+// Sets the given resolution b  ased on the current desktops resolution
+// Will also fit to the aspect ratio given
+// Will scale value at the end by the scale given
+// TODO : currently only works on windows
+void setResolutionBasedOnDesktopSize(Rect& resolution, double scale, double aspectRatio)
+{
+    int desktopWidth{ 0 };
+    int desktopHeight{ 0 };
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+    auto activeWindow = GetActiveWindow();
+    HMONITOR monitor = MonitorFromWindow(activeWindow, MONITOR_DEFAULTTONEAREST);
+
+    MONITORINFOEX monitorInfoEx;
+    monitorInfoEx.cbSize = sizeof(monitorInfoEx);
+    GetMonitorInfo(monitor, &monitorInfoEx);
+    DEVMODE devMode;
+    devMode.dmSize = sizeof(devMode);
+    devMode.dmDriverExtra = 0;
+    EnumDisplaySettings(monitorInfoEx.szDevice, ENUM_CURRENT_SETTINGS, &devMode);
+    desktopWidth = devMode.dmPelsWidth;
+    desktopHeight = devMode.dmPelsHeight;
+#else
+    desktopWidth = DESIGN_RESOLUTION.width;
+    desktopHeight = DESIGN_RESOLUTION.height;
+#endif
+
+    double desktopRatio = (double)desktopWidth / desktopHeight;
+    long width{ desktopWidth };
+    long height{ desktopHeight };
+
+    if (desktopRatio < aspectRatio)
+    {
+        height = width / aspectRatio;
+    }
+    else if (desktopRatio > aspectRatio)
+    {
+        width = height * aspectRatio;
+    }
+
+    resolution.setRect(0, 0, width * scale, height * scale);
+}
+
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
+
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("DraftCraft", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+
+        Rect resolution{};
+        setResolutionBasedOnDesktopSize(resolution, WINDOW_DESKTOP_SCALE, (double)DESIGN_RESOLUTION.width / DESIGN_RESOLUTION.height);
+        glview = GLViewImpl::createWithRect("DraftCraft", resolution);
+
 #else
         glview = GLViewImpl::create("DraftCraft");
 #endif
@@ -87,28 +137,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0f / 60);
 
     // Set the design resolution
-    glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
-    auto frameSize = glview->getFrameSize();
-    // if the frame's height is larger than the height of medium size.
-    if (frameSize.height > mediumResolutionSize.height)
-    {        
-        director->setContentScaleFactor(MIN(largeResolutionSize.height/designResolutionSize.height, largeResolutionSize.width/designResolutionSize.width));
-    }
-    // if the frame's height is larger than the height of small size.
-    else if (frameSize.height > smallResolutionSize.height)
-    {        
-        director->setContentScaleFactor(MIN(mediumResolutionSize.height/designResolutionSize.height, mediumResolutionSize.width/designResolutionSize.width));
-    }
-    // if the frame's height is smaller than the height of medium size.
-    else
-    {        
-        director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
-    }
+    glview->setDesignResolutionSize(DESIGN_RESOLUTION.width, DESIGN_RESOLUTION.height, ResolutionPolicy::SHOW_ALL);
+
+    director->setContentScaleFactor(1);
 
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = MainGameScene::createScene();
 
     // run
     director->runWithScene(scene);

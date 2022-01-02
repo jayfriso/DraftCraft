@@ -803,10 +803,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Classes\UI\DraftBoard\DraftDrawer.h" />
+    <ClInclude Include="..\Classes\UI\MainGameScene.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\AppDelegate.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\HelloWorldScene.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\resource.h" />
+    <ClCompile Include="..\Classes\UI\DraftBoard\DraftDrawer.cpp" />
+    <ClCompile Include="..\Classes\UI\MainGameScene.cpp" />
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\AppDelegate.cpp" />
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.cpp" />
