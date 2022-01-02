@@ -70,7 +70,7 @@ static int register_all_packages()
     return 0; //flag for packages manager
 }
 
-// Sets the given resolution b  ased on the current desktops resolution
+// Sets the given resolution based on the current desktops resolution
 // Will also fit to the aspect ratio given
 // Will scale value at the end by the scale given
 // TODO : currently only works on windows

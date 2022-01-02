@@ -38,17 +38,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.45254834"
-     inkscape:cx="335.87572"
-     inkscape:cy="1216.4446"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:zoom="1.8101934"
+     inkscape:cx="142.25"
+     inkscape:cy="746.0529"
+     inkscape:document-units="pt"
+     inkscape:current-layer="layer3"
      showgrid="false"
      units="pt"
      inkscape:pagecheckerboard="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
+     inkscape:window-height="1121"
+     inkscape:window-x="1911"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:object-nodes="false" />
@@ -60,7 +60,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -121,16 +120,16 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect3073);fill:#000000;fill-opacity:1;stroke:none"><tspan
            x="646.875"
            y="806.04169"
-           id="tspan20528"><tspan
+           id="tspan20553"><tspan
              style="font-size:74.6667px;font-family:'Arial Rounded MT Bold';-inkscape-font-specification:'Arial Rounded MT Bold, Normal';writing-mode:vertical-lr;fill:#ffffff"
-             id="tspan20526">Draft             Board</tspan></tspan></text>
+             id="tspan20551">Draft             Board</tspan></tspan></text>
     </g>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="draft_drawer_triangle"
-     style="display:none">
+     style="display:inline">
     <path
        sodipodi:type="star"
        style="fill:#e1b200;stroke-width:18.8976;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
