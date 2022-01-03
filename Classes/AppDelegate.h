@@ -25,7 +25,9 @@
 #ifndef  _APP_DELEGATE_H_
 #define  _APP_DELEGATE_H_
 
+#include <memory>
 #include "cocos2d.h"
+#include "../proj.draftcraft_models/StaticData/IStaticDataManager.h"
 
 /**
 @brief    The cocos2d Application.
@@ -34,6 +36,10 @@ Private inheritance here hides part of interface from Director.
 */
 class  AppDelegate : private cocos2d::Application
 {
+private:
+    std::unique_ptr<IStaticDataManager> m_staticDataManager;
+    GameConfig m_gameConfig{ 100, 40 }; // TODO : This should be removed once we move to the proper static data manager
+
 public:
     AppDelegate();
     virtual ~AppDelegate();

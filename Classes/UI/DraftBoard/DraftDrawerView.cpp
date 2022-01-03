@@ -1,23 +1,23 @@
-#include "DraftDrawer.h"
+#include "DraftDrawerView.h"
 #include "../UIConstants.h"
 #include <iostream>
 
 using namespace ui;
 
-const float DraftDrawer::WIDTH{ 120 };
-const Vec2 DraftDrawer::ARROW_POSITION{ 65, 500 };
-const Vec2 DraftDrawer::ARROW_ANCHOR{ 0.4f, 0.5f };
-const float DraftDrawer::DRAWER_TOGGLE_ANIM_LENGTH{ 0.3 };
+const float DraftDrawerView::WIDTH{ 120 };
+const Vec2 DraftDrawerView::ARROW_POSITION{ 65, 500 };
+const Vec2 DraftDrawerView::ARROW_ANCHOR{ 0.4f, 0.5f };
+const float DraftDrawerView::DRAWER_TOGGLE_ANIM_LENGTH{ 0.3 };
 
 
-bool DraftDrawer::init()
+bool DraftDrawerView::init()
 {
     if (!Node::init())
         return false;
     this->setContentSize(Size(WIDTH, UIConstants::DRAFT_BOARD_HEIGHT));
     this->setAnchorPoint(Vec2(0, 0.5f));
 
-    m_draftBoard = DraftBoard::create();
+    m_draftBoard = DraftBoardView::create();
     m_draftBoard->setAnchorPoint(Vec2(0, 0.5f));
     m_draftBoard->setPositionNormalized(Vec2(0, 0.5f));
     this->addChild(m_draftBoard, 0);
@@ -30,13 +30,13 @@ bool DraftDrawer::init()
     auto button = Button::create("ui/draft_board/draft_drawer_triangle.png");
     button->setAnchorPoint(ARROW_ANCHOR);
     button->setPosition(ARROW_POSITION);
-    button->addTouchEventListener(CC_CALLBACK_2(DraftDrawer::onDrawerButtonPressed, this));
+    button->addTouchEventListener(CC_CALLBACK_2(DraftDrawerView::onDrawerButtonPressed, this));
     this->addChild(button, 2);
 
     return true;
 }
 
-void DraftDrawer::onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type)
+void DraftDrawerView::onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type)
 {
     if (type == Widget::TouchEventType::ENDED)
     {

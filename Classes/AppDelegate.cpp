@@ -24,6 +24,7 @@
 
 #include "AppDelegate.h"
 #include "UI/MainGameScene.h"
+#include "../proj.draftcraft_models/StaticData/TestStaticDataManager.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 #include <Windows.h>
@@ -113,10 +114,13 @@ void setResolutionBasedOnDesktopSize(Rect& resolution, double scale, double aspe
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+
+    // Create the game state, for now use the test state
+    m_staticDataManager = std::make_unique<TestStaticDataManager>(200, m_gameConfig);
+
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
 
@@ -138,15 +142,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // Set the design resolution
     glview->setDesignResolutionSize(DESIGN_RESOLUTION.width, DESIGN_RESOLUTION.height, ResolutionPolicy::SHOW_ALL);
-
     director->setContentScaleFactor(1);
 
     register_all_packages();
 
-    // create a scene. it's an autorelease object
-    auto scene = MainGameScene::createScene();
-
-    // run
+    // create a scene and run
+    auto scene = MainGameScene::createScene(*m_staticDataManager);
     director->runWithScene(scene);
 
     return true;

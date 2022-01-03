@@ -1,9 +1,9 @@
-#include "DraftBoard.h"
+#include "DraftBoardView.h"
 #include "../UIConstants.h"
 
-const float DraftBoard::WIDTH{ 1880 };
+const float DraftBoardView::WIDTH{ 1880 };
 
-bool DraftBoard::init()
+bool DraftBoardView::init()
 {
     if (!Node::init())
         return false;
@@ -18,4 +18,11 @@ bool DraftBoard::init()
     this->addChild(draftDrawerBg, 0);
 
     return true;
+}
+
+void DraftBoardView::update(const DispatcherViewModel& viewModel)
+{
+    const DraftBoard& draftBoardModel = static_cast<const DraftBoard&>(viewModel);
+    // update the view here
+  
 }

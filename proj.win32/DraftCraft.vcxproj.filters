@@ -16,14 +16,14 @@
     <ClCompile Include="..\Classes\UI\MainGameScene.cpp">
       <Filter>Source Files\Classes\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\DraftBoard\DraftDrawer.cpp">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\DraftBoard\DraftBoard.cpp">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\UI\UIConstants.cpp">
       <Filter>Source Files\Classes\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\DraftBoard\DraftDrawerView.cpp">
+      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\DraftBoard\DraftBoardView.cpp">
+      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -60,14 +60,14 @@
     <ClInclude Include="..\Classes\UI\MainGameScene.h">
       <Filter>Source Files\Classes\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\DraftBoard\DraftDrawer.h">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\DraftBoard\DraftBoard.h">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UI\UIConstants.h">
       <Filter>Source Files\Classes\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\DraftBoard\DraftDrawerView.h">
+      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\DraftBoard\DraftBoardView.h">
+      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

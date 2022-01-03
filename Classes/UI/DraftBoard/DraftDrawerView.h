@@ -2,13 +2,12 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-#include "DraftBoard.h"
-
+#include "DraftBoardView.h"
 
 USING_NS_CC;
 using namespace ui;
 
-class DraftDrawer : public Node
+class DraftDrawerView : public Node
 {
 private:
     static const float WIDTH;
@@ -17,12 +16,12 @@ private:
     static const float DRAWER_TOGGLE_ANIM_LENGTH;
 
 
-    DraftBoard* m_draftBoard;
+    DraftBoardView* m_draftBoard;
     bool m_isOpen{ true };
 
 public:
     virtual bool init() override;
-    CREATE_FUNC(DraftDrawer);
+    CREATE_FUNC(DraftDrawerView);
 
     void onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type);
 
