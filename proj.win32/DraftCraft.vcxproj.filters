@@ -19,6 +19,12 @@
     <ClCompile Include="..\Classes\UI\DraftBoard\DraftDrawer.cpp">
       <Filter>Source Files\Classes\UI\DraftBoard</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\DraftBoard\DraftBoard.cpp">
+      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\UIConstants.cpp">
+      <Filter>Source Files\Classes\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\AppDelegate.h">
@@ -56,6 +62,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\DraftBoard\DraftDrawer.h">
       <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\DraftBoard\DraftBoard.h">
+      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\UIConstants.h">
+      <Filter>Source Files\Classes\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
