@@ -39,17 +39,17 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.8101934"
-     inkscape:cx="142.25"
-     inkscape:cy="746.0529"
+     inkscape:cx="166.00436"
+     inkscape:cy="224.00921"
      inkscape:document-units="pt"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer4"
      showgrid="false"
      units="pt"
      inkscape:pagecheckerboard="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1121"
-     inkscape:window-x="1911"
-     inkscape:window-y="-9"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="103"
      inkscape:window-maximized="1"
      inkscape:object-nodes="false" />
   <metadata
@@ -69,22 +69,21 @@
      inkscape:label="draft_board"
      style="display:none">
     <rect
-       style="display:inline;fill:#aba597;stroke-width:5.03618;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
+       style="display:inline;fill:#aba597;stroke-width:5.02501;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
        id="rect17781"
-       width="666.17517"
+       width="663.22223"
        height="352.77777"
        x="0"
-       y="-69.888878"
+       y="14.111118"
        ry="3.5277777"
-       rx="3.5277777"
-       transform="translate(0,83.999996)" />
+       rx="3.5121403" />
   </g>
   <g
      inkscape:label="draft_drawer"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,83.999995)"
-     style="display:inline">
+     style="display:none">
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,0,-83.999995)"
@@ -120,16 +119,16 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect3073);fill:#000000;fill-opacity:1;stroke:none"><tspan
            x="646.875"
            y="806.04169"
-           id="tspan20553"><tspan
+           id="tspan879"><tspan
              style="font-size:74.6667px;font-family:'Arial Rounded MT Bold';-inkscape-font-specification:'Arial Rounded MT Bold, Normal';writing-mode:vertical-lr;fill:#ffffff"
-             id="tspan20551">Draft             Board</tspan></tspan></text>
+             id="tspan877">Draft             Board</tspan></tspan></text>
     </g>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="draft_drawer_triangle"
-     style="display:inline">
+     style="display:none">
     <path
        sodipodi:type="star"
        style="fill:#e1b200;stroke-width:18.8976;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
@@ -156,7 +155,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="9_slices"
-     style="display:none">
+     style="display:inline">
     <rect
        style="display:inline;fill:#ffffff;stroke-width:5.03618;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
        id="rect17781-9"
