@@ -1,7 +1,7 @@
 #pragma once
 
 #include "cocos2d.h"
-#include "../proj.draftcraft_models/Model/GameState.h"
+#include "Model/GameState.h"
 
 class MainGameScene : public cocos2d::Scene
 {

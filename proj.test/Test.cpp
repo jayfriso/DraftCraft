@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../proj.draftcraft_models/StaticData/TestStaticDataManager.h"
-#include "../proj.draftcraft_models/Model/GameState.h";
+#include "StaticData/TestStaticDataManager.h"
+#include "Model/GameState.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
