@@ -100,7 +100,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>../proj.win32/Debug/DraftCraftModels.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>../proj.draftcraft_models/lib/DraftCraftModels.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -56,12 +56,10 @@ endif()
 
 # add cross-platforms source files and header files 
 list(APPEND GAME_SOURCE
-     Classes/AppDelegate.cpp
-     Classes/HelloWorldScene.cpp
+     proj.frontend/AppDelegate.cpp
      )
 list(APPEND GAME_HEADER
-     Classes/AppDelegate.h
-     Classes/HelloWorldScene.h
+     proj.frontend/AppDelegate.h
      )
 
 if(ANDROID)
@@ -135,7 +133,7 @@ add_subdirectory(thirdparty/json-3.10.4)
 target_link_libraries(${APP_NAME} cocos2d nlohmann_json)
 
 target_include_directories(${APP_NAME}
-        PRIVATE Classes
+        PRIVATE proj.frontend
         PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
 )
 
