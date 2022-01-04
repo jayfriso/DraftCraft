@@ -8,6 +8,8 @@ private:
 
     int m_currentCommandIndex;
 public:
+    CommandProcessor(GameState& gameState);
+
     void ProcessCommandFromClient(AbstractCommand& command);
 };
 

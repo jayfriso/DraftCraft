@@ -19,10 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommandSystem\AbstractCommand.h" />
+    <ClInclude Include="CommandSystem\CommandProcessor.h" />
+    <ClInclude Include="CommandSystem\Commands\Commands.h" />
+    <ClInclude Include="CommandSystem\Commands\DraftAtIndexCommand.h" />
+    <ClInclude Include="CommandSystem\Commands\DraftSkipPileCommand.h" />
     <ClInclude Include="Model\DraftBoard.h" />
     <ClInclude Include="Model\GameState.h" />
     <ClInclude Include="Model\DraftDeck.h" />
     <ClInclude Include="Model\DraftPile.h" />
+    <ClInclude Include="Model\PhaseStack.h" />
     <ClInclude Include="Model\Player.h" />
     <ClInclude Include="StaticData\Card.h" />
     <ClInclude Include="StaticData\GameConfig.h" />
@@ -33,10 +39,15 @@
     <ClInclude Include="ViewModel\IListenerView.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CommandSystem\AbstractCommand.cpp" />
+    <ClCompile Include="CommandSystem\CommandProcessor.cpp" />
+    <ClCompile Include="CommandSystem\Commands\DraftAtIndexCommand.cpp" />
+    <ClCompile Include="CommandSystem\Commands\DraftSkipPileCommand.cpp" />
     <ClCompile Include="Model\DraftBoard.cpp" />
     <ClCompile Include="Model\DraftDeck.cpp" />
     <ClCompile Include="Model\DraftPile.cpp" />
     <ClCompile Include="Model\GameState.cpp" />
+    <ClCompile Include="Model\PhaseStack.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="StaticData\Card.cpp" />
     <ClCompile Include="StaticData\GameConfig.cpp" />
@@ -99,7 +110,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)\lib</OutDir>
+    <OutDir>$(ProjectDir)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
