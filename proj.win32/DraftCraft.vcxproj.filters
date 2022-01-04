@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\AppDelegate.cpp">
-      <Filter>Source Files\Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\HelloWorldScene.cpp">
-      <Filter>Source Files\Classes</Filter>
+    <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.cpp">
+      <Filter>Source Files\proj.frontend</Filter>
     </ClCompile>
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
@@ -13,25 +10,25 @@
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\cocos2d\cocos\precheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\MainGameScene.cpp">
-      <Filter>Source Files\Classes\UI</Filter>
+    <ClCompile Include="..\proj.frontend\HelloWorldScene.cpp">
+      <Filter>Source Files\proj.frontend</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\UIConstants.cpp">
-      <Filter>Source Files\Classes\UI</Filter>
+    <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp">
+      <Filter>Source Files\proj.frontend\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\DraftBoard\DraftDrawerView.cpp">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    <ClCompile Include="..\proj.frontend\UI\UIConstants.cpp">
+      <Filter>Source Files\proj.frontend\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\DraftBoard\DraftBoardView.cpp">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.cpp">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.cpp">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\AppDelegate.h">
-      <Filter>Source Files\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Classes\HelloWorldScene.h">
-      <Filter>Source Files\Classes</Filter>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h">
+      <Filter>Source Files\proj.frontend</Filter>
     </ClInclude>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.h">
       <Filter>Source Files\proj.win32</Filter>
@@ -57,17 +54,29 @@
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\MainGameScene.h">
-      <Filter>Source Files\Classes\UI</Filter>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\ui\common\rounded_rect.png">
+      <Filter>Resources\ui\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\UIConstants.h">
-      <Filter>Source Files\Classes\UI</Filter>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\ui\draft_board\draft_drawer_bg.png">
+      <Filter>Resources\ui\draft_board</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\DraftBoard\DraftDrawerView.h">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\ui\draft_board\draft_drawer_triangle.png">
+      <Filter>Resources\ui\draft_board</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\DraftBoard\DraftBoardView.h">
-      <Filter>Source Files\Classes\UI\DraftBoard</Filter>
+    <ClInclude Include="..\proj.frontend\HelloWorldScene.h">
+      <Filter>Source Files\proj.frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\MainGameScene.h">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\UIConstants.h">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.h">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.h">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,20 +100,29 @@
     <Filter Include="Resources\res">
       <UniqueIdentifier>{F75AE009-1F37-3790-A8A7-7442CA8E2EAC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\ui">
+      <UniqueIdentifier>{CC6689FB-3053-3C48-9923-6A877BBEF0BF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\ui\common">
+      <UniqueIdentifier>{1005FCC2-6C36-3CB5-8A19-820FA31217B7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\ui\draft_board">
+      <UniqueIdentifier>{ACC4B8F4-461F-35EF-A4B7-F271440723E7}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{9751EB1F-CF06-3C16-874D-5C7F5F80A663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proj.frontend">
+      <UniqueIdentifier>{BD3D3287-762D-3717-B399-8477DDE64E7A}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\proj.win32">
       <UniqueIdentifier>{98E94E68-9EAC-3E85-8093-D75BC0DFF2FC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Classes">
-      <UniqueIdentifier>{64D47D5E-AB91-3A1A-B545-80B5978D38A3}</UniqueIdentifier>
+    <Filter Include="Source Files\proj.frontend\UI">
+      <UniqueIdentifier>{cb6e21ff-31dd-4d57-b38c-f45094392c95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Classes\UI">
-      <UniqueIdentifier>{812d98fa-e1f5-40c8-911b-e0e518a7422c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Classes\UI\DraftBoard">
-      <UniqueIdentifier>{fc475945-17cd-4185-9a3a-37dfd81ae54b}</UniqueIdentifier>
+    <Filter Include="Source Files\proj.frontend\UI\DraftBoard">
+      <UniqueIdentifier>{409cfef2-d820-4e21-85b1-105fbe310c35}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

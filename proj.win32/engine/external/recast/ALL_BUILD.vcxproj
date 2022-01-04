@@ -23,7 +23,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E6C52C2B-8373-3126-8DB9-312F4DB25AEE}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>ALL_BUILD</ProjectName>
@@ -106,6 +106,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\cocos2d\external\recast\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/cocos2d/external/recast/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -SC:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft -BC:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/proj.win32 --check-stamp-file C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/proj.win32/engine/external/recast/CMakeFiles/generate.stamp

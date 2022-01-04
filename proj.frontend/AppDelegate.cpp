@@ -24,7 +24,7 @@
 
 #include "AppDelegate.h"
 #include "UI/MainGameScene.h"
-#include "../proj.draftcraft_models/StaticData/TestStaticDataManager.h"
+#include "StaticData/TestStaticDataManager.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 #include <Windows.h>

@@ -27,7 +27,7 @@
 
 #include <memory>
 #include "cocos2d.h"
-#include "../proj.draftcraft_models/StaticData/IStaticDataManager.h"
+#include "StaticData/IStaticDataManager.h"
 
 /**
 @brief    The cocos2d Application.
