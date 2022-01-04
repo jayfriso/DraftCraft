@@ -2,6 +2,8 @@
 #include "CppUnitTest.h"
 #include "StaticData/TestStaticDataManager.h"
 #include "Model/GameState.h"
+#include "CommandSystem/CommandProcessor.h"
+#include "CommandSystem/Commands/Commands.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
@@ -59,40 +61,41 @@ namespace Test
 			Assert::AreEqual(string{ "test_129" }, draftedCard->id());
 		}
 
-		TEST_METHOD(testDraftBoard)
+		TEST_METHOD(testDraftingCommands)
 		{
 			GameConfig gameConfig{ 100, 40 };
 			TestStaticDataManager staticDataManager{ 200, gameConfig };
 			GameState gameState{ staticDataManager, "player0", "player1", 0, 69 };
+			CommandProcessor commandProcessor{ gameState };
 
 			const DraftPile& firstPile = gameState.draftBoard().piles().at(0);
 			const DraftPile& secondPile = gameState.draftBoard().piles().at(1);
 			const DraftPile& thirdPile = gameState.draftBoard().piles().at(2);
 
 			// Start a draft for player 0, skip the first pile
-			gameState.draftBoard().startDraft(0);
-			gameState.draftBoard().skipPile();
+			commandProcessor.ProcessCommandFromClient(DraftSkipPileCommand{ gameState.phaseStack().getCurrentPhase().playerIndex });
 			Assert::AreEqual((size_t)2, firstPile.cardsInPile().size());
 			Assert::AreEqual(string{ "test_0" }, firstPile.cardsInPile().at(1)->id());
 			// Then draft the card in the 2nd pile
-			gameState.draftBoard().draftCardAtIndex(0);
+			commandProcessor.ProcessCommandFromClient(DraftAtIndexCommand{ gameState.phaseStack().getCurrentPhase().playerIndex, 0});
 			auto player0Cards = gameState.playerAtIndex(0).cardsInHand();
 			Assert::AreEqual((size_t)1, player0Cards.size());
 			Assert::AreEqual(string{ "test_0" }, player0Cards.at(0)->id());
+			Assert::AreEqual((unsigned int)1, gameState.phaseStack().getCurrentPhase().playerIndex); // Should move to the next players draft phase
 
 			// Next the second player will skip every pile and take from top
-			gameState.draftBoard().startDraft(1);
-			gameState.draftBoard().skipPile();
+			commandProcessor.ProcessCommandFromClient(DraftSkipPileCommand{ gameState.phaseStack().getCurrentPhase().playerIndex });
 			Assert::AreEqual((size_t)3, firstPile.cardsInPile().size());
-			gameState.draftBoard().skipPile();
+			commandProcessor.ProcessCommandFromClient(DraftSkipPileCommand{ gameState.phaseStack().getCurrentPhase().playerIndex });
 			Assert::AreEqual((size_t)2, secondPile.cardsInPile().size());
 			Assert::AreEqual(string{ "test_148" }, secondPile.cardsInPile().at(1)->id());
-			gameState.draftBoard().skipPile();
+			commandProcessor.ProcessCommandFromClient(DraftSkipPileCommand{ gameState.phaseStack().getCurrentPhase().playerIndex });
 			Assert::AreEqual((size_t)2, thirdPile.cardsInPile().size());
 			Assert::AreEqual(string{ "test_0" }, thirdPile.cardsInPile().at(1)->id());
 			auto player1Cards = gameState.playerAtIndex(1).cardsInHand();
 			Assert::AreEqual((size_t)1, player1Cards.size());
 			Assert::AreEqual(string{ "test_0" }, player1Cards.at(0)->id());
+			Assert::AreEqual((unsigned int)0, gameState.phaseStack().getCurrentPhase().playerIndex); // Should move to the next players draft phase
 		}
 	};
 }

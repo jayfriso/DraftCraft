@@ -169,7 +169,7 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\proj.draftcraft_models\DraftCraftModels\DraftCraftModels.vcxproj">
+    <ProjectReference Include="..\proj.draftcraft_models\DraftCraftModels.vcxproj">
       <Project>{ad0449b7-feca-44a4-bea6-d81dfe7fefd9}</Project>
     </ProjectReference>
   </ItemGroup>
