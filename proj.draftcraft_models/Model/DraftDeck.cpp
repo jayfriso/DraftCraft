@@ -1,37 +1,37 @@
 #include "DraftDeck.h"
 #include <random>
+#include <utility>
 
-DraftDeck::DraftDeck(IStaticDataManager& staticDataManager, unsigned int seed) : m_staticDataManager{ staticDataManager }, m_cardIndices(staticDataManager.getGameConfig().deckSize(), 0), m_seed{ seed }
+DraftDeck::DraftDeck(IStaticDataManager& staticDataManager, unsigned int seed) : m_staticDataManager{ staticDataManager }, m_seed{ seed }
 {
     std::mt19937 random{ m_seed };
 
-    unsigned int landCardCount = m_staticDataManager.getGameConfig().landCardCount();
-    unsigned int nonLandCardCount = m_cardIndices.size() - landCardCount;
+    size_t deckSize = m_staticDataManager.getGameConfig().deckSize();
+    size_t nonLandCardCount = deckSize - m_staticDataManager.getGameConfig().landCardCount();
 
-    // Get all card indices, shuffle, and then pick the first X where X is the amount of non land cards we want
-    vector<unsigned int> nonLandCardIndices (staticDataManager.getTotalCardCount() - 1);
-    for (unsigned int i = 0; i < nonLandCardIndices.size(); i++)
+    vector<const Card*> tempCardVector;
+    tempCardVector.reserve(staticDataManager.getTotalCardCount() - 1);
+    for (unsigned int i = 0; i < tempCardVector.capacity(); i++)
     {
-        nonLandCardIndices.at(i) = i + 1;
+        tempCardVector.push_back(staticDataManager.getCardByIndex(i + 1));
     }
-    std::shuffle(nonLandCardIndices.begin(), nonLandCardIndices.end(), random);
-    nonLandCardIndices.resize(nonLandCardCount);
+    std::shuffle(tempCardVector.begin(), tempCardVector.end(), random);
+    tempCardVector.resize(deckSize);
+    std::fill(tempCardVector.begin() + nonLandCardCount, tempCardVector.end(), staticDataManager.getLandCard());
+    std::shuffle(tempCardVector.begin(), tempCardVector.end(), random);
 
-    // Add the non land cards to the beginning of the result list
-    // Rest of the list is filled with 0s (representing land cards) so a shuffle and should be done
-    std::copy(nonLandCardIndices.begin(), nonLandCardIndices.end(), m_cardIndices.begin());
-    std::shuffle(m_cardIndices.begin(), m_cardIndices.end(), random);
+    m_cardStack = std::stack<const Card*, vector<const Card*>>(tempCardVector);
 }
 
 const Card* DraftDeck::drawCard()
 {
-    unsigned int cardIndex = m_cardIndices.at(m_cardIndices.size() - 1);
-    m_cardIndices.pop_back();
+    const Card* result = m_cardStack.top();
+    m_cardStack.pop();
     notifyToUpdate();
-    return m_staticDataManager.getCardByIndex(cardIndex);
+    return result;
 }
 
 size_t DraftDeck::cardsLeft() const
 {
-    return m_cardIndices.size();
+    return m_cardStack.size();
 }

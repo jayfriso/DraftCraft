@@ -1,12 +1,12 @@
 #include "DraftBoard.h"
 #include "GameState.h"
 
-DraftBoard::DraftBoard(IStaticDataManager& staticDataManager, unsigned int deckSeed) : m_deck { staticDataManager, deckSeed }, m_currentPileIndex{ 0 }, m_currentPlayerIndex{ -1 }
+DraftBoard::DraftBoard(IStaticDataManager& staticDataManager, unsigned int deckSeed) : 
+	m_deck{ staticDataManager, deckSeed }, 
+	m_piles{ DraftPile{ m_deck } ,DraftPile{ m_deck } ,DraftPile{ m_deck } }, 
+	m_currentPileIndex{ 0 }, 
+	m_currentPlayerIndex{ -1 }
 {
-	for (size_t i = 0; i < DraftBoard::NUM_PILES; i++)
-	{
-		m_piles.push_back(DraftPile{ m_deck });
-	}
 }
 
 DraftPile& DraftBoard::getCurrentPile()

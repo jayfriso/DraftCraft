@@ -12,6 +12,10 @@ const Card* TestStaticDataManager::getCardByIndex(int index) const
 {
     return &m_cardList[index];
 }
+const Card* TestStaticDataManager::getLandCard() const
+{
+    return &m_cardList[0];
+}
 size_t TestStaticDataManager::getTotalCardCount() const
 {
     return m_cardList.size();
