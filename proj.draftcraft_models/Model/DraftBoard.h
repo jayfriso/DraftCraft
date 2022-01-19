@@ -1,12 +1,10 @@
 #pragma once
 
-#include <vector>
+#include <array>
 #include "DraftDeck.h"
 #include "DraftPile.h"
 #include "../StaticData/IStaticDataManager.h"
 #include "../ViewModel/DispatcherViewModel.h"
-
-using namespace std;
 
 class DraftBoard : public DispatcherViewModel
 {
@@ -14,7 +12,7 @@ private:
     static constexpr int NUM_PILES = 3;
 
     DraftDeck m_deck;
-    vector<DraftPile> m_piles;
+    std::array<DraftPile, NUM_PILES> m_piles;
 
     int m_currentPileIndex;
     // Represents what player is currently drafting, if no player is drafting then index is -1
@@ -25,7 +23,7 @@ private:
 public:
     DraftBoard(IStaticDataManager& staticDataManager, unsigned int deckSeed);
 
-    const vector<DraftPile>& piles() const { return m_piles; }
+    const array<DraftPile, NUM_PILES>& piles() const { return m_piles; }
     const DraftDeck& deck() const { return m_deck; }
     bool isDrafting() const { return m_currentPlayerIndex >= 0; }
 

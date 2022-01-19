@@ -1,19 +1,19 @@
 #pragma once
 
-#include <vector>
+#include <array>
 #include "../StaticData/IStaticDataManager.h"
 #include "Player.h"
 #include "DraftBoard.h"
 #include "PhaseStack.h"
 
-using namespace std;
-
 class GameState
 {
 private:
+    static constexpr int NUM_PLAYERS = 2;
+
     IStaticDataManager& m_staticDataManager;
 
-    vector<Player> m_players;
+    std::array<Player, NUM_PLAYERS> m_players;
     unsigned int m_clientPlayerIndex;
 
     DraftBoard m_draftBoard;

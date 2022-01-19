@@ -1,6 +1,6 @@
 #pragma once
 
-#include <vector>
+#include <stack>
 #include "../StaticData/GameConfig.h"
 
 using namespace std;
@@ -33,7 +33,7 @@ private:
 
     int m_turnPlayerIndex{-1}; // What players turn is it
     unsigned int m_startingPlayerIndex;
-    vector<Phase> m_phaseStack;
+    stack<Phase> m_phaseStack;
 
     // Fill the stack with the first draft phases
     void fillStartingDraftPhases();

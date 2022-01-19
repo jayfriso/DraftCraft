@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <stack>
 #include <cstdlib>
 #include "../StaticData/IStaticDataManager.h"
 #include "../ViewModel/DispatcherViewModel.h"
@@ -11,7 +12,7 @@ private:
     IStaticDataManager& m_staticDataManager;
 
     unsigned int m_seed;
-    std::vector<unsigned int> m_cardIndices;
+    std::stack<const Card*, vector<const Card*>> m_cardStack;
 public:
     DraftDeck(IStaticDataManager& staticDataManager, unsigned int seed);
     const Card* drawCard();
