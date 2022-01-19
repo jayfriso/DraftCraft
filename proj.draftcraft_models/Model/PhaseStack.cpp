@@ -5,8 +5,8 @@ void PhaseStack::fillStartingDraftPhases()
 {
     for (size_t i = 0; i < m_gameConfig.startingHandSize(); i++)
     {
-        m_phaseStack.push_back(Phase{ PhaseType::Draft, (m_startingPlayerIndex + 1) % 2 });
-        m_phaseStack.push_back(Phase{ PhaseType::Draft, m_startingPlayerIndex });
+        m_phaseStack.push(Phase{ PhaseType::Draft, (m_startingPlayerIndex + 1) % 2 });
+        m_phaseStack.push(Phase{ PhaseType::Draft, m_startingPlayerIndex });
     }
 }
 
@@ -33,12 +33,12 @@ PhaseStack::PhaseStack(const GameConfig& gameConfig, GameState& gameState, unsig
 
 const Phase& PhaseStack::getCurrentPhase() const
 {
-    return m_phaseStack.back();
+    return m_phaseStack.top();
 }
 
 const Phase& PhaseStack::proceedToNextPhase()
 {
-    m_phaseStack.pop_back();
+    m_phaseStack.pop();
     if (m_phaseStack.size() == 0)
     {
         if (m_turnPlayerIndex == -1)

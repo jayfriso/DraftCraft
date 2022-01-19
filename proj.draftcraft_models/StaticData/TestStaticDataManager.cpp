@@ -2,6 +2,7 @@
 
 TestStaticDataManager::TestStaticDataManager(unsigned int numTestCards, GameConfig& gameConfigRef) : m_gameConfigRef{ gameConfigRef }
 {
+    m_cardList.reserve(numTestCards);
     for (unsigned int i = 0; i < numTestCards; i++)
     {
         m_cardList.push_back(Card{ "test_" + std::to_string(i), "Test Card " + std::to_string(i) });
