@@ -23,7 +23,7 @@
  ****************************************************************************/
 
 #include "AppDelegate.h"
-#include "UI/MainGameScene.h"
+#include "UI/TitleScene.h"
 #include "StaticData/TestStaticDataManager.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
@@ -114,10 +114,6 @@ void setResolutionBasedOnDesktopSize(Rect& resolution, double scale, double aspe
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-
-    // Create the game state, for now use the test state
-    m_staticDataManager = std::make_unique<TestStaticDataManager>(200, m_gameConfig);
-
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -147,7 +143,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene and run
-    auto scene = MainGameScene::createScene(*m_staticDataManager);
+    auto scene = TitleScene::createScene(m_appLifetimeResources, true);
     director->runWithScene(scene);
 
     return true;

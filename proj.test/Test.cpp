@@ -19,8 +19,7 @@ namespace Test
 
 		TEST_METHOD(testDraftDeck)
 		{
-			GameConfig gameConfig{ 100, 40 };
-			TestStaticDataManager staticDataManager{ 200, gameConfig };
+			TestStaticDataManager staticDataManager{ 200 };
 			DraftDeck draftDeck{ staticDataManager, 69 };
 			
 			vector<string> expectedValues{ "test_187", "test_0", "test_129" };
@@ -39,8 +38,7 @@ namespace Test
 
 		TEST_METHOD(testDraftPile)
 		{
-			GameConfig gameConfig{ 100, 40 };
-			TestStaticDataManager staticDataManager{ 200, gameConfig };
+			TestStaticDataManager staticDataManager{ 200 };
 			DraftDeck draftDeck{ staticDataManager, 69 };
 			DraftPile draftPile{ draftDeck };
 
@@ -63,8 +61,7 @@ namespace Test
 
 		TEST_METHOD(testDraftingCommands)
 		{
-			GameConfig gameConfig{ 100, 40 };
-			TestStaticDataManager staticDataManager{ 200, gameConfig };
+			TestStaticDataManager staticDataManager{ 200 };
 			GameState gameState{ staticDataManager, "player0", "player1", 0, 69 };
 			CommandProcessor commandProcessor{ gameState };
 

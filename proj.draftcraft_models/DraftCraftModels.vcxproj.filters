@@ -23,6 +23,9 @@
     <Filter Include="Source Files\CommandSystem\Commands">
       <UniqueIdentifier>{1e42671c-0ce9-43f8-88af-04b19bfb535a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\MatchMaking">
+      <UniqueIdentifier>{ab261500-747e-4a89-b92d-fed4f410aba1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model\DraftDeck.h">
@@ -79,6 +82,12 @@
     <ClInclude Include="CommandSystem\Commands\Commands.h">
       <Filter>Source Files\CommandSystem\Commands</Filter>
     </ClInclude>
+    <ClInclude Include="MatchMaking\IMatchMaker.h">
+      <Filter>Source Files\MatchMaking</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchMaking\TestMatchMaker.h">
+      <Filter>Source Files\MatchMaking</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Model\DraftDeck.cpp">
@@ -128,6 +137,12 @@
     </ClCompile>
     <ClCompile Include="CommandSystem\Commands\DraftSkipPileCommand.cpp">
       <Filter>Source Files\CommandSystem\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchMaking\IMatchMaker.cpp">
+      <Filter>Source Files\MatchMaking</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchMaking\TestMatchMaker.cpp">
+      <Filter>Source Files\MatchMaking</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -28,6 +28,7 @@
 #include <memory>
 #include "cocos2d.h"
 #include "StaticData/IStaticDataManager.h"
+#include "AppLifetimeResources.h"
 
 /**
 @brief    The cocos2d Application.
@@ -37,8 +38,7 @@ Private inheritance here hides part of interface from Director.
 class  AppDelegate : private cocos2d::Application
 {
 private:
-    std::unique_ptr<IStaticDataManager> m_staticDataManager;
-    GameConfig m_gameConfig{ 100, 40 }; // TODO : This should be removed once we move to the proper static data manager
+    AppLifetimeResources m_appLifetimeResources;
 
 public:
     AppDelegate();

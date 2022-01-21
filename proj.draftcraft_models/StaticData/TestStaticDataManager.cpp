@@ -1,6 +1,7 @@
 #include "TestStaticDataManager.h"
 
-TestStaticDataManager::TestStaticDataManager(unsigned int numTestCards, GameConfig& gameConfigRef) : m_gameConfigRef{ gameConfigRef }
+TestStaticDataManager::TestStaticDataManager(unsigned int numTestCards) : 
+    m_gameConfig{  100, 40}
 {
     m_cardList.reserve(numTestCards);
     for (unsigned int i = 0; i < numTestCards; i++)
