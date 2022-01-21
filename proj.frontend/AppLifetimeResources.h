@@ -14,7 +14,7 @@ private:
     std::unique_ptr<IMatchMaker> m_matchMaker;
 public:
     const IStaticDataManager& staticDataManager() { return *m_staticDataManager; }
-    const IMatchMaker& matchMaker() { return *m_matchMaker; }
+    IMatchMaker& matchMaker() { return *m_matchMaker; }
 
     bool loadResources();
 };

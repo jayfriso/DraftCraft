@@ -9,12 +9,12 @@
 class DraftDeck : public DispatcherViewModel
 {
 private:
-    IStaticDataManager& m_staticDataManager;
+    const IStaticDataManager& m_staticDataManager;
 
     unsigned int m_seed;
     std::stack<const Card*, vector<const Card*>> m_cardStack;
 public:
-    DraftDeck(IStaticDataManager& staticDataManager, unsigned int seed);
+    DraftDeck(const IStaticDataManager& staticDataManager, unsigned int seed);
     const Card* drawCard();
     size_t cardsLeft() const;
 };

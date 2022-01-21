@@ -2,6 +2,7 @@
 #include "StaticData/TestStaticDataManager.h"
 #include "ui/CocosGUI.h"
 #include <iostream>
+#include "MainGameScene.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -31,7 +32,9 @@ void TitleScene::showMenu()
 
 void TitleScene::onTestGameButtonPressed()
 {
-    // TODO : Load the game
+    auto mainGameScene = MainGameScene::createScene(m_appLifetimeResources);
+    auto director = cocos2d::Director::getInstance();
+    director->replaceScene(mainGameScene);
 }
 
 cocos2d::Scene* TitleScene::createScene(AppLifetimeResources& appLifetimeResources, bool shouldLoadResources)

@@ -1,7 +1,7 @@
 #include "DraftBoard.h"
 #include "GameState.h"
 
-DraftBoard::DraftBoard(IStaticDataManager& staticDataManager, unsigned int deckSeed) : 
+DraftBoard::DraftBoard(const IStaticDataManager& staticDataManager, unsigned int deckSeed) : 
 	m_deck{ staticDataManager, deckSeed }, 
 	m_piles{ DraftPile{ m_deck } ,DraftPile{ m_deck } ,DraftPile{ m_deck } }, 
 	m_currentPileIndex{ 0 }, 

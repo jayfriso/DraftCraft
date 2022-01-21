@@ -21,7 +21,7 @@ private:
     DraftPile& getCurrentPile();
 
 public:
-    DraftBoard(IStaticDataManager& staticDataManager, unsigned int deckSeed);
+    DraftBoard(const IStaticDataManager& staticDataManager, unsigned int deckSeed);
 
     const array<DraftPile, NUM_PILES>& piles() const { return m_piles; }
     const DraftDeck& deck() const { return m_deck; }

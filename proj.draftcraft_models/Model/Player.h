@@ -9,11 +9,11 @@ using namespace std;
 class Player : public DispatcherViewModel
 {
 private:
-    string m_userName;
+    string m_id;
     unsigned int m_playerIndex;
     vector<const Card*> m_cardsInHand;
 public:
-    Player(string userName, unsigned int playerIndex) : m_userName{userName}, m_playerIndex {playerIndex} {}
+    Player(string id, unsigned int playerIndex) : m_id{id}, m_playerIndex {playerIndex} {}
 
     const vector<const Card*>& cardsInHand() const { return m_cardsInHand; }
 
