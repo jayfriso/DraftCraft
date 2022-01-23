@@ -2,7 +2,7 @@
 #include <random>
 #include <utility>
 
-DraftDeck::DraftDeck(IStaticDataManager& staticDataManager, unsigned int seed) : m_staticDataManager{ staticDataManager }, m_seed{ seed }
+DraftDeck::DraftDeck(const IStaticDataManager& staticDataManager, unsigned int seed) : m_staticDataManager{ staticDataManager }, m_seed{ seed }
 {
     std::mt19937 random{ m_seed };
 

@@ -24,6 +24,8 @@
     <ClInclude Include="CommandSystem\Commands\Commands.h" />
     <ClInclude Include="CommandSystem\Commands\DraftAtIndexCommand.h" />
     <ClInclude Include="CommandSystem\Commands\DraftSkipPileCommand.h" />
+    <ClInclude Include="MatchMaking\IMatchMaker.h" />
+    <ClInclude Include="MatchMaking\TestMatchMaker.h" />
     <ClInclude Include="Model\DraftBoard.h" />
     <ClInclude Include="Model\GameState.h" />
     <ClInclude Include="Model\DraftDeck.h" />
@@ -43,6 +45,8 @@
     <ClCompile Include="CommandSystem\CommandProcessor.cpp" />
     <ClCompile Include="CommandSystem\Commands\DraftAtIndexCommand.cpp" />
     <ClCompile Include="CommandSystem\Commands\DraftSkipPileCommand.cpp" />
+    <ClCompile Include="MatchMaking\IMatchMaker.cpp" />
+    <ClCompile Include="MatchMaking\TestMatchMaker.cpp" />
     <ClCompile Include="Model\DraftBoard.cpp" />
     <ClCompile Include="Model\DraftDeck.cpp" />
     <ClCompile Include="Model\DraftPile.cpp" />

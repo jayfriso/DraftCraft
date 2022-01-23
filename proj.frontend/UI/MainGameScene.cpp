@@ -3,26 +3,15 @@
 
 USING_NS_CC;
 
-MainGameScene::MainGameScene(IStaticDataManager& staticDataManager) : m_staticDataManager{staticDataManager}, m_gameState { staticDataManager, "player0", "player1", 0, 69 } {}
+MainGameScene::MainGameScene(AppLifetimeResources& appLifetimeResources) : 
+    m_appLifetimeResources{ appLifetimeResources }, 
+    m_gameState { m_appLifetimeResources.staticDataManager(), *(m_appLifetimeResources.matchMaker().currentMatch())},
+    m_commandProcessor{m_gameState}
+{}
 
-Scene* MainGameScene::createScene(IStaticDataManager& staticDataManager)
+Scene* MainGameScene::createScene(AppLifetimeResources& appLifetimeResources)
 {
-    return MainGameScene::create(staticDataManager);
-}
-
-MainGameScene* MainGameScene::create(IStaticDataManager& staticDataManager)
-{
-    MainGameScene* scene = new(std::nothrow) MainGameScene(staticDataManager);
-    if (scene)
-    {
-        if (scene->init())
-        {
-            scene->autorelease();
-            return scene;
-        }
-    }
-    CC_SAFE_DELETE(scene);
-    return nullptr;
+    return MainGameScene::create(appLifetimeResources);
 }
 
 bool MainGameScene::init()

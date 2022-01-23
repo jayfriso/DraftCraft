@@ -801,18 +801,23 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\proj.frontend\AppLifetimeResources.h" />
     <ClInclude Include="..\proj.frontend\HelloWorldScene.h" />
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.h" />
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.h" />
     <ClInclude Include="..\proj.frontend\UI\MainGameScene.h" />
+    <ClInclude Include="..\proj.frontend\UI\TitleScene.h" />
     <ClInclude Include="..\proj.frontend\UI\UIConstants.h" />
+    <ClInclude Include="..\proj.frontend\Utils\CustomMacros.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\resource.h" />
+    <ClCompile Include="..\proj.frontend\AppLifetimeResources.cpp" />
     <ClCompile Include="..\proj.frontend\HelloWorldScene.cpp" />
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp" />
+    <ClCompile Include="..\proj.frontend\UI\TitleScene.cpp" />
     <ClCompile Include="..\proj.frontend\UI\UIConstants.cpp" />
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.cpp" />
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.cpp" />

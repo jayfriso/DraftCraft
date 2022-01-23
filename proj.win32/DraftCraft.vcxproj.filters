@@ -25,6 +25,12 @@
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.cpp">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\TitleScene.cpp">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\AppLifetimeResources.cpp">
+      <Filter>Source Files\proj.frontend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h">
@@ -78,6 +84,15 @@
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.h">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\TitleScene.h">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\CustomMacros.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\AppLifetimeResources.h">
+      <Filter>Source Files\proj.frontend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\CMakeLists.txt" />
@@ -123,6 +138,9 @@
     </Filter>
     <Filter Include="Source Files\proj.frontend\UI\DraftBoard">
       <UniqueIdentifier>{409cfef2-d820-4e21-85b1-105fbe310c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proj.frontend\Utils">
+      <UniqueIdentifier>{2fc87ce9-10ee-4029-b542-3848b8224a40}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
