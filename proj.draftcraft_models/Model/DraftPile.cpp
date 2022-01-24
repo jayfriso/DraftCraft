@@ -5,10 +5,9 @@ DraftPile::DraftPile(DraftDeck& draftDeck) : m_draftDeck{ draftDeck }
     addCardToPile();
 }
 
-const Card* DraftPile::draftCardAtIndex(unsigned int index)
+const Card& DraftPile::draftCardAtIndex(unsigned int index)
 {
-    // TODO : Add exception for index here
-    const Card* result{ m_cardsInPile.at(index) };
+    const Card& result{ m_cardsInPile.at(index) };
     m_cardsInPile.clear();
     addCardToPile();
     return result;

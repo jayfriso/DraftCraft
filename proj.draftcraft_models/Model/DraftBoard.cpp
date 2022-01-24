@@ -1,5 +1,6 @@
 #include "DraftBoard.h"
 #include "GameState.h"
+#include "../Exceptions/ModelLogicError.h"
 
 DraftBoard::DraftBoard(const IStaticDataManager& staticDataManager, unsigned int deckSeed) : 
 	m_deck{ staticDataManager, deckSeed }, 
@@ -13,7 +14,7 @@ DraftPile& DraftBoard::getCurrentPile()
 {
 	if (!isDrafting())
 	{
-		// TODO throw exception here for when not drafting
+		throw ModelLogicError("Getting draft pile but DraftBoard is not currently in drafting mode.");
 	}
 	return m_piles.at(m_currentPileIndex);
 }
@@ -25,9 +26,9 @@ void DraftBoard::startDraft(unsigned int draftingPlayerIndex)
 	notifyToUpdate();
 }
 
-const Card* DraftBoard::draftCardAtIndex(unsigned int index)
+const Card& DraftBoard::draftCardAtIndex(unsigned int index)
 {
-	const Card* draftedCard = getCurrentPile().draftCardAtIndex(index);
+	const Card& draftedCard = getCurrentPile().draftCardAtIndex(index);
 	m_currentPlayerIndex = -1;
 	notifyToUpdate();
 	return draftedCard;
@@ -42,7 +43,7 @@ const Card* DraftBoard::skipPile()
 	}
 	else
 	{
-		draftedCard = m_deck.drawCard();
+		draftedCard = &(m_deck.drawCard());
 		m_currentPlayerIndex = -1;
 	}
 	notifyToUpdate();

@@ -8,9 +8,13 @@ JsonStaticDataManager::JsonStaticDataManager() : m_cardList{}, m_gameConfig{10, 
     m_cardList.push_back(Card{ "test_3", "Test Card 3" });
 }
 
-const Card* JsonStaticDataManager::getCardByIndex(int index) const
+const Card& JsonStaticDataManager::getCardByIndex(int index) const
 {
-    return &m_cardList[index];
+    return m_cardList[index];
+}
+const Card& JsonStaticDataManager::getLandCard() const
+{
+    return m_cardList[0];
 }
 const GameConfig& JsonStaticDataManager::getGameConfig() const
 {
