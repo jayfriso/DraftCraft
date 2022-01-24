@@ -9,7 +9,7 @@ DraftDeck::DraftDeck(const IStaticDataManager& staticDataManager, unsigned int s
     size_t deckSize = m_staticDataManager.getGameConfig().deckSize();
     size_t nonLandCardCount = deckSize - m_staticDataManager.getGameConfig().landCardCount();
 
-    vector<const Card*> tempCardVector;
+    vector<const Card&> tempCardVector;
     tempCardVector.reserve(staticDataManager.getTotalCardCount() - 1);
     for (unsigned int i = 0; i < tempCardVector.capacity(); i++)
     {
@@ -20,12 +20,12 @@ DraftDeck::DraftDeck(const IStaticDataManager& staticDataManager, unsigned int s
     std::fill(tempCardVector.begin() + nonLandCardCount, tempCardVector.end(), staticDataManager.getLandCard());
     std::shuffle(tempCardVector.begin(), tempCardVector.end(), random);
 
-    m_cardStack = std::stack<const Card*, vector<const Card*>>(tempCardVector);
+    m_cardStack = std::stack<const Card&, vector<const Card&>>(tempCardVector);
 }
 
-const Card* DraftDeck::drawCard()
+const Card& DraftDeck::drawCard()
 {
-    const Card* result = m_cardStack.top();
+    const Card& result = m_cardStack.top();
     m_cardStack.pop();
     notifyToUpdate();
     return result;
