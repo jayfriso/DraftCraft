@@ -15,8 +15,8 @@ public:
     virtual ~JsonStaticDataManager() = default;
 
     // IStaticDataManager
-    virtual const Card& getCardByIndex(int index) const override;
-    virtual const Card& getLandCard() const override;
+    virtual const Card* getCardByIndex(int index) const override;
+    virtual const Card* getLandCard() const override;
     virtual const GameConfig& getGameConfig() const override;
     virtual size_t getTotalCardCount() const override;
 };

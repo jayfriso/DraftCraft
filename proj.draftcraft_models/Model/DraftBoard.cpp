@@ -26,9 +26,9 @@ void DraftBoard::startDraft(unsigned int draftingPlayerIndex)
 	notifyToUpdate();
 }
 
-const Card& DraftBoard::draftCardAtIndex(unsigned int index)
+const Card* DraftBoard::draftCardAtIndex(unsigned int index)
 {
-	const Card& draftedCard = getCurrentPile().draftCardAtIndex(index);
+	const Card* draftedCard = getCurrentPile().draftCardAtIndex(index);
 	m_currentPlayerIndex = -1;
 	notifyToUpdate();
 	return draftedCard;
@@ -43,7 +43,7 @@ const Card* DraftBoard::skipPile()
 	}
 	else
 	{
-		draftedCard = &(m_deck.drawCard());
+		draftedCard = m_deck.drawCard();
 		m_currentPlayerIndex = -1;
 	}
 	notifyToUpdate();
