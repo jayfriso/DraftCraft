@@ -29,7 +29,7 @@ public:
 
     void startDraft(unsigned int draftingPlayerIndex);
     // Gets the card at the index and ends the draft
-    const Card& draftCardAtIndex(unsigned int index);
+    const Card* draftCardAtIndex(unsigned int index);
     // Either moves to the next pile, or if no piles are left, returns a card from the deck and ends the draft
     // Returns nullptr if the player moves to the next pile
     const Card* skipPile();

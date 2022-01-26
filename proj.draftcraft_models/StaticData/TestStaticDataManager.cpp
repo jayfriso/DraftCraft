@@ -10,13 +10,13 @@ TestStaticDataManager::TestStaticDataManager(unsigned int numTestCards) :
     }
 }
 
-const Card& TestStaticDataManager::getCardByIndex(int index) const
+const Card* TestStaticDataManager::getCardByIndex(int index) const
 {
-    return m_cardList[index];
+    return &m_cardList[index];
 }
-const Card& TestStaticDataManager::getLandCard() const
+const Card* TestStaticDataManager::getLandCard() const
 {
-    return m_cardList[0];
+    return &m_cardList[0];
 }
 size_t TestStaticDataManager::getTotalCardCount() const
 {
