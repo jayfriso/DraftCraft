@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Model/GameState.h";
+#include "../Model/GameState.h"
 
 class AbstractCommand
 {

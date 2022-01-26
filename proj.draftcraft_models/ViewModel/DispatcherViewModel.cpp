@@ -1,12 +1,22 @@
 #include "DispatcherViewModel.h"
 
-DispatcherViewModel::~DispatcherViewModel()
+template<typename TThisType>
+void DispatcherViewModel<TThisType>::addListener(IListenerView<TThisType>& listener)
 {
-    unsubscribeListener();
+    m_listeners.push_back(&listener);
 }
 
-void DispatcherViewModel::notifyToUpdate() const
+template<typename TThisType>
+void DispatcherViewModel<TThisType>::clearListeners()
 {
-    if (isSubscribed())
-        m_listener->update(*this);
+    m_listeners.clear();
+}
+
+template<typename TThisType>
+void DispatcherViewModel<TThisType>::notifyToUpdate() const
+{
+    for (auto listener : m_listeners)
+    {
+        listener.update(static_cast<const TThisType *>(this));
+    }
 }

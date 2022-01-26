@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class DraftPile : public DispatcherViewModel
+class DraftPile : public DispatcherViewModel<DraftPile>
 {
 private:
     DraftDeck& m_draftDeck;

@@ -24,6 +24,7 @@
     <ClInclude Include="CommandSystem\Commands\Commands.h" />
     <ClInclude Include="CommandSystem\Commands\DraftAtIndexCommand.h" />
     <ClInclude Include="CommandSystem\Commands\DraftSkipPileCommand.h" />
+    <ClInclude Include="Exceptions\ModelLogicError.h" />
     <ClInclude Include="MatchMaking\IMatchMaker.h" />
     <ClInclude Include="MatchMaking\TestMatchMaker.h" />
     <ClInclude Include="Model\DraftBoard.h" />
