@@ -5,7 +5,6 @@
 #include "../StaticData/IStaticDataManager.h"
 #include "../ViewModel/DispatcherViewModel.h"
 
-
 class DraftDeck : public DispatcherViewModel<DraftDeck>
 {
 private:

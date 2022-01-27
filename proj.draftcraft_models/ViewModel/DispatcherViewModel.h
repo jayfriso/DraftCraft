@@ -12,7 +12,21 @@ public:
     DispatcherViewModel() {}
     ~DispatcherViewModel() = default;
 
-    void addListener(IListenerView<TThisType>& listener);
-    void clearListeners();
-    void notifyToUpdate() const;
+    void addListener(IListenerView<TThisType>& listener)
+    {
+        m_listeners.push_back(&listener);
+    }
+
+    void clearListeners()
+    {
+        m_listeners.clear();
+    }
+
+    void notifyToUpdate() const
+    {
+        for (IListenerView<TThisType>* listener : m_listeners)
+        {
+            listener->update(static_cast<const TThisType*>(this));
+        }
+    }
 };

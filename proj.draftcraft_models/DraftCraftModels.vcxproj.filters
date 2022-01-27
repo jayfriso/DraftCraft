@@ -126,9 +126,6 @@
     <ClCompile Include="Model\GameState.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
-    <ClCompile Include="ViewModel\DispatcherViewModel.cpp">
-      <Filter>Source Files\ViewModel</Filter>
-    </ClCompile>
     <ClCompile Include="CommandSystem\AbstractCommand.cpp">
       <Filter>Source Files\CommandSystem</Filter>
     </ClCompile>

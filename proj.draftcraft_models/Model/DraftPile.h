@@ -2,6 +2,7 @@
 #include <vector>
 #include "../StaticData/Card.h"
 #include "DraftDeck.h"
+#include "../ViewModel/DispatcherViewModel.h"
 
 using namespace std;
 

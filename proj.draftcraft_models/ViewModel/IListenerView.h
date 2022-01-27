@@ -1,5 +1,4 @@
 #pragma once
-#include "DispatcherViewModel.h"
 
 template <typename TTypeOfViewModel>
 class IListenerView
