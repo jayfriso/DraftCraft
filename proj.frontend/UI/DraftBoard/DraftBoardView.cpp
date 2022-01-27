@@ -20,9 +20,7 @@ bool DraftBoardView::init()
     return true;
 }
 
-void DraftBoardView::update(const DispatcherViewModel& viewModel)
+void DraftBoardView::update(const DraftBoard* viewModel)
 {
-    const DraftBoard& draftBoardModel = static_cast<const DraftBoard&>(viewModel);
     // update the view here
-  
 }

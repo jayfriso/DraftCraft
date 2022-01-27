@@ -1,22 +1,32 @@
 #pragma once
 
 #include "IListenerView.h"
+#include <vector>
 
-// Forward declaration
-class IListenerView;
-
-// Class used to subscribe a view to the model, in order to be able to send notifications for the view to update
+template <typename TThisType>
 class DispatcherViewModel
 {
 private:
-    IListenerView* m_listener;
+    std::vector<IListenerView< TThisType>*> m_listeners;
 public:
-    DispatcherViewModel() : m_listener{ nullptr } {}
-    ~DispatcherViewModel();
+    DispatcherViewModel() {}
+    ~DispatcherViewModel() = default;
 
-    void subscribeListener(IListenerView* listener) { m_listener = listener; }
-    void unsubscribeListener() { m_listener = nullptr; }
-    bool isSubscribed() const { return m_listener != nullptr; }
-    void notifyToUpdate() const;
+    void addListener(IListenerView<TThisType>& listener)
+    {
+        m_listeners.push_back(&listener);
+    }
+
+    void clearListeners()
+    {
+        m_listeners.clear();
+    }
+
+    void notifyToUpdate() const
+    {
+        for (IListenerView<TThisType>* listener : m_listeners)
+        {
+            listener->update(static_cast<const TThisType*>(this));
+        }
+    }
 };
-

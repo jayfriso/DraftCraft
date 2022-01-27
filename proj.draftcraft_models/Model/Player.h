@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Player : public DispatcherViewModel
+class Player : public DispatcherViewModel<Player>
 {
 private:
     string m_id;

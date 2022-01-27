@@ -6,7 +6,7 @@
 #include "../StaticData/IStaticDataManager.h"
 #include "../ViewModel/DispatcherViewModel.h"
 
-class DraftBoard : public DispatcherViewModel
+class DraftBoard : public DispatcherViewModel<DraftBoard>
 {
 private:
     static constexpr int NUM_PILES = 3;

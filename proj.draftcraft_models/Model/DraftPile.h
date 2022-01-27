@@ -2,10 +2,11 @@
 #include <vector>
 #include "../StaticData/Card.h"
 #include "DraftDeck.h"
+#include "../ViewModel/DispatcherViewModel.h"
 
 using namespace std;
 
-class DraftPile : public DispatcherViewModel
+class DraftPile : public DispatcherViewModel<DraftPile>
 {
 private:
     DraftDeck& m_draftDeck;

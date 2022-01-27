@@ -1,14 +1,11 @@
 #pragma once
-#include "DispatcherViewModel.h"
 
-// Forward Declaration
-class DispatcherViewModel;
-
+template <typename TTypeOfViewModel>
 class IListenerView
 {
 public:
     virtual ~IListenerView() = default;
 
-    virtual void update(const DispatcherViewModel& viewModel) = 0;
+    virtual void update(const TTypeOfViewModel* viewModel) = 0;
 };
 

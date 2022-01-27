@@ -26,6 +26,9 @@
     <Filter Include="Source Files\MatchMaking">
       <UniqueIdentifier>{ab261500-747e-4a89-b92d-fed4f410aba1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Exceptions">
+      <UniqueIdentifier>{a328bb26-d53b-4bf4-b2ef-7ffac7f73464}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model\DraftDeck.h">
@@ -88,6 +91,9 @@
     <ClInclude Include="MatchMaking\TestMatchMaker.h">
       <Filter>Source Files\MatchMaking</Filter>
     </ClInclude>
+    <ClInclude Include="Exceptions\ModelLogicError.h">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Model\DraftDeck.cpp">
@@ -119,9 +125,6 @@
     </ClCompile>
     <ClCompile Include="Model\GameState.cpp">
       <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="ViewModel\DispatcherViewModel.cpp">
-      <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
     <ClCompile Include="CommandSystem\AbstractCommand.cpp">
       <Filter>Source Files\CommandSystem</Filter>

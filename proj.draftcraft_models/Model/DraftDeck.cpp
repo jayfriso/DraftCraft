@@ -1,6 +1,7 @@
 #include "DraftDeck.h"
 #include <random>
 #include <utility>
+#include "../ViewModel/DispatcherViewModel.h"
 
 DraftDeck::DraftDeck(const IStaticDataManager& staticDataManager, unsigned int seed) : m_staticDataManager{ staticDataManager }, m_seed{ seed }
 {

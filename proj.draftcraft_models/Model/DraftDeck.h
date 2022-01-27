@@ -1,12 +1,11 @@
 #pragma once
 
-#include <vector>
 #include <stack>
 #include <cstdlib>
 #include "../StaticData/IStaticDataManager.h"
 #include "../ViewModel/DispatcherViewModel.h"
 
-class DraftDeck : public DispatcherViewModel
+class DraftDeck : public DispatcherViewModel<DraftDeck>
 {
 private:
     const IStaticDataManager& m_staticDataManager;

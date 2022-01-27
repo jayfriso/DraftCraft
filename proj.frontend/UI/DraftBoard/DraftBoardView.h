@@ -6,7 +6,7 @@
 
 USING_NS_CC;
 
-class DraftBoardView : public Node, IListenerView
+class DraftBoardView : public Node, IListenerView<DraftBoard>
 {
 private:
     static const float WIDTH;
@@ -15,6 +15,6 @@ public:
     virtual bool init() override;
     CREATE_FUNC(DraftBoardView);
 
-    virtual void update(const DispatcherViewModel& viewModel) override;
+    virtual void update(const DraftBoard* viewModel) override;
 };
 
