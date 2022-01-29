@@ -26,7 +26,8 @@ public:
     {
         for (IListenerView<TThisType>* listener : m_listeners)
         {
-            listener->update(static_cast<const TThisType*>(this));
+            if (listener != nullptr)
+                listener->update(static_cast<const TThisType&>(*this));
         }
     }
 };

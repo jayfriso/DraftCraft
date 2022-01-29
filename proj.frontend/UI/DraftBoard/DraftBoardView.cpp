@@ -20,7 +20,7 @@ bool DraftBoardView::init()
     return true;
 }
 
-void DraftBoardView::update(const DraftBoard* viewModel)
+void DraftBoardView::update(const DraftBoard& viewModel)
 {
     // update the view here
 }

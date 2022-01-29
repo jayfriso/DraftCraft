@@ -4,17 +4,13 @@
 
 using namespace ui;
 
-const float DraftDrawerView::WIDTH{ 120 };
-const Vec2 DraftDrawerView::ARROW_POSITION{ 65, 500 };
-const Vec2 DraftDrawerView::ARROW_ANCHOR{ 0.4f, 0.5f };
 const float DraftDrawerView::DRAWER_TOGGLE_ANIM_LENGTH{ 0.3 };
-
 
 bool DraftDrawerView::init()
 {
     if (!Node::init())
         return false;
-    this->setContentSize(Size(WIDTH, UIConstants::DRAFT_BOARD_HEIGHT));
+    this->setContentSize(Size(120, UIConstants::DRAFT_BOARD_HEIGHT));
     this->setAnchorPoint(Vec2(0, 0.5f));
 
     m_draftBoard = DraftBoardView::create();
@@ -28,8 +24,8 @@ bool DraftDrawerView::init()
     this->addChild(draftDrawerBg, 1);
 
     auto button = Button::create("ui/draft_board/draft_drawer_triangle.png");
-    button->setAnchorPoint(ARROW_ANCHOR);
-    button->setPosition(ARROW_POSITION);
+    button->setAnchorPoint(Vec2(0.4f, 0.5f));
+    button->setPosition(Vec2(65, 500));
     button->addTouchEventListener(CC_CALLBACK_2(DraftDrawerView::onDrawerButtonPressed, this));
     this->addChild(button, 2);
 

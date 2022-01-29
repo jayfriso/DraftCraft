@@ -6,6 +6,6 @@ class IListenerView
 public:
     virtual ~IListenerView() = default;
 
-    virtual void update(const TTypeOfViewModel* viewModel) = 0;
+    virtual void update(const TTypeOfViewModel& viewModel) = 0;
 };
 

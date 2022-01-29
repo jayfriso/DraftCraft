@@ -10,11 +10,7 @@ using namespace ui;
 class DraftDrawerView : public Node
 {
 private:
-    static const float WIDTH;
-    static const Vec2 ARROW_POSITION;
-    static const Vec2 ARROW_ANCHOR;
     static const float DRAWER_TOGGLE_ANIM_LENGTH;
-
 
     DraftBoardView* m_draftBoard;
     bool m_isOpen{ true };

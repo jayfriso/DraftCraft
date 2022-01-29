@@ -15,6 +15,6 @@ public:
     virtual bool init() override;
     CREATE_FUNC(DraftBoardView);
 
-    virtual void update(const DraftBoard* viewModel) override;
+    virtual void update(const DraftBoard& viewModel) override;
 };
 
