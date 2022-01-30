@@ -34,9 +34,13 @@ void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec
             break;
     }
     node->setAnchorPoint(position);
-    node->setPositionNormalized(position);
+    Vec2 normalizedOffset{ Vec2::ZERO };
     if (offset != Vec2::ZERO)
-        node->setPosition(node->getPosition() + offset);
+    {
+        Vec2 parentContentSize = node->getParent()->getContentSize();
+        normalizedOffset = Vec2{ offset.x / parentContentSize.x, offset.y / parentContentSize.y };
+    }
+    node->setPositionNormalized(position + normalizedOffset);
 }
 
 Sprite* UIUtils::createGenericRoundedRect(Size size, Color3B color)
@@ -48,14 +52,18 @@ Sprite* UIUtils::createGenericRoundedRect(Size size, Color3B color)
     return result;
 }
 
-void UIUtils::distributeChildrenHorizontal(Node* node)
+void UIUtils::distributeChildrenHorizontal(Node* node, float space, float yContentSize)
 {
     auto children = node->getChildren();
     size_t childCount = node->getChildrenCount();
-    for (size_t i = 0; i < childCount; i++)
+    float currentX{ 0 };
+    float yPos{ yContentSize / 2 };
+    for (auto child : children)
     {
-        float positionX = (float)(i + 1) / (childCount + 1);
-        children.at(i)->setAnchorPoint(Vec2(0.5, 0.5));
-        children.at(i)->setPositionNormalized(Vec2(positionX, 0.5));
+        child->setAnchorPoint(Vec2(0, 0.5));
+        child->setPosition(currentX, yPos);
+        currentX += child->getContentSize().width + space;
     }
+    currentX -= space;
+    node->setContentSize(Size(currentX, yContentSize));
 }

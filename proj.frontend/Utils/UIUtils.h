@@ -23,6 +23,6 @@ public:
 
     static Sprite* createGenericRoundedRect(Size size, Color3B color);
 
-    static void distributeChildrenHorizontal(Node* node);
+    static void distributeChildrenHorizontal(Node* node, float space, float yContantSize);
 };
 

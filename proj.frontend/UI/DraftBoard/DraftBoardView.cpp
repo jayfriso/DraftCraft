@@ -2,6 +2,9 @@
 #include "UIConstants.h"
 #include "UIUtils.h"
 
+USING_NS_CC;
+using namespace ui;
+
 const float DraftBoardView::WIDTH{ 1880 };
 
 void DraftBoardView::initWithModel(DraftBoard& viewModel)
@@ -16,7 +19,6 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
 
     // Container for deck and piles
     auto topContainer = Node::create();
-    topContainer->setContentSize(Size(1418, 435));
     this->addChild(topContainer, 1);
     m_draftDeckView = DraftDeckView::create();
     m_draftDeckView->initWithModel(viewModel.deck());
@@ -26,8 +28,8 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
         auto pile = UIUtils::createGenericRoundedRect(Size(312, 412), UIConstants::COLOR_LIGHT_ORANGE);
         topContainer->addChild(pile);
     }
-    UIUtils::distributeChildrenHorizontal(topContainer);
-    UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter);
+    UIUtils::distributeChildrenHorizontal(topContainer, 100, 435);
+    UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter, Vec2(0, -40));
 }
 
 void DraftBoardView::update(const DraftBoard& viewModel)
