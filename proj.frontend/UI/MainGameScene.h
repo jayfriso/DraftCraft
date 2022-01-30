@@ -15,7 +15,6 @@ private:
 
 public:
     MainGameScene(AppLifetimeResources& appLifetimeResources);
-    virtual ~MainGameScene() = default;
 
     static cocos2d::Scene* createScene(AppLifetimeResources& appLifetimeResources);
     CREATE_FUNC_ONE_PARAM(MainGameScene, AppLifetimeResources&);

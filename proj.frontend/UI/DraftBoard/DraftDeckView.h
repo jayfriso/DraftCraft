@@ -16,7 +16,6 @@ private:
     void setNumCardsLeft(int numCardsLeft);
 
 public:
-    virtual ~DraftDeckView() = default;
     virtual void initWithModel(DraftDeck& viewModel) override;
     CREATE_FUNC(DraftDeckView);
     virtual void update(const DraftDeck& viewModel) override;

@@ -3,6 +3,9 @@
 #include "ViewModel/AbstractListenerView.h"
 #include "Model/DraftPile.h"
 #include <array>
+#include "HorizontalLayoutContainer.h"
+#include "VerticalLayoutContainer.h"
+
 
 USING_NS_CC;
 
@@ -12,13 +15,12 @@ private:
     static constexpr size_t MAX_CARDS_IN_COLUMN{ 3 };
     static constexpr size_t MAX_COLUMNS{ 2 };
 
-    Node* m_columnContainer;
-    std::array<Node*, MAX_COLUMNS> m_columns;
+    HorizontalLayoutContainer* m_columnContainer;
+    std::array<VerticalLayoutContainer*, MAX_COLUMNS> m_columns;
 
     void setCards(const vector<const Card*>& cards);
 
 public:
-    virtual ~DraftPileView() = default;
     CREATE_FUNC(DraftPileView);
     virtual void initWithModel(DraftPile& viewModel) override;
     virtual void update(const DraftPile& viewModel) override;

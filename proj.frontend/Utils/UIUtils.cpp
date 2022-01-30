@@ -1,7 +1,7 @@
 #include "UIUtils.h"
 #include <numeric>
 
-void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec2 offset)
+void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec2 offset, tuple<bool, Vec2> overrideAnchorPoint)
 {
     Vec2 position{ 0, 0 };
     switch (anchorPosition)
@@ -34,7 +34,10 @@ void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec
             position = Vec2{ 1,1 };
             break;
     }
-    node->setAnchorPoint(position);
+    if (get<0>(overrideAnchorPoint))
+        node->setAnchorPoint(get<1>(overrideAnchorPoint));
+    else
+        node->setAnchorPoint(position);
     Vec2 normalizedOffset{ Vec2::ZERO };
     if (offset != Vec2::ZERO)
     {
@@ -84,7 +87,7 @@ void UIUtils::distributeChildrenVertical(Node* node, float space, float xContent
     {
         if (ignoreInvisible && !child->isVisible())
             continue;
-        totalHeight += child->getContentSize().height;
+        totalHeight += child->getBoundingBox().size.height;
         totalHeight += space;
     }
     totalHeight -= space; // Subtract the last space
@@ -96,6 +99,6 @@ void UIUtils::distributeChildrenVertical(Node* node, float space, float xContent
             continue;
         child->setAnchorPoint(Vec2(0.5, 1));
         child->setPosition(xPos, totalHeight - currentY);
-        currentY += child->getContentSize().height + space;
+        currentY += child->getBoundingBox().size.height + space;
     }
 }

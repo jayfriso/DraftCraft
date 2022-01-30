@@ -18,7 +18,6 @@ private:
     bool m_isOpen{ true };
 
 public:
-    virtual ~DraftDrawerView() = default;
     CREATE_FUNC(DraftDrawerView);
     void initWithModel(DraftBoard& draftBoard);
 

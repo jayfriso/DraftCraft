@@ -810,8 +810,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\proj.frontend\UI\MainGameScene.h" />
     <ClInclude Include="..\proj.frontend\UI\TitleScene.h" />
     <ClInclude Include="..\proj.frontend\Utils\CustomMacros.h" />
+    <ClInclude Include="..\proj.frontend\Utils\HorizontalLayoutContainer.h" />
     <ClInclude Include="..\proj.frontend\Utils\UIConstants.h" />
     <ClInclude Include="..\proj.frontend\Utils\UIUtils.h" />
+    <ClInclude Include="..\proj.frontend\Utils\VerticalLayoutContainer.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.h" />
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\resource.h" />
@@ -823,8 +825,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftPileView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp" />
     <ClCompile Include="..\proj.frontend\UI\TitleScene.cpp" />
+    <ClCompile Include="..\proj.frontend\Utils\HorizontalLayoutContainer.cpp" />
     <ClCompile Include="..\proj.frontend\Utils\UIConstants.cpp" />
     <ClCompile Include="..\proj.frontend\Utils\UIUtils.cpp" />
+    <ClCompile Include="..\proj.frontend\Utils\VerticalLayoutContainer.cpp" />
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.cpp" />
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\main.cpp" />
     <ResourceCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\game.rc" />

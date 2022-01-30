@@ -2,6 +2,7 @@
 #include "UIConstants.h"
 #include "UIUtils.h"
 #include "DraftPileView.h"
+#include "HorizontalLayoutContainer.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -19,7 +20,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     this->addChild(draftBoardBg, 0);
 
     // Container for deck and piles
-    auto topContainer = Node::create();
+    auto topContainer = HorizontalLayoutContainer::create(100, 435);
     this->addChild(topContainer, 1);
     m_draftDeckView = DraftDeckView::create();
     m_draftDeckView->initWithModel(viewModel.deck());
@@ -30,7 +31,6 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
         pile->initWithModel(viewModel.piles().at(i));
         topContainer->addChild(pile);
     }
-    UIUtils::distributeChildrenHorizontal(topContainer, 100, 435);
     UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter, Vec2(0, -40));
 }
 

@@ -37,7 +37,15 @@
     <ClCompile Include="..\proj.frontend\Utils\UIConstants.cpp">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftPileView.cpp" />
+    <ClCompile Include="..\proj.frontend\Utils\HorizontalLayoutContainer.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftPileView.cpp">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\VerticalLayoutContainer.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h">
@@ -106,7 +114,15 @@
     <ClInclude Include="..\proj.frontend\Utils\UIConstants.h">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftPileView.h" />
+    <ClInclude Include="..\proj.frontend\Utils\HorizontalLayoutContainer.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftPileView.h">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\VerticalLayoutContainer.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\CMakeLists.txt" />

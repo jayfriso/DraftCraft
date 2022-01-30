@@ -16,7 +16,6 @@ private:
     DraftDeckView* m_draftDeckView;
 
 public:
-    virtual ~DraftBoardView() = default;
     virtual void initWithModel(DraftBoard& viewModel) override;
     CREATE_FUNC(DraftBoardView);
 

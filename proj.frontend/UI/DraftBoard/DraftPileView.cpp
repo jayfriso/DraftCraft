@@ -5,12 +5,13 @@
 void DraftPileView::setCards(const vector<const Card*>& cards)
 {
     size_t cardIndex{ 0 };
+    float space{ cards.size() < 3 ? 5.0f : -85.0f }; // 3 cards onwards, we show stacked up
     for (size_t i = 0; i < MAX_COLUMNS; i++)
     {
         if (cardIndex < cards.size())
         {
             size_t numCardsInColumn{ 0 };
-            Node* currentColumn{ m_columns.at(i) };
+            VerticalLayoutContainer* currentColumn{ m_columns.at(i) };
             currentColumn->setVisible(true);
             Vector<Node*>& currentChildren{ currentColumn->getChildren() };
             for (size_t j = 0; j < MAX_CARDS_IN_COLUMN; j++)
@@ -28,16 +29,15 @@ void DraftPileView::setCards(const vector<const Card*>& cards)
                 }
                 cardIndex++;
             }
-            float spacing{ numCardsInColumn < 3 ? 5.0f : -85.0f };
-            UIUtils::distributeChildrenVertical(currentColumn, spacing, 132);
-            UIUtils::setAnchoredPosition(currentColumn, AnchorPosition::CenterCenter);
+            currentColumn->setSpace(space);
+            currentColumn->redistribute();
         }
         else
         {
             m_columns.at(i)->setVisible(false);
         }
     }
-    UIUtils::distributeChildrenHorizontal(m_columnContainer, 10, 372);
+    m_columnContainer->redistribute();
     UIUtils::setAnchoredPosition(m_columnContainer, AnchorPosition::CenterCenter);
 }
 
@@ -48,11 +48,12 @@ void DraftPileView::initWithModel(DraftPile& viewModel)
     this->addChild(bg, 0);
     UIUtils::setAnchoredPosition(bg, AnchorPosition::CenterCenter);
 
-    m_columnContainer = Node::create();
+    m_columnContainer = HorizontalLayoutContainer::create(10, 372);
+    m_columnContainer->setAnchorType(HorizontalAnchorType::Top);
     this->addChild(m_columnContainer, 1);
     for (size_t i = 0; i < MAX_COLUMNS; i++)
     {
-        Node* currentColumn = Node::create();
+        VerticalLayoutContainer* currentColumn = VerticalLayoutContainer::create(5.0f, 132);
         m_columns.at(i) = currentColumn;
         m_columnContainer->addChild(currentColumn);
         for (size_t j = 0; j < MAX_CARDS_IN_COLUMN; j++)

@@ -18,7 +18,6 @@ private:
 
 public:
     TitleScene(AppLifetimeResources& appLifetimeResources, bool shouldLoadResources) : m_appLifetimeResources{appLifetimeResources}, m_shouldLoadResources { shouldLoadResources } {};
-    virtual ~TitleScene() = default;
     static cocos2d::Scene* createScene(AppLifetimeResources& appLifetimeResources, bool shouldLoadResources);
     CREATE_FUNC_TWO_PARAM(TitleScene, AppLifetimeResources&, bool);
 
