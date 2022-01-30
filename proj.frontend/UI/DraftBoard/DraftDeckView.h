@@ -11,13 +11,14 @@ class DraftDeckView : public Node, IListenerView<DraftDeck>
 private:
     static const string CARDS_LEFT_TEXT;
 
-    DraftDeck& m_draftDeck;
+    Label* m_cardsLeftLabel;
+
+    void setNumCardsLeft(int numCardsLeft);
 
 public:
-    DraftDeckView(DraftDeck& draftDeck) : m_draftDeck{ draftDeck } {}
-    virtual ~DraftDeckView();
-    virtual bool init() override;
-    CREATE_FUNC_ONE_PARAM(DraftDeckView, DraftDeck&);
+    virtual ~DraftDeckView() = default;
+    virtual void initWithModel(DraftDeck& viewModel) override;
+    CREATE_FUNC(DraftDeckView);
     virtual void update(const DraftDeck& viewModel) override;
 };
 

@@ -21,7 +21,8 @@ bool MainGameScene::init()
         return false;
     }
 
-    auto drawer = DraftDrawerView::create(m_gameState.draftBoard());
+    auto drawer = DraftDrawerView::create();
+    drawer->initWithModel(m_gameState.draftBoard());
     addChild(drawer, 0);
     drawer->setPositionNormalized(Vec2(0, 0.5));
     return true;

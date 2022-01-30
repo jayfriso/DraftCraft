@@ -6,18 +6,13 @@ using namespace ui;
 
 const float DraftDrawerView::DRAWER_TOGGLE_ANIM_LENGTH{ 0.3 };
 
-DraftDrawerView::~DraftDrawerView()
+void DraftDrawerView::initWithModel(DraftBoard& draftBoard)
 {
-}
-
-bool DraftDrawerView::init()
-{
-    if (!Node::init())
-        return false;
     this->setContentSize(Size(120, UIConstants::DRAFT_BOARD_HEIGHT));
     this->setAnchorPoint(Vec2(0, 0.5f));
 
-    m_draftBoard_view = DraftBoardView::create(m_draftBoard);
+    m_draftBoard_view = DraftBoardView::create();
+    m_draftBoard_view->initWithModel(draftBoard);
     m_draftBoard_view->setAnchorPoint(Vec2(0, 0.5f));
     m_draftBoard_view->setPositionNormalized(Vec2(0, 0.5f));
     this->addChild(m_draftBoard_view, 0);
@@ -32,8 +27,6 @@ bool DraftDrawerView::init()
     button->setPosition(Vec2(65, 500));
     button->addTouchEventListener(CC_CALLBACK_2(DraftDrawerView::onDrawerButtonPressed, this));
     this->addChild(button, 2);
-
-    return true;
 }
 
 void DraftDrawerView::onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type)

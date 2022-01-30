@@ -5,15 +5,15 @@
 
 const string DraftDeckView::CARDS_LEFT_TEXT{ " Cards Left" };
 
-DraftDeckView::~DraftDeckView()
+void DraftDeckView::setNumCardsLeft(int numCardsLeft)
 {
-    m_draftDeck.removeListener(*this);
+    m_cardsLeftLabel->setString(std::to_string(numCardsLeft) + CARDS_LEFT_TEXT);
 }
 
-bool DraftDeckView::init()
+void DraftDeckView::initWithModel(DraftDeck& viewModel)
 {
-    if (!Node::init())
-        return false;
+    IListenerView::initWithModel(viewModel);
+
     this->setContentSize(Size(250, 400));
 
     auto deckSprite = Sprite::create("ui/draft_board/draft_deck.png");
@@ -24,16 +24,15 @@ bool DraftDeckView::init()
     UIUtils::setAnchoredPosition(cardCountLabelBg, AnchorPosition::BottomCenter);
     this->addChild(cardCountLabelBg);
 
-    string cardCountText = std::to_string(m_draftDeck.cardsLeft()) + CARDS_LEFT_TEXT;
-    auto cardCountLabel = Label::createWithTTF(cardCountText, UIConstants::FONT_FREDOKA_ONE_REGULAR, 26);
-    UIUtils::setAnchoredPosition(cardCountLabel, AnchorPosition::CenterCenter);
-    cardCountLabelBg->addChild(cardCountLabel);
-
-    m_draftDeck.addListener(*this);
-
-    return true;
+    string numCardsLeftString = std::to_string(viewModel.cardsLeft()) + CARDS_LEFT_TEXT;
+    m_cardsLeftLabel = Label::createWithTTF(numCardsLeftString, UIConstants::FONT_FREDOKA_ONE_REGULAR, 26);
+    UIUtils::setAnchoredPosition(m_cardsLeftLabel, AnchorPosition::CenterCenter);
+    cardCountLabelBg->addChild(m_cardsLeftLabel);
 }
 
 void DraftDeckView::update(const DraftDeck& viewModel)
 {
+    setNumCardsLeft(viewModel.cardsLeft());
 }
+
+

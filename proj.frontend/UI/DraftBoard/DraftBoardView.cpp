@@ -4,14 +4,9 @@
 
 const float DraftBoardView::WIDTH{ 1880 };
 
-DraftBoardView::~DraftBoardView()
+void DraftBoardView::initWithModel(DraftBoard& viewModel)
 {
-}
-
-bool DraftBoardView::init()
-{
-    if (!Node::init())
-        return false;
+    IListenerView::initWithModel(viewModel);
 
     this->setContentSize(Size(WIDTH, UIConstants::DRAFT_BOARD_HEIGHT));
 
@@ -23,7 +18,8 @@ bool DraftBoardView::init()
     auto topContainer = Node::create();
     topContainer->setContentSize(Size(1418, 435));
     this->addChild(topContainer, 1);
-    m_draftDeckView = DraftDeckView::create(m_draftBoard.deck());
+    m_draftDeckView = DraftDeckView::create();
+    m_draftDeckView->initWithModel(viewModel.deck());
     topContainer->addChild(m_draftDeckView);
     for (size_t i = 0; i < DraftBoard::getNumPiles(); i++)
     {
@@ -31,11 +27,7 @@ bool DraftBoardView::init()
         topContainer->addChild(pile);
     }
     UIUtils::distributeChildrenHorizontal(topContainer);
-    //UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter, Vec2(0, -35));
     UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter);
-
-
-    return true;
 }
 
 void DraftBoardView::update(const DraftBoard& viewModel)

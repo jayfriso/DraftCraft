@@ -14,16 +14,13 @@ class DraftDrawerView : public Node
 private:
     static const float DRAWER_TOGGLE_ANIM_LENGTH;
 
-    DraftBoard& m_draftBoard;
-
     DraftBoardView* m_draftBoard_view;
     bool m_isOpen{ true };
 
 public:
-    DraftDrawerView(DraftBoard& draftBoard) : m_draftBoard{draftBoard} {}
-    virtual ~DraftDrawerView();
-    CREATE_FUNC_ONE_PARAM(DraftDrawerView, DraftBoard&);
-    virtual bool init() override;
+    virtual ~DraftDrawerView() = default;
+    CREATE_FUNC(DraftDrawerView);
+    void initWithModel(DraftBoard& draftBoard);
 
     void onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type);
 
