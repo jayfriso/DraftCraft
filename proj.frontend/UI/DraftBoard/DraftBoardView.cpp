@@ -1,6 +1,7 @@
 #include "DraftBoardView.h"
 #include "UIConstants.h"
 #include "UIUtils.h"
+#include "DraftPileView.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -25,7 +26,8 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     topContainer->addChild(m_draftDeckView);
     for (size_t i = 0; i < DraftBoard::getNumPiles(); i++)
     {
-        auto pile = UIUtils::createGenericRoundedRect(Size(312, 412), UIConstants::COLOR_LIGHT_ORANGE);
+        auto pile = DraftPileView::create();
+        pile->initWithModel(viewModel.piles().at(i));
         topContainer->addChild(pile);
     }
     UIUtils::distributeChildrenHorizontal(topContainer, 100, 435);

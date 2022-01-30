@@ -25,7 +25,7 @@ public:
 
     DraftBoard(const IStaticDataManager& staticDataManager, unsigned int deckSeed);
 
-    const array<DraftPile, NUM_PILES>& piles() const { return m_piles; }
+    array<DraftPile, NUM_PILES>& piles() { return m_piles; }
     DraftDeck& deck() { return m_deck; }
     bool isDrafting() const { return m_currentPlayerIndex >= 0; }
 

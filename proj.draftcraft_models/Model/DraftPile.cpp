@@ -3,6 +3,7 @@
 DraftPile::DraftPile(DraftDeck& draftDeck) : m_draftDeck{ draftDeck }
 {
     addCardToPile();
+    addCardToPile();
 }
 
 const Card* DraftPile::draftCardAtIndex(unsigned int index)

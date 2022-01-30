@@ -1,4 +1,5 @@
 #include "UIUtils.h"
+#include <numeric>
 
 void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec2 offset)
 {
@@ -52,7 +53,7 @@ Sprite* UIUtils::createGenericRoundedRect(Size size, Color3B color)
     return result;
 }
 
-void UIUtils::distributeChildrenHorizontal(Node* node, float space, float yContentSize)
+void UIUtils::distributeChildrenHorizontal(Node* node, float space, float yContentSize, bool ignoreInvisible)
 {
     auto children = node->getChildren();
     size_t childCount = node->getChildrenCount();
@@ -60,10 +61,41 @@ void UIUtils::distributeChildrenHorizontal(Node* node, float space, float yConte
     float yPos{ yContentSize / 2 };
     for (auto child : children)
     {
+        if (ignoreInvisible && !child->isVisible())
+            continue;
+
         child->setAnchorPoint(Vec2(0, 0.5));
         child->setPosition(currentX, yPos);
         currentX += child->getContentSize().width + space;
     }
     currentX -= space;
     node->setContentSize(Size(currentX, yContentSize));
+}
+
+void UIUtils::distributeChildrenVertical(Node* node, float space, float xContentSize, bool ignoreInvisible)
+{
+    auto children = node->getChildren();
+    size_t childCount = node->getChildrenCount();
+    float currentY{ 0 };
+    float xPos{ xContentSize / 2 };
+    // First loop to get total height, as we are going from top
+    float totalHeight{ 0 };
+    for (auto child : children)
+    {
+        if (ignoreInvisible && !child->isVisible())
+            continue;
+        totalHeight += child->getContentSize().height;
+        totalHeight += space;
+    }
+    totalHeight -= space; // Subtract the last space
+    node->setContentSize(Size(xContentSize, totalHeight));
+
+    for (auto child : children)
+    {
+        if (ignoreInvisible && !child->isVisible())
+            continue;
+        child->setAnchorPoint(Vec2(0.5, 1));
+        child->setPosition(xPos, totalHeight - currentY);
+        currentY += child->getContentSize().height + space;
+    }
 }

@@ -806,6 +806,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.h" />
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.h" />
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.h" />
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftPileView.h" />
     <ClInclude Include="..\proj.frontend\UI\MainGameScene.h" />
     <ClInclude Include="..\proj.frontend\UI\TitleScene.h" />
     <ClInclude Include="..\proj.frontend\Utils\CustomMacros.h" />
@@ -819,6 +820,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.cpp" />
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftPileView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp" />
     <ClCompile Include="..\proj.frontend\UI\TitleScene.cpp" />
     <ClCompile Include="..\proj.frontend\Utils\UIConstants.cpp" />

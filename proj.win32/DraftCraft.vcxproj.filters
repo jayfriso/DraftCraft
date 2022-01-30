@@ -37,6 +37,7 @@
     <ClCompile Include="..\proj.frontend\Utils\UIConstants.cpp">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftPileView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h">
@@ -105,6 +106,7 @@
     <ClInclude Include="..\proj.frontend\Utils\UIConstants.h">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftPileView.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\CMakeLists.txt" />
