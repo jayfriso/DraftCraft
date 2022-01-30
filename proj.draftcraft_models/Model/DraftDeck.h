@@ -2,6 +2,7 @@
 
 #include <stack>
 #include <cstdlib>
+#include <vector>
 #include "../StaticData/IStaticDataManager.h"
 #include "../ViewModel/DispatcherViewModel.h"
 

@@ -16,9 +16,6 @@
     <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp">
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\proj.frontend\UI\UIConstants.cpp">
-      <Filter>Source Files\proj.frontend\UI</Filter>
-    </ClCompile>
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.cpp">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClCompile>
@@ -30,6 +27,15 @@
     </ClCompile>
     <ClCompile Include="..\proj.frontend\AppLifetimeResources.cpp">
       <Filter>Source Files\proj.frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.cpp">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\UIUtils.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\UIConstants.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,9 +81,6 @@
     <ClInclude Include="..\proj.frontend\UI\MainGameScene.h">
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\proj.frontend\UI\UIConstants.h">
-      <Filter>Source Files\proj.frontend\UI</Filter>
-    </ClInclude>
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.h">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClInclude>
@@ -92,6 +95,15 @@
     </ClInclude>
     <ClInclude Include="..\proj.frontend\AppLifetimeResources.h">
       <Filter>Source Files\proj.frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.h">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\UIUtils.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\UIConstants.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,20 +1,25 @@
 #pragma once
 
 #include "IListenerView.h"
-#include <vector>
+#include <forward_list>
 
 template <typename TThisType>
 class DispatcherViewModel
 {
 private:
-    std::vector<IListenerView< TThisType>*> m_listeners;
+    std::forward_list<IListenerView< TThisType>*> m_listeners;
 public:
     DispatcherViewModel() {}
     ~DispatcherViewModel() = default;
 
     void addListener(IListenerView<TThisType>& listener)
     {
-        m_listeners.push_back(&listener);
+        m_listeners.push_front(&listener);
+    }
+
+    void removeListener(IListenerView<TThisType>& listener)
+    {
+        m_listeners.remove(&listener);
     }
 
     void clearListeners()

@@ -2,7 +2,7 @@
 
 #include "cocos2d.h"
 #include "Model/GameState.h"
-#include "../Utils/CustomMacros.h"
+#include "CustomMacros.h"
 #include "../AppLifetimeResources.h"
 
 class TitleScene : public cocos2d::Scene
@@ -18,8 +18,9 @@ private:
 
 public:
     TitleScene(AppLifetimeResources& appLifetimeResources, bool shouldLoadResources) : m_appLifetimeResources{appLifetimeResources}, m_shouldLoadResources { shouldLoadResources } {};
+    virtual ~TitleScene() = default;
     static cocos2d::Scene* createScene(AppLifetimeResources& appLifetimeResources, bool shouldLoadResources);
-    CREATE_FUNC_TWO_PARAM_CONSTRUCTOR(TitleScene, AppLifetimeResources&, bool);
+    CREATE_FUNC_TWO_PARAM(TitleScene, AppLifetimeResources&, bool);
 
     void setResources(IStaticDataManager* staticDataManager); // rename to transfer resources and change to r-ref move semantics
 

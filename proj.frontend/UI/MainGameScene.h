@@ -3,7 +3,7 @@
 #include "cocos2d.h"
 #include "Model/GameState.h"
 #include "../AppLifetimeResources.h"
-#include "../Utils/CustomMacros.h"
+#include "CustomMacros.h"
 #include "CommandSystem/CommandProcessor.h"
 
 class MainGameScene : public cocos2d::Scene
@@ -15,9 +15,10 @@ private:
 
 public:
     MainGameScene(AppLifetimeResources& appLifetimeResources);
+    virtual ~MainGameScene() = default;
 
     static cocos2d::Scene* createScene(AppLifetimeResources& appLifetimeResources);
-    CREATE_FUNC_ONE_PARAM_CONSTRUCTOR(MainGameScene, AppLifetimeResources&);
+    CREATE_FUNC_ONE_PARAM(MainGameScene, AppLifetimeResources&);
 
     virtual bool init() override;
 };

@@ -1,10 +1,14 @@
 #include "DraftDrawerView.h"
-#include "../UIConstants.h"
+#include "UIConstants.h"
 #include <iostream>
 
 using namespace ui;
 
 const float DraftDrawerView::DRAWER_TOGGLE_ANIM_LENGTH{ 0.3 };
+
+DraftDrawerView::~DraftDrawerView()
+{
+}
 
 bool DraftDrawerView::init()
 {
@@ -13,10 +17,10 @@ bool DraftDrawerView::init()
     this->setContentSize(Size(120, UIConstants::DRAFT_BOARD_HEIGHT));
     this->setAnchorPoint(Vec2(0, 0.5f));
 
-    m_draftBoard = DraftBoardView::create();
-    m_draftBoard->setAnchorPoint(Vec2(0, 0.5f));
-    m_draftBoard->setPositionNormalized(Vec2(0, 0.5f));
-    this->addChild(m_draftBoard, 0);
+    m_draftBoard_view = DraftBoardView::create(m_draftBoard);
+    m_draftBoard_view->setAnchorPoint(Vec2(0, 0.5f));
+    m_draftBoard_view->setPositionNormalized(Vec2(0, 0.5f));
+    this->addChild(m_draftBoard_view, 0);
 
     auto draftDrawerBg = Sprite::create("ui/draft_board/draft_drawer_bg.png");
     draftDrawerBg->setAnchorPoint(Vec2(0, 0.5f));
@@ -40,9 +44,9 @@ void DraftDrawerView::onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::Touch
         auto button = static_cast<Button*>(pSender);
         button->setScaleX(button->getScaleX() * -1);
         
-        m_draftBoard->stopAllActions();
-        float moveToXPos = m_isOpen ? 0 : -(m_draftBoard->getContentSize().width);
-        auto moveToAction = MoveTo::create(DRAWER_TOGGLE_ANIM_LENGTH, Vec2(moveToXPos, m_draftBoard->getPositionY()));
-        m_draftBoard->runAction(moveToAction);
+        m_draftBoard_view->stopAllActions();
+        float moveToXPos = m_isOpen ? 0 : -(m_draftBoard_view->getContentSize().width);
+        auto moveToAction = MoveTo::create(DRAWER_TOGGLE_ANIM_LENGTH, Vec2(moveToXPos, m_draftBoard_view->getPositionY()));
+        m_draftBoard_view->runAction(moveToAction);
     }
 }
