@@ -6,7 +6,7 @@ const float DraftBoardView::WIDTH{ 1880 };
 
 void DraftBoardView::initWithModel(DraftBoard& viewModel)
 {
-    IListenerView::initWithModel(viewModel);
+    AbstractListenerView::initWithModel(viewModel);
 
     this->setContentSize(Size(WIDTH, UIConstants::DRAFT_BOARD_HEIGHT));
 

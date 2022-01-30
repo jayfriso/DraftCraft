@@ -12,7 +12,7 @@ void DraftDeckView::setNumCardsLeft(int numCardsLeft)
 
 void DraftDeckView::initWithModel(DraftDeck& viewModel)
 {
-    IListenerView::initWithModel(viewModel);
+    AbstractListenerView::initWithModel(viewModel);
 
     this->setContentSize(Size(250, 400));
 

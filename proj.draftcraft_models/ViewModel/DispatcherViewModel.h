@@ -1,23 +1,23 @@
 #pragma once
 
-#include "IListenerView.h"
+#include "AbstractListenerView.h"
 #include <forward_list>
 
 template <typename TThisType>
 class DispatcherViewModel
 {
 private:
-    std::forward_list<IListenerView< TThisType>*> m_listeners;
+    std::forward_list<AbstractListenerView< TThisType>*> m_listeners;
 public:
     DispatcherViewModel() {}
     ~DispatcherViewModel() = default;
 
-    void addListener(IListenerView<TThisType>& listener)
+    void addListener(AbstractListenerView<TThisType>& listener)
     {
         m_listeners.push_front(&listener);
     }
 
-    void removeListener(IListenerView<TThisType>& listener)
+    void removeListener(AbstractListenerView<TThisType>& listener)
     {
         m_listeners.remove(&listener);
     }
@@ -29,7 +29,7 @@ public:
 
     void notifyToUpdate() const
     {
-        for (IListenerView<TThisType>* listener : m_listeners)
+        for (AbstractListenerView<TThisType>* listener : m_listeners)
         {
             if (listener != nullptr)
                 listener->update(static_cast<const TThisType&>(*this));

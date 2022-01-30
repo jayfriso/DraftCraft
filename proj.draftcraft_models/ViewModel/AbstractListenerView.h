@@ -1,7 +1,7 @@
 #pragma once
 
 template <typename TTypeOfViewModel>
-class IListenerView
+class AbstractListenerView
 {
 private:
     // Private due to the fact that the view should not have direct reference to model
@@ -9,7 +9,7 @@ private:
     TTypeOfViewModel* m_viewModel;
 
 public:
-    virtual ~IListenerView()
+    virtual ~AbstractListenerView()
     {
         detachFromModel();
     }

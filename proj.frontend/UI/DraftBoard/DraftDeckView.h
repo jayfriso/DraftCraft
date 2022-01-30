@@ -1,12 +1,12 @@
 #pragma once
 #include "cocos2d.h"
-#include "ViewModel/IListenerView.h"
+#include "ViewModel/AbstractListenerView.h"
 #include "Model/DraftDeck.h"
 #include "CustomMacros.h"
 
 USING_NS_CC;
 
-class DraftDeckView : public Node, IListenerView<DraftDeck>
+class DraftDeckView : public Node, AbstractListenerView<DraftDeck>
 {
 private:
     static const string CARDS_LEFT_TEXT;
