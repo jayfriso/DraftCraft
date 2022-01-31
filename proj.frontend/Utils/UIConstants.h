@@ -19,5 +19,6 @@ public:
     static const Color3B COLOR_DARK_BLUE;
 
     static const string FONT_FREDOKA_ONE_REGULAR;
+    static const string FONT_LATO_SEMI_BOLD;
 };
 

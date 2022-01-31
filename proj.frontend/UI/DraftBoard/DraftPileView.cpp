@@ -1,6 +1,7 @@
 #include "DraftPileView.h"
 #include "UIUtils.h"
 #include "UIConstants.h"
+#include "../CardView.h"
 
 void DraftPileView::setCards(const vector<const Card*>& cards)
 {
@@ -16,11 +17,12 @@ void DraftPileView::setCards(const vector<const Card*>& cards)
             Vector<Node*>& currentChildren{ currentColumn->getChildren() };
             for (size_t j = 0; j < MAX_CARDS_IN_COLUMN; j++)
             {
-                Node* currentChild{ currentChildren.at(j) };
+                CardView* currentChild{ static_cast<CardView*>(currentChildren.at(j)) };
                 if (cardIndex < cards.size())
                 {
                     const Card* card{ cards.at(cardIndex) };
                     currentChild->setVisible(true);
+                    currentChild->setCardData(card);
                     numCardsInColumn++;
                 }
                 else
@@ -58,8 +60,9 @@ void DraftPileView::initWithModel(DraftPile& viewModel)
         m_columnContainer->addChild(currentColumn);
         for (size_t j = 0; j < MAX_CARDS_IN_COLUMN; j++)
         {
-            auto card = Sprite::create("ui/card/card_back.png");
-            card->setContentSize(Size(132, 182));
+            auto card = CardView::create(nullptr);
+            card->resize(182);
+            card->flip(false);
             currentColumn->addChild(card);
         }
     }

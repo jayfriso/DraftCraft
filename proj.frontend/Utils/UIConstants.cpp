@@ -11,3 +11,5 @@ const Color3B UIConstants::COLOR_LIGHT_BLUE{ 75, 133, 168 };
 const Color3B UIConstants::COLOR_DARK_BLUE{ 24, 33, 57 };
 
 const string UIConstants::FONT_FREDOKA_ONE_REGULAR{ "fonts/FredokaOne-Regular.ttf" };
+const string UIConstants::FONT_LATO_SEMI_BOLD{ "fonts/Lato-Semibold.ttf" };
+
