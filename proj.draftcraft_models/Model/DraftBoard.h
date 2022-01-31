@@ -28,6 +28,8 @@ public:
     array<DraftPile, NUM_PILES>& piles() { return m_piles; }
     DraftDeck& deck() { return m_deck; }
     bool isDrafting() const { return m_currentPlayerIndex >= 0; }
+    int draftingPlayerIndex() const { return m_currentPlayerIndex; }
+    const DraftPile& getCurrentPileConst() const;
 
     void startDraft(unsigned int draftingPlayerIndex);
     // Gets the card at the index and ends the draft

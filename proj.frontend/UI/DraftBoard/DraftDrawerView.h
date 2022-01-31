@@ -14,7 +14,7 @@ class DraftDrawerView : public Node
 private:
     static const float DRAWER_TOGGLE_ANIM_LENGTH;
 
-    DraftBoardView* m_draftBoard_view;
+    DraftBoardView* m_draftBoardView;
     bool m_isOpen{ true };
 
 public:
@@ -22,6 +22,6 @@ public:
     void initWithModel(DraftBoard& draftBoard);
 
     void onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type);
-
+    void setLocalPlayerIndex(unsigned int index) { m_draftBoardView->setLocalPlayerIndex(index); }
 };
 

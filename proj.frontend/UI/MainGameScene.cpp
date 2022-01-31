@@ -23,6 +23,7 @@ bool MainGameScene::init()
 
     auto drawer = DraftDrawerView::create();
     drawer->initWithModel(m_gameState.draftBoard());
+    drawer->setLocalPlayerIndex(m_gameState.localPlayerIndex());
     addChild(drawer, 0);
     drawer->setPositionNormalized(Vec2(0, 0.5));
     return true;

@@ -3,11 +3,29 @@
 #include "UIUtils.h"
 #include "DraftPileView.h"
 #include "HorizontalLayoutContainer.h"
+#include "../CardView.h"
 
 USING_NS_CC;
 using namespace ui;
 
 const float DraftBoardView::WIDTH{ 1880 };
+
+void DraftBoardView::updateDraftingState(const DraftBoard& viewModel)
+{
+    m_opponentPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() != m_localPlayerIndex);
+    m_localPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() == m_localPlayerIndex);
+    if (m_localPlayerContainer->isVisible())
+    {
+        m_draftOptionsContainer->removeAllChildrenWithCleanup(true); // TODO : Use object pooling instead
+        for (auto card : viewModel.getCurrentPileConst().cardsInPile())
+        {
+            auto cardView = CardView::create(card);
+            cardView->resize(430);
+            m_draftOptionsContainer->addChild(cardView);
+        }
+        UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterCenter);
+    }
+}
 
 void DraftBoardView::initWithModel(DraftBoard& viewModel)
 {
@@ -15,7 +33,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
 
     this->setContentSize(Size(WIDTH, UIConstants::DRAFT_BOARD_HEIGHT));
 
-    auto draftBoardBg = UIUtils::createGenericRoundedRect(Size(WIDTH, UIConstants::DRAFT_BOARD_HEIGHT), UIConstants::COLOR_GREY);
+    auto draftBoardBg = UIUtils::createGenericRoundedRect(Size(WIDTH, UIConstants::DRAFT_BOARD_HEIGHT), UIConstants::COLOR_LIGHT_BLUE);
     draftBoardBg->setPositionNormalized(Vec2(0.5f, 0.5f));
     this->addChild(draftBoardBg, 0);
 
@@ -32,6 +50,21 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
         topContainer->addChild(pile);
     }
     UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter, Vec2(0, -40));
+
+    m_localPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1750, 490 }, UIConstants::COLOR_GREY);
+    this->addChild(m_localPlayerContainer);
+    UIUtils::setAnchoredPosition(m_localPlayerContainer, AnchorPosition::BottomRight, Vec2{ -20, 20 });
+    m_draftOptionsContainer = HorizontalLayoutContainer::create(30, 480);
+    m_localPlayerContainer->addChild(m_draftOptionsContainer);
+    UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterCenter);
+    m_localPlayerContainer->setVisible(false);
+    
+    m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);
+    this->addChild(m_opponentPlayerContainer);
+    UIUtils::setAnchoredPosition(m_opponentPlayerContainer, AnchorPosition::BottomCenter, Vec2{ 0, 120 });
+    m_opponentPlayerContainer->setVisible(false);
+
+    updateDraftingState(viewModel);
 }
 
 void DraftBoardView::update(const DraftBoard& viewModel)
