@@ -32,6 +32,6 @@ public:
     virtual void addChild(Node* child) override;
     void setAnchorType(HorizontalAnchorType anchorType);
     void redistribute();
-    void setSpace(float space);
+    void setSpace(float space, bool shouldRedistribute = true);
 };
 

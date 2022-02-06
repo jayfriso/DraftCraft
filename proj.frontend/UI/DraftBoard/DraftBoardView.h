@@ -6,6 +6,7 @@
 #include "CustomMacros.h"
 #include "Model/DraftBoard.h"
 #include "HorizontalLayoutContainer.h"
+#include "../InteractableCardContainer.h"
 
 USING_NS_CC;
 
@@ -16,7 +17,7 @@ private:
 
     DraftDeckView* m_draftDeckView;
     Node* m_localPlayerContainer;
-    HorizontalLayoutContainer* m_draftOptionsContainer;
+    InteractableCardContainer* m_draftOptionsContainer;
     Node* m_opponentPlayerContainer;
 
     unsigned int m_localPlayerIndex;

@@ -16,14 +16,12 @@ void DraftBoardView::updateDraftingState(const DraftBoard& viewModel)
     m_localPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() == m_localPlayerIndex);
     if (m_localPlayerContainer->isVisible())
     {
-        m_draftOptionsContainer->removeAllChildrenWithCleanup(true); // TODO : Use object pooling instead
+        m_draftOptionsContainer->clearCards();
         for (auto card : viewModel.getCurrentPileConst().cardsInPile())
         {
-            auto cardView = CardView::create(card);
-            cardView->resize(430);
-            m_draftOptionsContainer->addChild(cardView);
+            if (card != nullptr)
+                m_draftOptionsContainer->addCard(*card);
         }
-        UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterCenter);
     }
 }
 
@@ -54,9 +52,10 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_localPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1750, 490 }, UIConstants::COLOR_GREY);
     this->addChild(m_localPlayerContainer);
     UIUtils::setAnchoredPosition(m_localPlayerContainer, AnchorPosition::BottomRight, Vec2{ -20, 20 });
-    m_draftOptionsContainer = HorizontalLayoutContainer::create(30, 480);
+    m_draftOptionsContainer = InteractableCardContainer::create();
+    m_draftOptionsContainer->setContentSize(Size{ 1710, 430 }); // TODO : X should be 1275
     m_localPlayerContainer->addChild(m_draftOptionsContainer);
-    UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterCenter);
+    UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterLeft, Vec2{ 20, 0 });
     m_localPlayerContainer->setVisible(false);
     
     m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);

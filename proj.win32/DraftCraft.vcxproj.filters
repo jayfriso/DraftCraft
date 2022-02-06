@@ -25,9 +25,6 @@
     <ClCompile Include="..\proj.frontend\UI\TitleScene.cpp">
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\proj.frontend\AppLifetimeResources.cpp">
-      <Filter>Source Files\proj.frontend</Filter>
-    </ClCompile>
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.cpp">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClCompile>
@@ -47,7 +44,16 @@
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\proj.frontend\UI\CardView.cpp">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\AppLifetimeResources.cpp">
       <Filter>Source Files\proj.frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\InteractableCardContainer.cpp">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\EventNode.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,9 +111,6 @@
     <ClInclude Include="..\proj.frontend\Utils\CustomMacros.h">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\proj.frontend\AppLifetimeResources.h">
-      <Filter>Source Files\proj.frontend</Filter>
-    </ClInclude>
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.h">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClInclude>
@@ -127,7 +130,16 @@
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\proj.frontend\UI\CardView.h">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\AppLifetimeResources.h">
       <Filter>Source Files\proj.frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\InteractableCardContainer.h">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\EventNode.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

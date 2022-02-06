@@ -76,8 +76,9 @@ void HorizontalLayoutContainer::redistribute()
     setContentSize(Size{ currentX, m_yContentSize });
 }
 
-void HorizontalLayoutContainer::setSpace(float space)
+void HorizontalLayoutContainer::setSpace(float space, bool shouldRedistribute)
 {
     m_space = space;
-    redistribute();
+    if (shouldRedistribute)
+        redistribute();
 }
