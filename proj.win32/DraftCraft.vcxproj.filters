@@ -16,9 +16,6 @@
     <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp">
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClCompile>
-    <ClCompile Include="..\proj.frontend\UI\UIConstants.cpp">
-      <Filter>Source Files\proj.frontend\UI</Filter>
-    </ClCompile>
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.cpp">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClCompile>
@@ -28,8 +25,35 @@
     <ClCompile Include="..\proj.frontend\UI\TitleScene.cpp">
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.cpp">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\UIUtils.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\UIConstants.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\HorizontalLayoutContainer.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftPileView.cpp">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\VerticalLayoutContainer.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\CardView.cpp">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClCompile>
     <ClCompile Include="..\proj.frontend\AppLifetimeResources.cpp">
       <Filter>Source Files\proj.frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\InteractableCardContainer.cpp">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\EventNode.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,9 +99,6 @@
     <ClInclude Include="..\proj.frontend\UI\MainGameScene.h">
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\proj.frontend\UI\UIConstants.h">
-      <Filter>Source Files\proj.frontend\UI</Filter>
-    </ClInclude>
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.h">
       <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
     </ClInclude>
@@ -90,8 +111,35 @@
     <ClInclude Include="..\proj.frontend\Utils\CustomMacros.h">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.h">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\UIUtils.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\UIConstants.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\HorizontalLayoutContainer.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftPileView.h">
+      <Filter>Source Files\proj.frontend\UI\DraftBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\VerticalLayoutContainer.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\CardView.h">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClInclude>
     <ClInclude Include="..\proj.frontend\AppLifetimeResources.h">
       <Filter>Source Files\proj.frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\InteractableCardContainer.h">
+      <Filter>Source Files\proj.frontend\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\EventNode.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

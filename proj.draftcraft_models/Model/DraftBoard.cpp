@@ -19,6 +19,15 @@ DraftPile& DraftBoard::getCurrentPile()
 	return m_piles.at(m_currentPileIndex);
 }
 
+const DraftPile& DraftBoard::getCurrentPileConst() const
+{
+	if (!isDrafting())
+	{
+		throw ModelLogicError("Getting draft pile but DraftBoard is not currently in drafting mode.");
+	}
+	return m_piles.at(m_currentPileIndex);
+}
+
 void DraftBoard::startDraft(unsigned int draftingPlayerIndex)
 {
 	m_currentPlayerIndex = draftingPlayerIndex;

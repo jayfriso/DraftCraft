@@ -24,6 +24,7 @@ public:
     GameState(const IStaticDataManager& staticDataManager, string player0Id, string player1Id, unsigned int localPlayerIndex, unsigned int deckSeed);
     GameState(const IStaticDataManager& staticDataManager, const Match& match) : GameState{ staticDataManager, match.player0Id, match.player1Id, match.localPlayerIndex, match.deckSeed } {}
 
+    unsigned int localPlayerIndex() const { return m_localPlayerIndex; }
     Player& playerAtIndex(unsigned int index) { return m_players.at(index); }
     DraftBoard& draftBoard() { return m_draftBoard; }
     PhaseStack& phaseStack() { return m_phaseStack; }

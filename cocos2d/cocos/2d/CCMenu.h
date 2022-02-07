@@ -103,10 +103,10 @@ public:
     void alignItemsHorizontallyWithPadding(float padding);
 
     /** Align items in rows of columns. */
-    void alignItemsInColumns(int columns, ...) CC_REQUIRES_NULL_TERMINATION;
+    void alignItemsInColumns(int m_columns, ...) CC_REQUIRES_NULL_TERMINATION;
     
     /** Align items in rows of columns. */
-    void alignItemsInColumns(int columns, va_list args);
+    void alignItemsInColumns(int m_columns, va_list args);
     
     /** Align items in array of columns.
      * @js NA
@@ -122,7 +122,7 @@ public:
     /** Align items in array of rows.
      * @js NA
      */
-    void alignItemsInRowsWithArray(const ValueVector& columns);
+    void alignItemsInRowsWithArray(const ValueVector& m_columns);
 
     /**
      * Determines if the menu is enabled.

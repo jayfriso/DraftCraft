@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 #include <iostream>
 #include "MainGameScene.h"
+#include "UIConstants.h";
 
 USING_NS_CC;
 using namespace ui;
@@ -22,7 +23,7 @@ bool TitleScene::loadResources()
 
 void TitleScene::showMenu()
 {
-    auto testGameLabel = Label::createWithTTF("Test Game", "fonts/FredokaOne-Regular.ttf", 40);
+    auto testGameLabel = Label::createWithTTF("Test Game", UIConstants::FONT_FREDOKA_ONE_REGULAR, 40);
     auto testGameButton = MenuItemLabel::create(testGameLabel, CC_CALLBACK_0(TitleScene::onTestGameButtonPressed, this));
 
     auto menu = Menu::createWithItem(testGameButton);

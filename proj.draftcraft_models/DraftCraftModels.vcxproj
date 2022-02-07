@@ -39,7 +39,7 @@
     <ClInclude Include="StaticData\JsonStaticDataManager.h" />
     <ClInclude Include="StaticData\TestStaticDataManager.h" />
     <ClInclude Include="ViewModel\DispatcherViewModel.h" />
-    <ClInclude Include="ViewModel\IListenerView.h" />
+    <ClInclude Include="ViewModel\AbstractListenerView.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandSystem\AbstractCommand.cpp" />

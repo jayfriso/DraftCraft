@@ -3,6 +3,8 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "DraftBoardView.h"
+#include "Model/DraftBoard.h"
+#include "CustomMacros.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -10,20 +12,16 @@ using namespace ui;
 class DraftDrawerView : public Node
 {
 private:
-    static const float WIDTH;
-    static const Vec2 ARROW_POSITION;
-    static const Vec2 ARROW_ANCHOR;
     static const float DRAWER_TOGGLE_ANIM_LENGTH;
 
-
-    DraftBoardView* m_draftBoard;
+    DraftBoardView* m_draftBoardView;
     bool m_isOpen{ true };
 
 public:
-    virtual bool init() override;
     CREATE_FUNC(DraftDrawerView);
+    void initWithModel(DraftBoard& draftBoard);
 
     void onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type);
-
+    void setLocalPlayerIndex(unsigned int index) { m_draftBoardView->setLocalPlayerIndex(index); }
 };
 
