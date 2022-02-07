@@ -51,7 +51,7 @@ void DraftPileView::initWithModel(DraftPile& viewModel)
     UIUtils::setAnchoredPosition(bg, AnchorPosition::CenterCenter);
 
     m_columnContainer = HorizontalLayoutContainer::create(10, 372);
-    m_columnContainer->setAnchorType(HorizontalAnchorType::Top);
+    m_columnContainer->setChildAnchorPoint(Vec2(0, 1));
     this->addChild(m_columnContainer, 1);
     for (size_t i = 0; i < MAX_COLUMNS; i++)
     {

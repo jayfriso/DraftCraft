@@ -6,31 +6,27 @@
 USING_NS_CC;
 using namespace ui;
 
-enum class HorizontalAnchorType
-{
-    Top,
-    Center,
-    Bottom
-};
-
 class HorizontalLayoutContainer : public Node
 {
 private:
     float m_space;
     float m_yContentSize;
     bool m_ignoreInvisible;
-    HorizontalAnchorType m_anchorType;
+    Vec2 m_childAnchorPoint;
 
-    float getYPos() const;
-    float getYAnchor() const;
+    inline float getYPos() const;
 
 public:
-    HorizontalLayoutContainer(float space, float yContentSize) : m_space{ space }, m_yContentSize{ yContentSize }, m_ignoreInvisible{ true }, m_anchorType{ HorizontalAnchorType::Center }{};
+    HorizontalLayoutContainer(float space, float yContentSize) : 
+        m_space{ space }, 
+        m_yContentSize{ yContentSize }, 
+        m_ignoreInvisible{ true }, 
+        m_childAnchorPoint{ 0, 0.5 }{};
     CREATE_FUNC_TWO_PARAM(HorizontalLayoutContainer, float, float);
 
     virtual bool init() override;
     virtual void addChild(Node* child) override;
-    void setAnchorType(HorizontalAnchorType anchorType);
+    void setChildAnchorPoint(Vec2 anchorPoint);
     void redistribute();
     void setSpace(float space, bool shouldRedistribute = true);
 };

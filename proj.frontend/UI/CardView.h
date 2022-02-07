@@ -4,10 +4,11 @@
 #include "StaticData/Card.h"
 #include "CustomMacros.h"
 #include "HorizontalLayoutContainer.h"
+#include "EventNode.h"
 
 USING_NS_CC;
 
-class CardView : public Node
+class CardView : public EventNode
 {
 private:
     static const Size DEFAULT_SIZE;
@@ -29,7 +30,7 @@ private:
 
     bool m_isFront;
 public:
-    CardView(const Card* cardData) :  m_cardData{cardData}, m_isFront{true} {}
+    CardView(const Card* cardData) : m_cardData{ cardData }, m_isFront{ true }, EventNode{ false } {}
     CREATE_FUNC_ONE_PARAM(CardView, const Card*);
     virtual bool init() override;
     void setCardData(const Card* cardData);

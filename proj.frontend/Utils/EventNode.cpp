@@ -23,15 +23,26 @@ void EventNode::handleMouseMove(Event* event)
 {
     auto mouseEvent = static_cast<EventMouse*>(event);
     bool newWithinBounds{ isWithinBounds(mouseEvent) };
+    bool endProp = false;
     if (m_isCurrentlyWithinBounds != newWithinBounds)
     {
         m_isCurrentlyWithinBounds = newWithinBounds;
-
+        
         if (m_isCurrentlyWithinBounds && m_mouseEnterCallback)
-            m_mouseEnterCallback(mouseEvent, this);
+            endProp = m_mouseEnterCallback(mouseEvent, this);
         else if (m_mouseExitCallback)
-            m_mouseExitCallback(mouseEvent, this);
+            endProp = m_mouseExitCallback(mouseEvent, this);
     }
+    else if (m_isCurrentlyWithinBounds)
+    {
+        if (m_mouseMoveOverCallback)
+        {
+            endProp = m_mouseMoveOverCallback(mouseEvent, this);
+        }
+    }
+
+    if (endProp)
+        mouseEvent->stopPropagation();
 }
 
 bool EventNode::init()

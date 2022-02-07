@@ -6,7 +6,7 @@ const Size CardView::DEFAULT_SIZE{ 582, 800 };
 
 bool CardView::init()
 {
-    if (!Node::init())
+    if (!EventNode::init())
         return false;
 
     setContentSize(DEFAULT_SIZE);

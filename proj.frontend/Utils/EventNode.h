@@ -15,6 +15,8 @@ private:
     MouseCallback m_mouseDownCallback;
     MouseCallback m_mouseEnterCallback;
     MouseCallback m_mouseExitCallback;
+    // Note : not called the frame mouse enter, but all frames after where the mouse is still over the element
+    MouseCallback m_mouseMoveOverCallback;
 
     bool m_isEventsEnabled;
     bool m_isCurrentlyWithinBounds;
@@ -46,5 +48,8 @@ public:
 
     virtual void setMouseExitEvent(MouseCallback callback) { m_mouseExitCallback = callback; }
     virtual void clearMouseExitEvent() { m_mouseExitCallback = nullptr; }
+
+    virtual void setMouseMoveOverEvent(MouseCallback callback) { m_mouseMoveOverCallback = callback; }
+    virtual void clearMouseMoveEvent() { m_mouseMoveOverCallback = nullptr; }
 };
 

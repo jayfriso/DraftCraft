@@ -50,7 +50,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter, Vec2(0, -40));
 
     m_localPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1750, 490 }, UIConstants::COLOR_GREY);
-    this->addChild(m_localPlayerContainer);
+    this->addChild(m_localPlayerContainer, 2);
     UIUtils::setAnchoredPosition(m_localPlayerContainer, AnchorPosition::BottomRight, Vec2{ -20, 20 });
     m_draftOptionsContainer = InteractableCardContainer::create();
     m_draftOptionsContainer->setContentSize(Size{ 1710, 430 }); // TODO : X should be 1275
@@ -59,7 +59,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_localPlayerContainer->setVisible(false);
     
     m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);
-    this->addChild(m_opponentPlayerContainer);
+    this->addChild(m_opponentPlayerContainer, 2);
     UIUtils::setAnchoredPosition(m_opponentPlayerContainer, AnchorPosition::BottomCenter, Vec2{ 0, 120 });
     m_opponentPlayerContainer->setVisible(false);
 

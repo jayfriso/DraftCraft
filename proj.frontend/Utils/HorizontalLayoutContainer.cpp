@@ -5,20 +5,7 @@ using namespace std;
 
 float HorizontalLayoutContainer::getYPos() const
 {
-    return getYAnchor() * m_yContentSize;
-}
-
-float HorizontalLayoutContainer::getYAnchor() const
-{
-    switch (m_anchorType)
-    {
-        case HorizontalAnchorType::Top:
-            return 1.0f;
-        case HorizontalAnchorType::Center:
-            return 0.5f;
-        case HorizontalAnchorType::Bottom:
-            return 0.0f;
-    }
+    return m_childAnchorPoint.y * m_yContentSize;
 }
 
 bool HorizontalLayoutContainer::init()
@@ -31,7 +18,7 @@ bool HorizontalLayoutContainer::init()
 
 void HorizontalLayoutContainer::addChild(Node* child)
 {
-    child->setAnchorPoint(Vec2{ 0, getYAnchor() });
+    child->setAnchorPoint(m_childAnchorPoint);
     if (m_ignoreInvisible && !child->isVisible())
     {
         child->setPosition(Vec2{ 0, getYPos() });
@@ -40,22 +27,23 @@ void HorizontalLayoutContainer::addChild(Node* child)
     }
     else
     {
-        float xPos{ _contentSize.width + m_space };
+        float childBoundingWidth = child->getBoundingBox().size.width;
+        float xPos{ _contentSize.width + m_space + (m_childAnchorPoint.x * childBoundingWidth) };
         child->setPosition(Vec2{ xPos, getYPos() });
-        float additionalContentSize{ child->getBoundingBox().size.width + m_space };
+        float additionalContentSize{ childBoundingWidth + m_space };
         setContentSize(_contentSize + Size{ additionalContentSize, 0 });
         Node::addChild(child);
     }
 }
 
-void HorizontalLayoutContainer::setAnchorType(HorizontalAnchorType anchorType)
+void HorizontalLayoutContainer::setChildAnchorPoint(Vec2 anchorPoint)
 {
-    m_anchorType = anchorType;
+    m_childAnchorPoint = anchorPoint;
     for (auto child : _children)
     {
-        child->setAnchorPoint(Vec2{ 0.0f, getYAnchor() });
-        child->setPositionY(getYPos());
+        child->setAnchorPoint(m_childAnchorPoint);
     }
+    redistribute();
 }
 
 void HorizontalLayoutContainer::redistribute()
@@ -64,13 +52,17 @@ void HorizontalLayoutContainer::redistribute()
     if (childCount == 0)
         return;
     float currentX{ 0 };
+
     for (auto child : _children)
     {
         if (m_ignoreInvisible && !child->isVisible())
             continue;
 
-        child->setPositionX(currentX);
-        currentX += child->getBoundingBox().size.width + m_space;
+        float boundingWidth{ child->getBoundingBox().size.width };
+        float xPosFromAnchor{ m_childAnchorPoint.x * boundingWidth };
+
+        child->setPositionX(currentX + xPosFromAnchor);
+        currentX += boundingWidth + m_space;
     }
     currentX -= m_space;
     setContentSize(Size{ currentX, m_yContentSize });
