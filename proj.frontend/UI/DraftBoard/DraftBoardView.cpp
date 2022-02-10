@@ -10,21 +10,6 @@ using namespace ui;
 
 const float DraftBoardView::WIDTH{ 1880 };
 
-void DraftBoardView::updateDraftingState(const DraftBoard& viewModel)
-{
-    m_opponentPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() != m_localPlayerIndex);
-    m_localPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() == m_localPlayerIndex);
-    if (m_localPlayerContainer->isVisible())
-    {
-        m_draftOptionsContainer->clearCards();
-        for (auto card : viewModel.getCurrentPileConst().cardsInPile())
-        {
-            if (card != nullptr)
-                m_draftOptionsContainer->addCard(*card);
-        }
-    }
-}
-
 void DraftBoardView::initWithModel(DraftBoard& viewModel)
 {
     AbstractListenerView::initWithModel(viewModel);
@@ -53,20 +38,44 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     this->addChild(m_localPlayerContainer, 2);
     UIUtils::setAnchoredPosition(m_localPlayerContainer, AnchorPosition::BottomRight, Vec2{ -20, 20 });
     m_draftOptionsContainer = InteractableCardContainer::create();
-    m_draftOptionsContainer->setContentSize(Size{ 1710, 430 }); // TODO : X should be 1275
+    m_draftOptionsContainer->setContentSize(Size{ 1275, 430 });
     m_localPlayerContainer->addChild(m_draftOptionsContainer);
     UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterLeft, Vec2{ 20, 0 });
-    m_localPlayerContainer->setVisible(false);
+
+    m_skipButton = UIUtils::createGenericOrangeButton(Size{ 321, 289 });
+    m_localPlayerContainer->addChild(m_skipButton);
+    UIUtils::setAnchoredPosition(m_skipButton, AnchorPosition::CenterRight, Vec2{ -50, 0 });
+    m_skipButtonIcon = Sprite::create("ui/draft_board/take_from_top.png");
+    m_skipButton->addChild(m_skipButtonIcon);
+    UIUtils::setAnchoredPosition(m_skipButtonIcon, AnchorPosition::BottomCenter, Vec2{ 0,110 });
+    m_skipButtonLabel = Label::createWithTTF("Take From Top", UIConstants::FONT_FREDOKA_ONE_REGULAR, 32);
+    m_skipButtonLabel->setTextColor(Color4B::BLACK);
+    m_skipButton->addChild(m_skipButtonLabel);
+    UIUtils::setAnchoredPosition(m_skipButtonLabel, AnchorPosition::BottomCenter, Vec2{ 0,40 });
     
     m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);
     this->addChild(m_opponentPlayerContainer, 2);
     UIUtils::setAnchoredPosition(m_opponentPlayerContainer, AnchorPosition::BottomCenter, Vec2{ 0, 120 });
-    m_opponentPlayerContainer->setVisible(false);
 
-    updateDraftingState(viewModel);
+    update(viewModel);
 }
 
 void DraftBoardView::update(const DraftBoard& viewModel)
 {
-    // update the view here
+    m_opponentPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() != m_localPlayerIndex);
+    m_localPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() == m_localPlayerIndex);
+
+    if (m_localPlayerContainer->isVisible())
+    {
+        m_draftOptionsContainer->clearCards();
+        for (auto card : viewModel.getCurrentPileConst().cardsInPile())
+        {
+            if (card != nullptr)
+                m_draftOptionsContainer->addCard(*card);
+        }
+
+        bool isLastPile = viewModel.currentPileIndex() == (DraftBoard::getNumPiles() - 1);
+        m_skipButtonIcon->setTexture(isLastPile ? "ui/draft_board/take_from_top.png" : "ui/draft_board/skip_to_next_pile.png");
+        m_skipButtonLabel->setString(isLastPile ? "Take From Top" : "Skip To Next Pile");
+    }
 }
