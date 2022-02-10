@@ -55,6 +55,9 @@
     <ClCompile Include="..\proj.frontend\Utils\EventNode.cpp">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\proj.frontend\Utils\EventSprite.cpp">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h">
@@ -139,6 +142,9 @@
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\proj.frontend\Utils\EventNode.h">
+      <Filter>Source Files\proj.frontend\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\Utils\EventSprite.h">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
   </ItemGroup>

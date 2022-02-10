@@ -20,9 +20,11 @@ private:
     InteractableCardContainer* m_draftOptionsContainer;
     Node* m_opponentPlayerContainer;
 
-    unsigned int m_localPlayerIndex;
+    Button* m_skipButton;
+    Sprite* m_skipButtonIcon;
+    Label* m_skipButtonLabel;
 
-    void updateDraftingState(const DraftBoard& viewModel);
+    unsigned int m_localPlayerIndex;
 
 public:
     virtual void initWithModel(DraftBoard& viewModel) override;

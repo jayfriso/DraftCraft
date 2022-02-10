@@ -50,9 +50,20 @@ void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec
 Sprite* UIUtils::createGenericRoundedRect(Size size, Color3B color)
 {
     auto result = Sprite::create("ui/common/rounded_rect.png");
-    result->setCenterRectNormalized(Rect(Vec2(0.2, 0.2), Size(0.6, 0.6)));
+    result->setCenterRectNormalized(Rect{ Vec2{0.2, 0.2}, Size{0.6, 0.6} });
     result->setContentSize(size);
     result->setColor(color);
+    return result;
+}
+
+Button* UIUtils::createGenericOrangeButton(Size size)
+{
+    auto result = Button::create("ui/common/orange_button.png", "ui/common/orange_button_pressed.png", "ui/common/orange_button_disabled.png");
+    if (!result)
+        return nullptr;
+    result->setScale9Enabled(true);
+    result->setCapInsets(Rect{ Vec2{24, 40}, Size{80, 70} });
+    result->setContentSize(size);
     return result;
 }
 

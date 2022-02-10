@@ -29,6 +29,7 @@ public:
     DraftDeck& deck() { return m_deck; }
     bool isDrafting() const { return m_currentPlayerIndex >= 0; }
     int draftingPlayerIndex() const { return m_currentPlayerIndex; }
+    int currentPileIndex() const { return m_currentPileIndex; }
     const DraftPile& getCurrentPileConst() const;
 
     void startDraft(unsigned int draftingPlayerIndex);
