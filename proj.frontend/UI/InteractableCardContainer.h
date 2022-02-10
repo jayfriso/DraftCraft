@@ -13,7 +13,7 @@ using namespace std;
 class InteractableCardContainer : public Node
 {
 private:
-    typedef std::function<bool(EventMouse* mouseEvent, CardView* cardView, InteractableCardContainer* cardContainer)> CardMouseDownCallback;
+    typedef std::function<bool(EventMouse* mouseEvent, CardView* cardView, size_t cardIndex)> CardMouseDownCallback;
 
     static constexpr int DEFAULT_MAX_SPACING = 15;
 

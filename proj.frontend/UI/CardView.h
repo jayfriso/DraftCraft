@@ -34,6 +34,7 @@ public:
     CREATE_FUNC_ONE_PARAM(CardView, const Card*);
     virtual bool init() override;
     void setCardData(const Card* cardData);
+    const Card* cardData() const { return m_cardData; }
     void resize(float targetHeight); 
     void flip(bool isFront);
     bool isFront() const { return m_isFront; }

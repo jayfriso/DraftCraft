@@ -5,6 +5,7 @@
 #include "DraftBoardView.h"
 #include "Model/DraftBoard.h"
 #include "CustomMacros.h"
+#include "CommandSystem/CommandProcessor.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -19,9 +20,8 @@ private:
 
 public:
     CREATE_FUNC(DraftDrawerView);
-    void initWithModel(DraftBoard& draftBoard);
+    void initWithModel(DraftBoard& draftBoard, CommandProcessor& commandProcessor, unsigned int localPlayerIndex);
 
     void onDrawerButtonPressed(cocos2d::Ref* pSender, Widget::TouchEventType type);
-    void setLocalPlayerIndex(unsigned int index) { m_draftBoardView->setLocalPlayerIndex(index); }
 };
 

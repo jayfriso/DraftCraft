@@ -4,6 +4,9 @@
 #include "DraftPileView.h"
 #include "HorizontalLayoutContainer.h"
 #include "../CardView.h"
+#include "CommandSystem/Commands/DraftAtIndexCommand.h"
+#include "CommandSystem/Commands/DraftSkipPileCommand.h"
+
 
 USING_NS_CC;
 using namespace ui;
@@ -41,6 +44,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_draftOptionsContainer->setContentSize(Size{ 1275, 430 });
     m_localPlayerContainer->addChild(m_draftOptionsContainer);
     UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterLeft, Vec2{ 20, 0 });
+    m_draftOptionsContainer->setCardMouseDownCallback(CC_CALLBACK_3(DraftBoardView::onCardMouseDown, this));
 
     m_skipButton = UIUtils::createGenericOrangeButton(Size{ 321, 289 });
     m_localPlayerContainer->addChild(m_skipButton);
@@ -78,4 +82,12 @@ void DraftBoardView::update(const DraftBoard& viewModel)
         m_skipButtonIcon->setTexture(isLastPile ? "ui/draft_board/take_from_top.png" : "ui/draft_board/skip_to_next_pile.png");
         m_skipButtonLabel->setString(isLastPile ? "Take From Top" : "Skip To Next Pile");
     }
+}
+
+bool DraftBoardView::onCardMouseDown(EventMouse* mouseEvent, CardView* cardView, size_t cardIndex)
+{
+    int playerIndex = getViewModel()->draftingPlayerIndex();
+    DraftAtIndexCommand draftAtIndexCommand{ cardIndex, (unsigned int)playerIndex };
+    m_commandProcessor.ProcessCommandFromClient(draftAtIndexCommand);
+    return true;
 }
