@@ -39,5 +39,6 @@ public:
     virtual void update(const DraftBoard& viewModel) override;
 
     bool onCardMouseDown(EventMouse* mouseEvent, CardView* cardView, size_t index);
+    bool onSkipButtonDown(Ref* buttonRef);
 };
 

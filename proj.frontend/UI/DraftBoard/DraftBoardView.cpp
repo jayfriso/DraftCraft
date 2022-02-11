@@ -6,7 +6,7 @@
 #include "../CardView.h"
 #include "CommandSystem/Commands/DraftAtIndexCommand.h"
 #include "CommandSystem/Commands/DraftSkipPileCommand.h"
-
+#include "ViewLogicError.h"
 
 USING_NS_CC;
 using namespace ui;
@@ -56,6 +56,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_skipButtonLabel->setTextColor(Color4B::BLACK);
     m_skipButton->addChild(m_skipButtonLabel);
     UIUtils::setAnchoredPosition(m_skipButtonLabel, AnchorPosition::BottomCenter, Vec2{ 0,40 });
+    m_skipButton->addClickEventListener(CC_CALLBACK_1(DraftBoardView::onSkipButtonDown, this));
     
     m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);
     this->addChild(m_opponentPlayerContainer, 2);
@@ -87,7 +88,19 @@ void DraftBoardView::update(const DraftBoard& viewModel)
 bool DraftBoardView::onCardMouseDown(EventMouse* mouseEvent, CardView* cardView, size_t cardIndex)
 {
     int playerIndex = getViewModel()->draftingPlayerIndex();
-    DraftAtIndexCommand draftAtIndexCommand{ cardIndex, (unsigned int)playerIndex };
+    if (playerIndex < 0)
+        throw ViewLogicError{ "Mouse down on draft card when model indicates no one is drafting." };
+    DraftAtIndexCommand draftAtIndexCommand{ cardIndex, static_cast<unsigned int>(playerIndex) };
     m_commandProcessor.ProcessCommandFromClient(draftAtIndexCommand);
+    return true;
+}
+
+bool DraftBoardView::onSkipButtonDown(Ref* buttonRef)
+{
+    int playerIndex = getViewModel()->draftingPlayerIndex();
+    if (playerIndex < 0)
+        throw ViewLogicError{ "Skip buton pressed when model indicates no one is drafting." };
+    DraftSkipPileCommand skipPileCommand{ static_cast<unsigned int>(playerIndex) };
+    m_commandProcessor.ProcessCommandFromClient(skipPileCommand);
     return true;
 }
