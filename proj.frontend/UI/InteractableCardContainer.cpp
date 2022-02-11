@@ -138,6 +138,10 @@ void InteractableCardContainer::removeCardAtIndex(size_t index)
 
 void InteractableCardContainer::setEventsEnabled(bool enabled)
 {
+    if (m_isEventsEnabled == enabled)
+        return;
+    m_isEventsEnabled = enabled;
+
     for (auto cardView : m_activeCardViews)
     {
         cardView->setEventsEnabled(enabled);

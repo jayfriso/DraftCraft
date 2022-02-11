@@ -29,6 +29,8 @@ private:
     float m_cardOriginalYPosition;
     float m_cardOriginalScale;
 
+    bool m_isEventsEnabled;
+
     int inline cardHeight() const { return _contentSize.height; }
     int spacing() const;
 
@@ -44,7 +46,8 @@ public:
         m_pooledCardViews{},
         m_cardOriginalYPosition{ -1 },
         m_cardOriginalScale{ -1 },
-        m_cardMouseDownCallback{ nullptr }{}
+        m_cardMouseDownCallback{ nullptr },
+        m_isEventsEnabled{ true }{}
 
     CREATE_FUNC(InteractableCardContainer);
     virtual bool init() override;
