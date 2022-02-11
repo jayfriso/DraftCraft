@@ -1,7 +1,6 @@
 #include "DraftBoardView.h"
 #include "UIConstants.h"
 #include "UIUtils.h"
-#include "DraftPileView.h"
 #include "HorizontalLayoutContainer.h"
 #include "../CardView.h"
 #include "CommandSystem/Commands/DraftAtIndexCommand.h"
@@ -29,11 +28,12 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_draftDeckView = DraftDeckView::create();
     m_draftDeckView->initWithModel(viewModel.deck());
     topContainer->addChild(m_draftDeckView);
-    for (size_t i = 0; i < DraftBoard::getNumPiles(); i++)
+    for (size_t i = 0; i < DraftBoard::NUM_PILES; i++)
     {
         auto pile = DraftPileView::create();
         pile->initWithModel(viewModel.piles().at(i));
         topContainer->addChild(pile);
+        m_draftPileViews.at(i) = pile;
     }
     UIUtils::setAnchoredPosition(topContainer, AnchorPosition::TopCenter, Vec2(0, -40));
 
@@ -44,7 +44,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_draftOptionsContainer->setContentSize(Size{ 1275, 430 });
     m_localPlayerContainer->addChild(m_draftOptionsContainer);
     UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterLeft, Vec2{ 20, 0 });
-    m_draftOptionsContainer->setCardMouseDownCallback(CC_CALLBACK_3(DraftBoardView::onCardMouseDown, this));
+    m_draftOptionsContainer->setCardMouseDownCallback(CC_CALLBACK_3(DraftBoardView::onCardClicked, this));
 
     m_skipButton = UIUtils::createGenericOrangeButton(Size{ 321, 289 });
     m_localPlayerContainer->addChild(m_skipButton);
@@ -56,7 +56,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_skipButtonLabel->setTextColor(Color4B::BLACK);
     m_skipButton->addChild(m_skipButtonLabel);
     UIUtils::setAnchoredPosition(m_skipButtonLabel, AnchorPosition::BottomCenter, Vec2{ 0,40 });
-    m_skipButton->addClickEventListener(CC_CALLBACK_1(DraftBoardView::onSkipButtonDown, this));
+    m_skipButton->addClickEventListener(CC_CALLBACK_1(DraftBoardView::onSkipButtonClicked, this));
     
     m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);
     this->addChild(m_opponentPlayerContainer, 2);
@@ -67,8 +67,17 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
 
 void DraftBoardView::update(const DraftBoard& viewModel)
 {
-    m_opponentPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() != m_localPlayerIndex);
-    m_localPlayerContainer->setVisible(viewModel.isDrafting() && viewModel.draftingPlayerIndex() == m_localPlayerIndex);
+    bool isDraftingPlayer = viewModel.draftingPlayerIndex() == m_localPlayerIndex;
+    m_opponentPlayerContainer->setVisible(viewModel.isDrafting() && !isDraftingPlayer);
+    m_localPlayerContainer->setVisible(isDraftingPlayer);
+    m_draftOptionsContainer->setEventsEnabled(isDraftingPlayer);
+
+    for (size_t i = 0; i < m_draftPileViews.size(); i++)
+    {
+        bool isSelectedPile = i == viewModel.currentPileIndex();
+        m_draftPileViews.at(i)->toggleSelected(isSelectedPile);
+        m_draftPileViews.at(i)->toggleFlipped(isSelectedPile && isDraftingPlayer);
+    }
 
     if (m_localPlayerContainer->isVisible())
     {
@@ -79,13 +88,13 @@ void DraftBoardView::update(const DraftBoard& viewModel)
                 m_draftOptionsContainer->addCard(*card);
         }
 
-        bool isLastPile = viewModel.currentPileIndex() == (DraftBoard::getNumPiles() - 1);
+        bool isLastPile = viewModel.currentPileIndex() == (DraftBoard::NUM_PILES - 1);
         m_skipButtonIcon->setTexture(isLastPile ? "ui/draft_board/take_from_top.png" : "ui/draft_board/skip_to_next_pile.png");
         m_skipButtonLabel->setString(isLastPile ? "Take From Top" : "Skip To Next Pile");
     }
 }
 
-bool DraftBoardView::onCardMouseDown(EventMouse* mouseEvent, CardView* cardView, size_t cardIndex)
+bool DraftBoardView::onCardClicked(EventMouse* mouseEvent, CardView* cardView, size_t cardIndex)
 {
     int playerIndex = getViewModel()->draftingPlayerIndex();
     if (playerIndex < 0)
@@ -95,7 +104,7 @@ bool DraftBoardView::onCardMouseDown(EventMouse* mouseEvent, CardView* cardView,
     return true;
 }
 
-bool DraftBoardView::onSkipButtonDown(Ref* buttonRef)
+bool DraftBoardView::onSkipButtonClicked(Ref* buttonRef)
 {
     int playerIndex = getViewModel()->draftingPlayerIndex();
     if (playerIndex < 0)

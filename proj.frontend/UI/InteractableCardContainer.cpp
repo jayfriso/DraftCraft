@@ -136,6 +136,14 @@ void InteractableCardContainer::removeCardAtIndex(size_t index)
     removeCard(targetIterator);
 }
 
+void InteractableCardContainer::setEventsEnabled(bool enabled)
+{
+    for (auto cardView : m_activeCardViews)
+    {
+        cardView->setEventsEnabled(enabled);
+    }
+}
+
 bool InteractableCardContainer::handleCardMouseDown(EventMouse* event, EventNode* target)
 {
     if (!m_cardMouseDownCallback)
@@ -146,7 +154,7 @@ bool InteractableCardContainer::handleCardMouseDown(EventMouse* event, EventNode
     if (foundIterator == m_activeCardViews.end())
         return false;
     else
-        m_cardMouseDownCallback(event, targetCardView, std::distance(m_activeCardViews.begin(), foundIterator));
+        return m_cardMouseDownCallback(event, targetCardView, std::distance(m_activeCardViews.begin(), foundIterator));
 }
 
 static const float HIGHLIGHT_ANIM_DURATION{ 0.25f };

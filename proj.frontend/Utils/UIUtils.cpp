@@ -56,6 +56,15 @@ Sprite* UIUtils::createGenericRoundedRect(Size size, Color3B color)
     return result;
 }
 
+Sprite* UIUtils::createGenericRoundedRectOutline(Size sizeOfRoundedRect, Color3B color)
+{
+    auto result = Sprite::create("ui/common/rounded_rect_outline.png");
+    result->setCenterRectNormalized(Rect{ Vec2{0.2, 0.2}, Size{0.6, 0.6} });
+    result->setContentSize(Size{ sizeOfRoundedRect.width + 24, sizeOfRoundedRect.height + 24 });
+    result->setColor(color);
+    return result;
+}
+
 Button* UIUtils::createGenericOrangeButton(Size size)
 {
     auto result = Button::create("ui/common/orange_button.png", "ui/common/orange_button_pressed.png", "ui/common/orange_button_disabled.png");

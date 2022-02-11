@@ -8,6 +8,9 @@ bool EventNode::isWithinBounds(EventMouse* event) const
 
 void EventNode::handleMouseDown(Event* event)
 {
+    if (!_visible)
+        return;
+
     auto mouseEvent = static_cast<EventMouse*>(event);
     Vec2 mousePosition{ mouseEvent->getCursorX(), mouseEvent->getCursorY() };
     if (m_mouseDownCallback && isWithinBounds(mouseEvent))
@@ -21,6 +24,9 @@ void EventNode::handleMouseDown(Event* event)
 
 void EventNode::handleMouseMove(Event* event)
 {
+    if (!_visible)
+        return;
+
     auto mouseEvent = static_cast<EventMouse*>(event);
     bool newWithinBounds{ isWithinBounds(mouseEvent) };
     bool endProp = false;

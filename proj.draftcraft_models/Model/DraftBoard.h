@@ -8,9 +8,10 @@
 
 class DraftBoard : public DispatcherViewModel<DraftBoard>
 {
-private:
+public:
     static constexpr int NUM_PILES = 3;
 
+private:
     DraftDeck m_deck;
     std::array<DraftPile, NUM_PILES> m_piles;
 
@@ -21,8 +22,6 @@ private:
     DraftPile& getCurrentPile();
 
 public:
-    static int getNumPiles() { return NUM_PILES; }
-
     DraftBoard(const IStaticDataManager& staticDataManager, unsigned int deckSeed);
 
     array<DraftPile, NUM_PILES>& piles() { return m_piles; }
