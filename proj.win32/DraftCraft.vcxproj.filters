@@ -58,6 +58,9 @@
     <ClCompile Include="..\proj.frontend\Utils\EventSprite.cpp">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\proj.frontend\Exceptions\ViewLogicError.cpp">
+      <Filter>Source Files\proj.frontend\Exceptions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h">
@@ -147,6 +150,9 @@
     <ClInclude Include="..\proj.frontend\Utils\EventSprite.h">
       <Filter>Source Files\proj.frontend\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\proj.frontend\Exceptions\ViewLogicError.h">
+      <Filter>Source Files\proj.frontend\Exceptions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\CMakeLists.txt" />
@@ -195,6 +201,9 @@
     </Filter>
     <Filter Include="Source Files\proj.frontend\Utils">
       <UniqueIdentifier>{2fc87ce9-10ee-4029-b542-3848b8224a40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proj.frontend\Exceptions">
+      <UniqueIdentifier>{0c55a982-546e-4260-ad10-10599076487b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

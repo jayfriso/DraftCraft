@@ -6,12 +6,12 @@ using namespace ui;
 
 const float DraftDrawerView::DRAWER_TOGGLE_ANIM_LENGTH{ 0.3 };
 
-void DraftDrawerView::initWithModel(DraftBoard& draftBoard)
+void DraftDrawerView::initWithModel(DraftBoard& draftBoard, CommandProcessor& commandProcessor, unsigned int localPlayerIndex)
 {
     this->setContentSize(Size(120, UIConstants::DRAFT_BOARD_HEIGHT));
     this->setAnchorPoint(Vec2(0, 0.5f));
 
-    m_draftBoardView = DraftBoardView::create();
+    m_draftBoardView = DraftBoardView::create(commandProcessor, localPlayerIndex);
     m_draftBoardView->initWithModel(draftBoard);
     m_draftBoardView->setAnchorPoint(Vec2(0, 0.5f));
     m_draftBoardView->setPositionNormalized(Vec2(0, 0.5f));

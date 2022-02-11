@@ -142,7 +142,11 @@ bool InteractableCardContainer::handleCardMouseDown(EventMouse* event, EventNode
         return false;
 
     auto targetCardView = static_cast<CardView*>(target);
-    return m_cardMouseDownCallback(event, targetCardView, this);
+    auto foundIterator = std::find(m_activeCardViews.begin(), m_activeCardViews.end(), targetCardView);
+    if (foundIterator == m_activeCardViews.end())
+        return false;
+    else
+        m_cardMouseDownCallback(event, targetCardView, std::distance(m_activeCardViews.begin(), foundIterator));
 }
 
 static const float HIGHLIGHT_ANIM_DURATION{ 0.25f };
