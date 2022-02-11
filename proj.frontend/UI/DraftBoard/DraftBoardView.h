@@ -8,6 +8,8 @@
 #include "Model/DraftBoard.h"
 #include "HorizontalLayoutContainer.h"
 #include "../InteractableCardContainer.h"
+#include <array>
+#include "DraftPileView.h"
 
 USING_NS_CC;
 
@@ -22,6 +24,7 @@ private:
     Node* m_localPlayerContainer;
     InteractableCardContainer* m_draftOptionsContainer;
     Node* m_opponentPlayerContainer;
+    std::array<DraftPileView*, DraftBoard::NUM_PILES> m_draftPileViews;
 
     Button* m_skipButton;
     Sprite* m_skipButtonIcon;
@@ -38,7 +41,7 @@ public:
 
     virtual void update(const DraftBoard& viewModel) override;
 
-    bool onCardMouseDown(EventMouse* mouseEvent, CardView* cardView, size_t index);
-    bool onSkipButtonDown(Ref* buttonRef);
+    bool onCardClicked(EventMouse* mouseEvent, CardView* cardView, size_t index);
+    bool onSkipButtonClicked(Ref* buttonRef);
 };
 

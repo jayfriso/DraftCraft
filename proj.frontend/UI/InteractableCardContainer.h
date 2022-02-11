@@ -56,6 +56,8 @@ public:
     void removeCard(list<CardView*>::iterator cardIterator);
     void removeCardAtIndex(size_t index);
 
+    void setEventsEnabled(bool enabled);
+
     bool handleCardMouseDown(EventMouse* event, EventNode* target);
     bool handleCardMouseEnter(EventMouse* event, EventNode* target);
     bool handleCardMouseExit(EventMouse* event, EventNode* target);
