@@ -44,7 +44,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_draftOptionsContainer->setContentSize(Size{ 1275, 430 });
     m_localPlayerContainer->addChild(m_draftOptionsContainer);
     UIUtils::setAnchoredPosition(m_draftOptionsContainer, AnchorPosition::CenterLeft, Vec2{ 20, 0 });
-    m_draftOptionsContainer->setCardMouseDownCallback(CC_CALLBACK_3(DraftBoardView::onCardClicked, this));
+    m_draftOptionsContainer->setCardMouseClickCallback(CC_CALLBACK_3(DraftBoardView::onCardClicked, this));
 
     m_skipButton = UIUtils::createGenericOrangeButton(Size{ 321, 289 });
     m_localPlayerContainer->addChild(m_skipButton);
@@ -56,7 +56,7 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_skipButtonLabel->setTextColor(Color4B::BLACK);
     m_skipButton->addChild(m_skipButtonLabel);
     UIUtils::setAnchoredPosition(m_skipButtonLabel, AnchorPosition::BottomCenter, Vec2{ 0,40 });
-    m_skipButton->addClickEventListener(CC_CALLBACK_1(DraftBoardView::onSkipButtonClicked, this));
+    m_skipButton->setMouseClickEvent(CC_CALLBACK_1(DraftBoardView::onSkipButtonClicked, this));
     
     m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);
     this->addChild(m_opponentPlayerContainer, 2);

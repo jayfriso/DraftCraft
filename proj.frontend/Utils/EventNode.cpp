@@ -12,7 +12,10 @@ void EventNode::handleMouseDown(Event* event)
         return;
 
     auto mouseEvent = static_cast<EventMouse*>(event);
-    Vec2 mousePosition{ mouseEvent->getCursorX(), mouseEvent->getCursorY() };
+    if (!m_isMouseDown)
+        m_firstMouseDownPos = Vec2{ mouseEvent->getCursorX(), mouseEvent->getCursorY() };
+    m_isMouseDown = true;
+
     if (m_mouseDownCallback && isWithinBounds(mouseEvent))
     {
         bool stopProp = m_mouseDownCallback(mouseEvent, this);
@@ -51,14 +54,32 @@ void EventNode::handleMouseMove(Event* event)
         mouseEvent->stopPropagation();
 }
 
+void EventNode::handleMouseUp(Event* event)
+{
+    if (!_visible)
+        return;
+
+    m_isMouseDown = false;
+
+    auto mouseEvent = static_cast<EventMouse*>(event);
+
+    auto mouseUpPos = Vec2{ mouseEvent->getCursorX(), mouseEvent->getCursorY() };
+    float distance = mouseUpPos.distance(m_firstMouseDownPos);
+    if (distance > MAX_CLICK_DISTANCE)
+        return;
+
+    if (m_mouseClickCallback && isWithinBounds(mouseEvent))
+    {
+        bool endProp = m_mouseClickCallback(mouseEvent, this);
+        if (endProp)
+            mouseEvent->stopPropagation();
+    }
+}
+
 bool EventNode::init()
 {
     if (!Node::init())
         return false;
-
-    m_mouseEventListener = EventListenerMouse::create();
-    m_mouseEventListener->onMouseDown = CC_CALLBACK_1(EventNode::handleMouseDown, this);
-    m_mouseEventListener->onMouseMove = CC_CALLBACK_1(EventNode::handleMouseMove, this);
 
     setEventsEnabled(m_isEventsEnabled);
 
@@ -69,12 +90,20 @@ void EventNode::setEventsEnabled(bool isEnabled)
 {
     m_isEventsEnabled = isEnabled;
 
-    if (m_isEventsEnabled)
+    if (m_isEventsEnabled && m_mouseEventListener == nullptr)
     {
+        m_mouseEventListener = EventListenerMouse::create();
+        m_mouseEventListener->retain();
+        m_mouseEventListener->onMouseDown = CC_CALLBACK_1(EventNode::handleMouseDown, this);
+        m_mouseEventListener->onMouseMove = CC_CALLBACK_1(EventNode::handleMouseMove, this);
+        m_mouseEventListener->onMouseUp = CC_CALLBACK_1(EventNode::handleMouseUp, this);
+
         _eventDispatcher->addEventListenerWithSceneGraphPriority(m_mouseEventListener, this);
     }
-    else
+    else if (!m_isEventsEnabled && m_mouseEventListener != nullptr)
     {
         _eventDispatcher->removeEventListener(m_mouseEventListener);
+        m_mouseEventListener->release();
+        m_mouseEventListener = nullptr;
     }
 }
