@@ -61,6 +61,12 @@ void DraftBoardView::initWithModel(DraftBoard& viewModel)
     m_opponentPlayerContainer = UIUtils::createGenericRoundedRect(Size{ 1514, 292 }, UIConstants::COLOR_MID_BLUE);
     this->addChild(m_opponentPlayerContainer, 2);
     UIUtils::setAnchoredPosition(m_opponentPlayerContainer, AnchorPosition::BottomCenter, Vec2{ 0, 120 });
+    auto opponentIcon = Sprite::create("ui/common/opponent_thinking.png");
+    m_opponentPlayerContainer->addChild(opponentIcon);
+    UIUtils::setAnchoredPosition(opponentIcon, AnchorPosition::CenterLeft, Vec2{ 100, 0 });
+    auto waitingText = Label::createWithTTF("Waiting For Opponent To Draft", UIConstants::FONT_FREDOKA_ONE_REGULAR, 70, Size{ 1100, 100},TextHAlignment::RIGHT);
+    m_opponentPlayerContainer->addChild(waitingText);
+    UIUtils::setAnchoredPosition(waitingText, AnchorPosition::CenterRight, Vec2{ -100,0 });
 
     update(viewModel);
 }
