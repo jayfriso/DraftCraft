@@ -6,13 +6,28 @@ bool EventSprite::init()
     if (!EventNode::init())
         return false;
 
-    m_sprite = Sprite::create(m_spritePath);
-    if (!m_sprite)
+    m_defaultSprite = Sprite::create(m_defaultSpritePath);
+    if (!m_defaultSprite)
         return false;
-    addChild(m_sprite);
-    UIUtils::setAnchoredPosition(m_sprite, AnchorPosition::CenterCenter);
+    addChild(m_defaultSprite);
+    UIUtils::setAnchoredPosition(m_defaultSprite, AnchorPosition::CenterCenter);
 
-    setContentSize(m_sprite->getContentSize());
+    if (!m_downSpritePath.empty())
+    {
+        m_downSprite = Sprite::create(m_downSpritePath);
+        if (!m_downSprite)
+            return false;
+        addChild(m_downSprite);
+        UIUtils::setAnchoredPosition(m_downSprite, AnchorPosition::CenterCenter);
+        m_downSprite->setVisible(false);
+    }
+    else
+    {
+        m_downSprite = nullptr;
+    }
+
+
+    setContentSize(m_defaultSprite->getContentSize());
 
     return true;
 }
@@ -20,5 +35,37 @@ bool EventSprite::init()
 void EventSprite::setContentSize(const Size& size)
 {
     Node::setContentSize(size);
-    m_sprite->setContentSize(size);
+    m_defaultSprite->setContentSize(size);
+    if (m_downSprite != nullptr)
+        m_downSprite->setContentSize(size);
+}
+
+void EventSprite::setCenterRectNormalized(const cocos2d::Rect& rect)
+{
+    m_defaultSprite->setCenterRectNormalized(rect);
+    if (m_downSprite != nullptr)
+        m_downSprite->setCenterRectNormalized(rect);
+}
+
+void EventSprite::handleMouseDown(Event* event)
+{
+    auto mouseEvent = static_cast<EventMouse*>(event);
+    if (_visible && !m_isMouseDown && m_downSprite != nullptr && isWithinBounds(mouseEvent))
+    {
+        m_defaultSprite->setVisible(false);
+        m_downSprite->setVisible(true);
+    }
+
+    EventNode::handleMouseDown(event);
+}
+
+void EventSprite::handleMouseUp(Event* event)
+{
+    if (_visible && !m_defaultSprite->isVisible())
+    {
+        m_defaultSprite->setVisible(true);
+        m_downSprite->setVisible(false);
+    }
+
+    EventNode::handleMouseUp(event);
 }

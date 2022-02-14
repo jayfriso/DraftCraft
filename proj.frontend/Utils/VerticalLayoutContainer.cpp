@@ -38,12 +38,12 @@ void VerticalLayoutContainer::addChild(Node* child)
     else
     {
         // Move other elements up
-        float additionalContentSize{ child->getBoundingBox().size.width + m_space };
+        float additionalContentSize{ child->getBoundingBox().size.height + m_space };
         for (auto currentChild : _children)
         {
             currentChild->setPositionY(currentChild->getPositionY() + additionalContentSize);
         }
-        setContentSize(_contentSize + Size{ additionalContentSize, 0 });
+        setContentSize(_contentSize + Size{ 0, additionalContentSize });
         Node::addChild(child);
     }
 }

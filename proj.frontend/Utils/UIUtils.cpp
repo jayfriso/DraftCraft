@@ -1,5 +1,6 @@
 #include "UIUtils.h"
 #include <numeric>
+#include "UIConstants.h"
 
 void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec2 offset, tuple<bool, Vec2> overrideAnchorPoint)
 {
@@ -47,7 +48,7 @@ void UIUtils::setAnchoredPosition(Node* node, AnchorPosition anchorPosition, Vec
     node->setPositionNormalized(position + normalizedOffset);
 }
 
-Sprite* UIUtils::createGenericRoundedRect(Size size, Color3B color)
+Sprite* UIUtils::createGenericRoundedRect(const Size& size, const Color3B& color)
 {
     auto result = Sprite::create("ui/common/rounded_rect.png");
     result->setCenterRectNormalized(Rect{ Vec2{0.2, 0.2}, Size{0.6, 0.6} });
@@ -56,7 +57,7 @@ Sprite* UIUtils::createGenericRoundedRect(Size size, Color3B color)
     return result;
 }
 
-Sprite* UIUtils::createGenericRoundedRectOutline(Size sizeOfRoundedRect, Color3B color)
+Sprite* UIUtils::createGenericRoundedRectOutline(const Size& sizeOfRoundedRect, const Color3B& color)
 {
     auto result = Sprite::create("ui/common/rounded_rect_outline.png");
     result->setCenterRectNormalized(Rect{ Vec2{0.2, 0.2}, Size{0.6, 0.6} });
@@ -65,14 +66,22 @@ Sprite* UIUtils::createGenericRoundedRectOutline(Size sizeOfRoundedRect, Color3B
     return result;
 }
 
-Button* UIUtils::createGenericOrangeButton(Size size)
+EventSprite* UIUtils::createGenericOrangeButton(const Size& size, const string& labelText, float fontSize)
 {
-    auto result = Button::create("ui/common/orange_button.png", "ui/common/orange_button_pressed.png", "ui/common/orange_button_disabled.png");
+    auto result = EventSprite::create("ui/common/orange_button.png", "ui/common/orange_button_pressed.png");
     if (!result)
         return nullptr;
-    result->setScale9Enabled(true);
-    result->setCapInsets(Rect{ Vec2{24, 40}, Size{80, 70} });
+    result->setCenterRectNormalized(Rect{ Vec2{0.2, 0.3}, Size{0.6, 0.5} });
     result->setContentSize(size);
+
+    if (!labelText.empty())
+    {
+        auto label = Label::createWithTTF(labelText, UIConstants::FONT_FREDOKA_ONE_REGULAR, fontSize);
+        result->addChild(label);
+        UIUtils::setAnchoredPosition(label, AnchorPosition::CenterCenter);
+        label->setColor(UIConstants::COLOR_DARK_BLUE);
+    }
+
     return result;
 }
 

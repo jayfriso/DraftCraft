@@ -1,5 +1,7 @@
 #include "MainGameScene.h"
 #include "DraftBoard/DraftDrawerView.h";
+#include "Debug/DebugMenu.h"
+#include "UIUtils.h"
 
 USING_NS_CC;
 
@@ -24,6 +26,13 @@ bool MainGameScene::init()
     auto drawer = DraftDrawerView::create();
     drawer->initWithModel(m_gameState.draftBoard(), m_commandProcessor, m_gameState.localPlayerIndex());
     addChild(drawer, 0);
-    drawer->setPositionNormalized(Vec2(0, 0.5));
+    UIUtils::setAnchoredPosition(drawer, AnchorPosition::CenterLeft);
+
+#if _DEBUG
+    auto debugMenu = DebugMenu::create(m_gameState, m_commandProcessor);
+    addChild(debugMenu);
+    UIUtils::setAnchoredPosition(debugMenu, AnchorPosition::CenterCenter);
+#endif
+
     return true;
 }

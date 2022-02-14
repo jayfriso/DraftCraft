@@ -12,6 +12,8 @@ public:
     AbstractCommand(unsigned int playerIndex, unsigned int commandIndex) : m_playerIndex{ playerIndex }, m_commandIndex{ commandIndex } {}
     AbstractCommand(unsigned int playerIndex) : AbstractCommand{ playerIndex, 0 } {}
 
+    void setCommandIndex(unsigned int index) { m_commandIndex = index; }
+
     virtual void ExecuteCommand(GameState& gameState) = 0;
 };
 

@@ -10,6 +10,7 @@
 #include "../InteractableCardContainer.h"
 #include <array>
 #include "DraftPileView.h"
+#include "EventSprite.h"
 
 USING_NS_CC;
 
@@ -26,7 +27,7 @@ private:
     Node* m_opponentPlayerContainer;
     std::array<DraftPileView*, DraftBoard::NUM_PILES> m_draftPileViews;
 
-    Button* m_skipButton;
+    EventSprite* m_skipButton;
     Sprite* m_skipButtonIcon;
     Label* m_skipButtonLabel;
 

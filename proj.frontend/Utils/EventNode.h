@@ -11,45 +11,57 @@ class EventNode : public Node
 private:
     typedef std::function<bool(EventMouse* event, EventNode* target)> MouseCallback;
 
+    static constexpr float MAX_CLICK_DISTANCE = 5;
+
     EventListenerMouse* m_mouseEventListener;
     MouseCallback m_mouseDownCallback;
+    MouseCallback m_mouseClickCallback;
     MouseCallback m_mouseEnterCallback;
     MouseCallback m_mouseExitCallback;
     // Note : not called the frame mouse enter, but all frames after where the mouse is still over the element
     MouseCallback m_mouseMoveOverCallback;
 
+
+protected:
     bool m_isEventsEnabled;
     bool m_isCurrentlyWithinBounds;
+    Vec2 m_firstMouseDownPos;
+    bool m_isMouseDown;
 
     bool isWithinBounds(EventMouse* event) const;
 
-    void handleMouseDown(Event* event);
-    void handleMouseMove(Event* event);
+    virtual void handleMouseDown(Event* event);
+    virtual void handleMouseMove(Event* event);
+    virtual void handleMouseUp(Event* event);
 
 public:
-
     EventNode::EventNode(bool isEventEnabled) : 
         m_isEventsEnabled{ isEventEnabled }, 
         m_isCurrentlyWithinBounds{ false },
+        m_mouseEventListener {nullptr},
         m_mouseDownCallback{ nullptr },
         m_mouseEnterCallback{nullptr},
-        m_mouseExitCallback{ nullptr } {}
+        m_mouseExitCallback{ nullptr },
+        m_isMouseDown{ false }{}
 
     virtual bool init() override;
     CREATE_FUNC_ONE_PARAM(EventNode, bool);
 
     void setEventsEnabled(bool isEnabled);
 
-    virtual void setMouseDownEvent(MouseCallback callback) { m_mouseDownCallback = callback; }
-    virtual void clearMouseDownEvent() { m_mouseDownCallback = nullptr; }
+    void setMouseDownEvent(MouseCallback callback) { m_mouseDownCallback = callback; }
+    void clearMouseDownEvent() { m_mouseDownCallback = nullptr; }
 
-    virtual void setMouseEnterEvent(MouseCallback callback) { m_mouseEnterCallback = callback; }
-    virtual void clearMouseEnterEvent() { m_mouseEnterCallback = nullptr; }
+    void setMouseEnterEvent(MouseCallback callback) { m_mouseEnterCallback = callback; }
+    void clearMouseEnterEvent() { m_mouseEnterCallback = nullptr; }
 
-    virtual void setMouseExitEvent(MouseCallback callback) { m_mouseExitCallback = callback; }
-    virtual void clearMouseExitEvent() { m_mouseExitCallback = nullptr; }
+    void setMouseExitEvent(MouseCallback callback) { m_mouseExitCallback = callback; }
+    void clearMouseExitEvent() { m_mouseExitCallback = nullptr; }
 
-    virtual void setMouseMoveOverEvent(MouseCallback callback) { m_mouseMoveOverCallback = callback; }
-    virtual void clearMouseMoveEvent() { m_mouseMoveOverCallback = nullptr; }
+    void setMouseMoveOverEvent(MouseCallback callback) { m_mouseMoveOverCallback = callback; }
+    void clearMouseMoveEvent() { m_mouseMoveOverCallback = nullptr; }
+
+    void setMouseClickEvent(MouseCallback callback) { m_mouseClickCallback = callback; }
+    void clearMouseClickEvent() { m_mouseClickCallback = nullptr; }
 };
 

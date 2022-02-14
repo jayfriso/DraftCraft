@@ -20,10 +20,10 @@ private:
     HorizontalLayoutContainer* m_horizontalContainer;
     Sprite* m_bgSprite;
     list<CardView*> m_activeCardViews;
-    stack<CardView*> m_pooledCardViews;
+    vector<CardView*> m_pooledCardViews;
     Sequence* m_hoverOverSequence;
     CardView* m_currentHighlightedCardView;
-    CardMouseDownCallback m_cardMouseDownCallback;
+    CardMouseDownCallback m_cardMouseClickCallback;
 
     int m_maxSpacing;
     float m_cardOriginalYPosition;
@@ -46,7 +46,7 @@ public:
         m_pooledCardViews{},
         m_cardOriginalYPosition{ -1 },
         m_cardOriginalScale{ -1 },
-        m_cardMouseDownCallback{ nullptr },
+        m_cardMouseClickCallback{ nullptr },
         m_isEventsEnabled{ true }{}
 
     CREATE_FUNC(InteractableCardContainer);
@@ -61,11 +61,11 @@ public:
 
     void setEventsEnabled(bool enabled);
 
-    bool handleCardMouseDown(EventMouse* event, EventNode* target);
+    bool handleCardMouseClick(EventMouse* event, EventNode* target);
     bool handleCardMouseEnter(EventMouse* event, EventNode* target);
     bool handleCardMouseExit(EventMouse* event, EventNode* target);
     bool handleCardMouseMoveOver(EventMouse* event, EventNode* target);
 
-    void setCardMouseDownCallback(CardMouseDownCallback callback) { m_cardMouseDownCallback = callback; }
-    void clearCardMouseDownCallback() { m_cardMouseDownCallback = nullptr; }
+    void setCardMouseClickCallback(CardMouseDownCallback callback) { m_cardMouseClickCallback = callback; }
+    void clearCardMouseClickCallback() { m_cardMouseClickCallback = nullptr; }
 };

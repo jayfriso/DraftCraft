@@ -27,8 +27,8 @@ void InteractableCardContainer::redistributeCardViews()
 
 CardView* InteractableCardContainer::getCardViewFromPool(const Card& data)
 {
-    auto result = m_pooledCardViews.top();
-    m_pooledCardViews.pop();
+    auto result = m_pooledCardViews.back();
+    m_pooledCardViews.pop_back();
     result->setCardData(&data);
     result->setVisible(true);
     return result;
@@ -37,7 +37,7 @@ CardView* InteractableCardContainer::getCardViewFromPool(const Card& data)
 CardView* InteractableCardContainer::createNewCardView(const Card& data)
 {
     auto result = CardView::create(&data);
-    result->setMouseDownEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseDown, this));
+    result->setMouseClickEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseClick, this));
     result->setMouseEnterEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseEnter, this));
     result->setMouseExitEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseExit, this));
     result->setMouseMoveOverEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseMoveOver, this));
@@ -55,7 +55,7 @@ void InteractableCardContainer::moveCardViewToPool(list<CardView*>::iterator car
 
     if (removeFromActiveViewList)
         m_activeCardViews.erase(cardIterator);
-    m_pooledCardViews.push(cardView);
+    m_pooledCardViews.push_back(cardView);
 }
 
 bool InteractableCardContainer::init()
@@ -146,11 +146,15 @@ void InteractableCardContainer::setEventsEnabled(bool enabled)
     {
         cardView->setEventsEnabled(enabled);
     }
+    for (auto cardView : m_pooledCardViews)
+    {
+        cardView->setEventsEnabled(enabled);
+    }
 }
 
-bool InteractableCardContainer::handleCardMouseDown(EventMouse* event, EventNode* target)
+bool InteractableCardContainer::handleCardMouseClick(EventMouse* event, EventNode* target)
 {
-    if (!m_cardMouseDownCallback)
+    if (!m_cardMouseClickCallback)
         return false;
 
     auto targetCardView = static_cast<CardView*>(target);
@@ -158,7 +162,7 @@ bool InteractableCardContainer::handleCardMouseDown(EventMouse* event, EventNode
     if (foundIterator == m_activeCardViews.end())
         return false;
     else
-        return m_cardMouseDownCallback(event, targetCardView, std::distance(m_activeCardViews.begin(), foundIterator));
+        return m_cardMouseClickCallback(event, targetCardView, std::distance(m_activeCardViews.begin(), foundIterator));
 }
 
 static const float HIGHLIGHT_ANIM_DURATION{ 0.25f };
