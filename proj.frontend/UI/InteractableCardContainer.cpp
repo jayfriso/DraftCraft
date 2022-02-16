@@ -21,22 +21,23 @@ int InteractableCardContainer::spacing() const
 
 void InteractableCardContainer::redistributeCardViews()
 {
+    m_horizontalContainer->sortAllChildren();
     m_horizontalContainer->setSpace(spacing(), true);
     UIUtils::setAnchoredPosition(m_horizontalContainer, AnchorPosition::CenterCenter);
 }
 
-CardView* InteractableCardContainer::getCardViewFromPool(const Card& data)
+CardView* InteractableCardContainer::getCardViewFromPool(const Card* data)
 {
     auto result = m_pooledCardViews.back();
     m_pooledCardViews.pop_back();
-    result->setCardData(&data);
+    result->setCardData(data);
     result->setVisible(true);
     return result;
 }
 
-CardView* InteractableCardContainer::createNewCardView(const Card& data)
+CardView* InteractableCardContainer::createNewCardView(const Card* data)
 {
-    auto result = CardView::create(&data);
+    auto result = CardView::create(data);
     result->setMouseClickEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseClick, this));
     result->setMouseEnterEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseEnter, this));
     result->setMouseExitEvent(CC_CALLBACK_2(InteractableCardContainer::handleCardMouseExit, this));
@@ -88,7 +89,7 @@ void InteractableCardContainer::setContentSize(const Size& contentSize)
     redistributeCardViews();
 }
 
-void InteractableCardContainer::addCard(const Card& data)
+void InteractableCardContainer::addCard(const Card* data, bool shouldRedistribute)
 {
     CardView* cardView = nullptr;
     if (!m_pooledCardViews.empty())
@@ -106,6 +107,16 @@ void InteractableCardContainer::addCard(const Card& data)
     cardView->setLocalZOrder(index + 1); // adding 1 here because 0 makes zorder multiplication not work
     m_activeCardViews.push_back(cardView);
 
+    if (shouldRedistribute)
+        redistributeCardViews();
+}
+
+void InteractableCardContainer::addCards(const vector<const Card*>& cards)
+{
+    for(auto card : cards)
+    {
+        addCard(card);
+    }
     redistributeCardViews();
 }
 

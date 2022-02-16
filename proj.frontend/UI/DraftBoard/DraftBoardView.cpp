@@ -88,11 +88,7 @@ void DraftBoardView::update(const DraftBoard& viewModel)
     if (m_localPlayerContainer->isVisible())
     {
         m_draftOptionsContainer->clearCards();
-        for (auto card : viewModel.getCurrentPileConst().cardsInPile())
-        {
-            if (card != nullptr)
-                m_draftOptionsContainer->addCard(*card);
-        }
+        m_draftOptionsContainer->addCards(viewModel.getCurrentPileConst().cardsInPile());
 
         bool isLastPile = viewModel.currentPileIndex() == (DraftBoard::NUM_PILES - 1);
         m_skipButtonIcon->setTexture(isLastPile ? "ui/draft_board/take_from_top.png" : "ui/draft_board/skip_to_next_pile.png");

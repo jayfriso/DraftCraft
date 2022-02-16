@@ -21,6 +21,8 @@ private:
     // Note : not called the frame mouse enter, but all frames after where the mouse is still over the element
     MouseCallback m_mouseMoveOverCallback;
 
+    // Reset variables related to the current state of the mouse. Called when events are disabled or if the view is turned invisible.
+    void resetMouseStateVariables();
 
 protected:
     bool m_isEventsEnabled;
@@ -42,10 +44,13 @@ public:
         m_mouseDownCallback{ nullptr },
         m_mouseEnterCallback{nullptr},
         m_mouseExitCallback{ nullptr },
-        m_isMouseDown{ false }{}
+        m_isMouseDown{ false },
+        m_firstMouseDownPos{ 0,0 }{}
 
     virtual bool init() override;
     CREATE_FUNC_ONE_PARAM(EventNode, bool);
+
+    virtual void setVisible(bool visible) override;
 
     void setEventsEnabled(bool isEnabled);
 

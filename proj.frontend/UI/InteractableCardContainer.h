@@ -15,7 +15,7 @@ class InteractableCardContainer : public Node
 private:
     typedef std::function<bool(EventMouse* mouseEvent, CardView* cardView, size_t cardIndex)> CardMouseDownCallback;
 
-    static constexpr int DEFAULT_MAX_SPACING = 15;
+    static constexpr int DEFAULT_MAX_SPACING = 25;
 
     HorizontalLayoutContainer* m_horizontalContainer;
     Sprite* m_bgSprite;
@@ -35,8 +35,8 @@ private:
     int spacing() const;
 
     void redistributeCardViews();
-    CardView* getCardViewFromPool(const Card& data);
-    CardView* createNewCardView(const Card& data);
+    CardView* getCardViewFromPool(const Card* data);
+    CardView* createNewCardView(const Card* data);
     void moveCardViewToPool(list<CardView*>::iterator cardIterator, bool removeFromActiveViewList = true);
 
 public:
@@ -54,7 +54,8 @@ public:
 
     virtual void setContentSize(const Size& contentSize) override;
 
-    void addCard(const Card& card);
+    void addCard(const Card* card, bool shouldRedistribute = true);
+    void addCards(const vector<const Card*>& cards);
     void clearCards();
     void removeCard(list<CardView*>::iterator cardIterator);
     void removeCardAtIndex(size_t index);

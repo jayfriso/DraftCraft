@@ -1,5 +1,11 @@
 #include "EventNode.h"
 
+void EventNode::resetMouseStateVariables()
+{
+    m_isCurrentlyWithinBounds = false;
+    m_isMouseDown = false;
+}
+
 bool EventNode::isWithinBounds(EventMouse* event) const
 {
     Vec2 mousePosition = _parent->convertToNodeSpace(Vec2{ event->getCursorX(), event->getCursorY() });
@@ -56,7 +62,7 @@ void EventNode::handleMouseMove(Event* event)
 
 void EventNode::handleMouseUp(Event* event)
 {
-    if (!_visible)
+    if (!_visible || !m_isMouseDown)
         return;
 
     m_isMouseDown = false;
@@ -86,6 +92,13 @@ bool EventNode::init()
     return true;
 }
 
+void EventNode::setVisible(bool visible)
+{
+    if (!visible)
+        resetMouseStateVariables();
+    Node::setVisible(visible);
+}
+
 void EventNode::setEventsEnabled(bool isEnabled)
 {
     m_isEventsEnabled = isEnabled;
@@ -105,5 +118,6 @@ void EventNode::setEventsEnabled(bool isEnabled)
         _eventDispatcher->removeEventListener(m_mouseEventListener);
         m_mouseEventListener->release();
         m_mouseEventListener = nullptr;
+        resetMouseStateVariables();
     }
 }
