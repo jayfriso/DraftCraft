@@ -59,6 +59,16 @@ void InteractableCardContainer::moveCardViewToPool(list<CardView*>::iterator car
     m_pooledCardViews.push_back(cardView);
 }
 
+void InteractableCardContainer::setEventsEnabledForCardView(CardView* cardView, bool enabled)
+{
+    cardView->setEventsEnabled(enabled);
+    if (!enabled)
+    {
+        cardView->setScale(m_cardOriginalScale);
+        cardView->setPosition(Vec2{ cardView->getPositionX(), m_cardOriginalYPosition });
+    }
+}
+
 bool InteractableCardContainer::init()
 {
     if (!Node::init())
@@ -155,11 +165,11 @@ void InteractableCardContainer::setEventsEnabled(bool enabled)
 
     for (auto cardView : m_activeCardViews)
     {
-        cardView->setEventsEnabled(enabled);
+        setEventsEnabledForCardView(cardView, enabled);
     }
     for (auto cardView : m_pooledCardViews)
     {
-        cardView->setEventsEnabled(enabled);
+        setEventsEnabledForCardView(cardView, enabled);
     }
 }
 
