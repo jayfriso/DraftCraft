@@ -27,7 +27,7 @@ public:
         m_listeners.clear();
     }
 
-    void notifyToUpdate() const
+    virtual void notifyToUpdate()
     {
         for (AbstractListenerView<TThisType>* listener : m_listeners)
         {
