@@ -822,6 +822,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.h" />
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftPileView.h" />
     <ClInclude Include="..\proj.frontend\UI\CardView.h" />
+    <ClInclude Include="..\proj.frontend\UI\GameBoard\GameBoardView.h" />
+    <ClInclude Include="..\proj.frontend\UI\GameBoard\LocalPlayerBoardView.h" />
     <ClInclude Include="..\proj.frontend\UI\InteractableCardContainer.h" />
     <ClInclude Include="..\proj.frontend\UI\MainGameScene.h" />
     <ClInclude Include="..\proj.frontend\UI\TitleScene.h" />
@@ -844,6 +846,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDrawerView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftPileView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\CardView.cpp" />
+    <ClCompile Include="..\proj.frontend\UI\GameBoard\GameBoardView.cpp" />
+    <ClCompile Include="..\proj.frontend\UI\GameBoard\LocalPlayerBoardView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\InteractableCardContainer.cpp" />
     <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp" />
     <ClCompile Include="..\proj.frontend\UI\TitleScene.cpp" />

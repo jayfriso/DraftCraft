@@ -14,7 +14,7 @@ public:
         bool hasCardBeenAdded{ false };
 
         int removedCardIndex{ -1 };
-        inline bool hasCardBeenRemove() { return removedCardIndex > -1; }
+        inline bool hasCardBeenRemoved() const { return removedCardIndex > -1; }
 
         void resetData()
         {
