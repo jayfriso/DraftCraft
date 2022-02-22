@@ -9,7 +9,7 @@ bool GameBoardView::init()
     m_localPlayerView = LocalPlayerBoardView::create();
     m_localPlayerView->initWithModel(m_gameState.playerAtIndex(m_gameState.localPlayerIndex()));
     this->addChild(m_localPlayerView);
-    UIUtils::setAnchoredPosition(m_localPlayerView, AnchorPosition::BottomCenter);
+    ui_utils::setAnchoredPosition(m_localPlayerView, AnchorPosition::BottomCenter);
 
     return true;
 }

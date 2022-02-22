@@ -11,7 +11,7 @@ void LocalPlayerBoardView::initWithModel(Player& viewModel)
     m_interactableCardContainer = InteractableCardContainer::create();
     m_interactableCardContainer->setContentSize(Size{ 1600, 350 });
     this->addChild(m_interactableCardContainer);
-    UIUtils::setAnchoredPosition(m_interactableCardContainer, AnchorPosition::BottomCenter, Vec2{ 0, 20 });
+    ui_utils::setAnchoredPosition(m_interactableCardContainer, AnchorPosition::BottomCenter, Vec2{ 0, 20 });
 }
 
 void LocalPlayerBoardView::update(const Player& viewModel)

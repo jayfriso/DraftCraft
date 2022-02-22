@@ -27,16 +27,16 @@ bool MainGameScene::init()
     auto drawer = DraftDrawerView::create();
     drawer->initWithModel(m_gameState.draftBoard(), m_commandProcessor, m_gameState.localPlayerIndex());
     addChild(drawer, 1);
-    UIUtils::setAnchoredPosition(drawer, AnchorPosition::CenterLeft);
+    ui_utils::setAnchoredPosition(drawer, AnchorPosition::CenterLeft);
 
     auto boardView = GameBoardView::create(m_gameState, m_commandProcessor);
     addChild(boardView, 0);
-    UIUtils::setAnchoredPosition(boardView, AnchorPosition::BottomCenter);
+    ui_utils::setAnchoredPosition(boardView, AnchorPosition::BottomCenter);
 
 #if _DEBUG
     auto debugMenu = DebugMenu::create(m_gameState, m_commandProcessor);
     addChild(debugMenu, 2);
-    UIUtils::setAnchoredPosition(debugMenu, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(debugMenu, AnchorPosition::CenterCenter);
 #endif
 
     return true;

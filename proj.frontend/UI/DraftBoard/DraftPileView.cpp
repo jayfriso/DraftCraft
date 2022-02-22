@@ -46,7 +46,7 @@ void DraftPileView::setCards(const vector<const Card*>& cards)
             }
         }
         m_columnContainer->redistribute();
-        UIUtils::setAnchoredPosition(m_columnContainer, AnchorPosition::CenterCenter);
+        ui_utils::setAnchoredPosition(m_columnContainer, AnchorPosition::CenterCenter);
     }
     else
     {
@@ -60,24 +60,24 @@ void DraftPileView::initWithModel(DraftPile& viewModel)
 
     Size contentSize{ 312, 412 };
     this->setContentSize(contentSize);
-    auto bg = UIUtils::createGenericRoundedRect(contentSize, UIConstants::COLOR_LIGHT_ORANGE);
+    auto bg = ui_utils::createGenericRoundedRect(contentSize, UIConstants::COLOR_LIGHT_ORANGE);
     this->addChild(bg, 0);
-    UIUtils::setAnchoredPosition(bg, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(bg, AnchorPosition::CenterCenter);
 
-    auto selectedOutline = UIUtils::createGenericRoundedRectOutline(contentSize, UIConstants::COLOR_ORANGE);
+    auto selectedOutline = ui_utils::createGenericRoundedRectOutline(contentSize, UIConstants::COLOR_ORANGE);
     this->addChild(selectedOutline, -1);
-    UIUtils::setAnchoredPosition(selectedOutline, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(selectedOutline, AnchorPosition::CenterCenter);
     m_nodesToShowWhenSelected.push_back(selectedOutline);
 
     auto selectedArrow = Sprite::create("ui/draft_board/arrow.png");
     this->addChild(selectedArrow, 2);
-    UIUtils::setAnchoredPosition(selectedArrow, AnchorPosition::TopLeft, Vec2::ZERO, std::tuple<bool, Vec2>{true, Vec2{0.5,0.5}});
+    ui_utils::setAnchoredPosition(selectedArrow, AnchorPosition::TopLeft, Vec2::ZERO, std::tuple<bool, Vec2>{true, Vec2{0.5,0.5}});
     m_nodesToShowWhenSelected.push_back(selectedArrow);
 
     m_columnContainer = HorizontalLayoutContainer::create(10, 372);
     m_columnContainer->setChildAnchorPoint(Vec2(0, 1));
     this->addChild(m_columnContainer, 1);
-    UIUtils::setAnchoredPosition(m_columnContainer, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(m_columnContainer, AnchorPosition::CenterCenter);
     for (size_t i = 0; i < MAX_COLUMNS; i++)
     {
         VerticalLayoutContainer* currentColumn = VerticalLayoutContainer::create(5.0f, 132);
@@ -96,17 +96,17 @@ void DraftPileView::initWithModel(DraftPile& viewModel)
     m_overMaxViewContainer = Node::create();
     m_overMaxViewContainer->setContentSize(Size{ 272, 354 });
     this->addChild(m_overMaxViewContainer);
-    UIUtils::setAnchoredPosition(m_overMaxViewContainer, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(m_overMaxViewContainer, AnchorPosition::CenterCenter);
     auto overMaxSprite = Sprite::create("ui/draft_board/over_max_pile.png");
     m_overMaxViewContainer->addChild(overMaxSprite, 0);
-    UIUtils::setAnchoredPosition(overMaxSprite, AnchorPosition::TopCenter);
-    auto overMaxLabelBg = UIUtils::createGenericRoundedRect(Size{ 140, 104 }, Color3B::WHITE);
+    ui_utils::setAnchoredPosition(overMaxSprite, AnchorPosition::TopCenter);
+    auto overMaxLabelBg = ui_utils::createGenericRoundedRect(Size{ 140, 104 }, Color3B::WHITE);
     m_overMaxViewContainer->addChild(overMaxLabelBg, 1);
-    UIUtils::setAnchoredPosition(overMaxLabelBg, AnchorPosition::BottomRight);
+    ui_utils::setAnchoredPosition(overMaxLabelBg, AnchorPosition::BottomRight);
     m_overMaxLabel = Label::createWithTTF("0", UIConstants::FONT_FREDOKA_ONE_REGULAR, 80);
     m_overMaxLabel->setTextColor(Color4B::BLACK);
     overMaxLabelBg->addChild(m_overMaxLabel);
-    UIUtils::setAnchoredPosition(m_overMaxLabel, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(m_overMaxLabel, AnchorPosition::CenterCenter);
 
     setCards(viewModel.cardsInPile());
     toggleSelected(false);

@@ -23,7 +23,7 @@ void InteractableCardContainer::redistributeCardViews()
 {
     m_horizontalContainer->sortAllChildren();
     m_horizontalContainer->setSpace(spacing(), true);
-    UIUtils::setAnchoredPosition(m_horizontalContainer, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(m_horizontalContainer, AnchorPosition::CenterCenter);
 }
 
 CardView* InteractableCardContainer::getCardViewFromPool(const Card* data)
@@ -74,7 +74,7 @@ bool InteractableCardContainer::init()
     if (!Node::init())
         return false;
 
-    m_bgSprite = UIUtils::createGenericRoundedRect(Size(0, 0), UIConstants::COLOR_GREY);
+    m_bgSprite = ui_utils::createGenericRoundedRect(Size(0, 0), UIConstants::COLOR_GREY);
     addChild(m_bgSprite, 0);
 
     m_horizontalContainer = HorizontalLayoutContainer::create(spacing(), cardHeight());
@@ -89,7 +89,7 @@ void InteractableCardContainer::setContentSize(const Size& contentSize)
     Node::setContentSize(contentSize);
 
     m_bgSprite->setContentSize(contentSize);
-    UIUtils::setAnchoredPosition(m_bgSprite, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(m_bgSprite, AnchorPosition::CenterCenter);
 
     for (auto cardView : m_activeCardViews)
     {
