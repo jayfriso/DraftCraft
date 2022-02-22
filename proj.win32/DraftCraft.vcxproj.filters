@@ -10,9 +10,6 @@
     <ClCompile Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\cocos2d\cocos\precheader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\proj.frontend\HelloWorldScene.cpp">
-      <Filter>Source Files\proj.frontend</Filter>
-    </ClCompile>
     <ClCompile Include="..\proj.frontend\UI\MainGameScene.cpp">
       <Filter>Source Files\proj.frontend\UI</Filter>
     </ClCompile>
@@ -107,9 +104,6 @@
     </ClInclude>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\Resources\ui\draft_board\draft_drawer_triangle.png">
       <Filter>Resources\ui\draft_board</Filter>
-    </ClInclude>
-    <ClInclude Include="..\proj.frontend\HelloWorldScene.h">
-      <Filter>Source Files\proj.frontend</Filter>
     </ClInclude>
     <ClInclude Include="..\proj.frontend\UI\MainGameScene.h">
       <Filter>Source Files\proj.frontend\UI</Filter>

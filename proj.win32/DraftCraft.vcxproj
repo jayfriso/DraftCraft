@@ -815,7 +815,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClInclude Include="..\proj.frontend\AppLifetimeResources.h" />
     <ClInclude Include="..\proj.frontend\Exceptions\ViewLogicError.h" />
-    <ClInclude Include="..\proj.frontend\HelloWorldScene.h" />
     <ClInclude Include="..\proj.frontend\UI\Debug\DebugMenu.h" />
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.h" />
     <ClInclude Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.h" />
@@ -839,7 +838,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.win32\resource.h" />
     <ClCompile Include="..\proj.frontend\AppLifetimeResources.cpp" />
     <ClCompile Include="..\proj.frontend\Exceptions\ViewLogicError.cpp" />
-    <ClCompile Include="..\proj.frontend\HelloWorldScene.cpp" />
     <ClCompile Include="..\proj.frontend\UI\Debug\DebugMenu.cpp" />
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftBoardView.cpp" />
     <ClCompile Include="..\proj.frontend\UI\DraftBoard\DraftDeckView.cpp" />
