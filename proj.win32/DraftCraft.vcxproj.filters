@@ -64,6 +64,12 @@
     <ClCompile Include="..\proj.frontend\UI\Debug\DebugMenu.cpp">
       <Filter>Source Files\proj.frontend\UI\Debug</Filter>
     </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\GameBoard\GameBoardView.cpp">
+      <Filter>Source Files\proj.frontend\UI\GameBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\proj.frontend\UI\GameBoard\LocalPlayerBoardView.cpp">
+      <Filter>Source Files\proj.frontend\UI\GameBoard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\proj.frontend\AppDelegate.h">
@@ -159,6 +165,12 @@
     <ClInclude Include="..\proj.frontend\UI\Debug\DebugMenu.h">
       <Filter>Source Files\proj.frontend\UI\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\GameBoard\GameBoardView.h">
+      <Filter>Source Files\proj.frontend\UI\GameBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\proj.frontend\UI\GameBoard\LocalPlayerBoardView.h">
+      <Filter>Source Files\proj.frontend\UI\GameBoard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Projects\GameProjectsLocal\Cocos2dx\DraftCraft\CMakeLists.txt" />
@@ -213,6 +225,9 @@
     </Filter>
     <Filter Include="Source Files\proj.frontend\UI\Debug">
       <UniqueIdentifier>{93db933a-5f5b-45d7-bca6-55f7deab98d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\proj.frontend\UI\GameBoard">
+      <UniqueIdentifier>{7f5afebb-6e29-4bbf-942d-ed490abc9eb8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
