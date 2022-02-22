@@ -11,7 +11,7 @@ class EventNode : public Node
 private:
     typedef std::function<bool(EventMouse* event, EventNode* target)> MouseCallback;
 
-    static constexpr float MAX_CLICK_DISTANCE = 5;
+    static constexpr float MAX_CLICK_DISTANCE = 20;
 
     EventListenerMouse* m_mouseEventListener;
     MouseCallback m_mouseDownCallback;
