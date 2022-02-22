@@ -10,7 +10,7 @@ bool EventSprite::init()
     if (!m_defaultSprite)
         return false;
     addChild(m_defaultSprite);
-    UIUtils::setAnchoredPosition(m_defaultSprite, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(m_defaultSprite, AnchorPosition::CenterCenter);
 
     if (!m_downSpritePath.empty())
     {
@@ -18,7 +18,7 @@ bool EventSprite::init()
         if (!m_downSprite)
             return false;
         addChild(m_downSprite);
-        UIUtils::setAnchoredPosition(m_downSprite, AnchorPosition::CenterCenter);
+        ui_utils::setAnchoredPosition(m_downSprite, AnchorPosition::CenterCenter);
         m_downSprite->setVisible(false);
     }
     else

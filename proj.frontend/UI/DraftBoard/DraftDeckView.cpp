@@ -18,17 +18,17 @@ void DraftDeckView::initWithModel(DraftDeck& viewModel)
 
     auto deckSprite = Sprite::create("ui/draft_board/draft_deck.png");
     this->addChild(deckSprite);
-    UIUtils::setAnchoredPosition(deckSprite, AnchorPosition::TopCenter);
+    ui_utils::setAnchoredPosition(deckSprite, AnchorPosition::TopCenter);
 
-    auto cardCountLabelBg = UIUtils::createGenericRoundedRect(Size(202, 54), Color3B::WHITE);
+    auto cardCountLabelBg = ui_utils::createGenericRoundedRect(Size(202, 54), Color3B::WHITE);
     this->addChild(cardCountLabelBg);
-    UIUtils::setAnchoredPosition(cardCountLabelBg, AnchorPosition::BottomCenter);
+    ui_utils::setAnchoredPosition(cardCountLabelBg, AnchorPosition::BottomCenter);
 
     string numCardsLeftString = std::to_string(viewModel.cardsLeft()) + CARDS_LEFT_TEXT;
     m_cardsLeftLabel = Label::createWithTTF(numCardsLeftString, UIConstants::FONT_FREDOKA_ONE_REGULAR, 26);
     m_cardsLeftLabel->setTextColor(Color4B::BLACK);
     cardCountLabelBg->addChild(m_cardsLeftLabel, 1);
-    UIUtils::setAnchoredPosition(m_cardsLeftLabel, AnchorPosition::CenterCenter);
+    ui_utils::setAnchoredPosition(m_cardsLeftLabel, AnchorPosition::CenterCenter);
 }
 
 void DraftDeckView::update(const DraftDeck& viewModel)
