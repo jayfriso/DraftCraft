@@ -4,14 +4,14 @@
 #include "Model/GameState.h"
 #include "../AppLifetimeResources.h"
 #include "CustomMacros.h"
-#include "CommandSystem/CommandProcessor.h"
+#include "CommandSystem/AbstractCommandProcessor.h"
 
 class MainGameScene : public cocos2d::Scene
 {
 private:
     AppLifetimeResources& m_appLifetimeResources;
     GameState m_gameState;
-    CommandProcessor m_commandProcessor;
+    AbstractCommandProcessor m_AbstractCommandProcessor;
 
 public:
     MainGameScene(AppLifetimeResources& appLifetimeResources);

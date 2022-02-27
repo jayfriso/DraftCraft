@@ -39,7 +39,6 @@ using namespace cocos2d::experimental;
 
 USING_NS_CC;
 
-
 static cocos2d::Size DESIGN_RESOLUTION = cocos2d::Size(1920, 1080);
 static double WINDOW_DESKTOP_SCALE{ 0.9 };
 

@@ -5,12 +5,12 @@
 
 const float DraftDrawerView::DRAWER_TOGGLE_ANIM_LENGTH{ 0.3 };
 
-void DraftDrawerView::initWithModel(DraftBoard& draftBoard, CommandProcessor& commandProcessor, unsigned int localPlayerIndex)
+void DraftDrawerView::initWithModel(DraftBoard& draftBoard, AbstractCommandProcessor& AbstractCommandProcessor, unsigned int localPlayerIndex)
 {
     this->setContentSize(Size(120, UIConstants::DRAFT_BOARD_HEIGHT));
     this->setAnchorPoint(Vec2(0, 0.5f));
 
-    m_draftBoardView = DraftBoardView::create(commandProcessor, localPlayerIndex);
+    m_draftBoardView = DraftBoardView::create(AbstractCommandProcessor, localPlayerIndex);
     this->addChild(m_draftBoardView, 0);
     m_draftBoardView->initWithModel(draftBoard);
     ui_utils::setAnchoredPosition(m_draftBoardView, AnchorPosition::CenterLeft);

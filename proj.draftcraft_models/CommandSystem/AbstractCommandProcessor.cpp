@@ -1,12 +1,12 @@
-#include "CommandProcessor.h"
+#include "AbstractCommandProcessor.h"
 #include "../Exceptions/ModelLogicError.h"
 #include <sstream>
 
-CommandProcessor::CommandProcessor(GameState& gameState) : m_gameState{gameState}, m_currentCommandIndex{0}
+AbstractCommandProcessor::AbstractCommandProcessor(GameState& gameState) : m_gameState{gameState}, m_currentCommandIndex{0}
 {
 }
 
-void CommandProcessor::ProcessCommandFromClient(AbstractCommand& command)
+void AbstractCommandProcessor::ProcessCommandFromClient(AbstractCommand& command)
 {
     m_currentCommandIndex++;
     command.m_commandIndex = m_currentCommandIndex;
@@ -15,7 +15,7 @@ void CommandProcessor::ProcessCommandFromClient(AbstractCommand& command)
     // TODO : Send the command to the DB
 }
 
-void CommandProcessor::ReceiveCommandFromServer(AbstractCommand& command)
+void AbstractCommandProcessor::ReceiveCommandFromServer(AbstractCommand& command)
 {
     if (command.m_commandIndex != m_currentCommandIndex + 1)
     {

@@ -1,14 +1,14 @@
 #pragma once
 #include "AbstractCommand.h"
 
-class CommandProcessor
+class AbstractCommandProcessor
 {
 private:
     GameState& m_gameState;
 
     int m_currentCommandIndex;
 public:
-    CommandProcessor(GameState& gameState);
+    AbstractCommandProcessor(GameState& gameState);
 
     int currentCommandIndex() const { return m_currentCommandIndex; };
 

@@ -4,7 +4,7 @@
 #include "DraftBoardView.h"
 #include "Model/DraftBoard.h"
 #include "CustomMacros.h"
-#include "CommandSystem/CommandProcessor.h"
+#include "CommandSystem/AbstractCommandProcessor.h"
 #include "EventSprite.h"
 
 USING_NS_CC;
@@ -19,7 +19,7 @@ private:
 
 public:
     CREATE_FUNC(DraftDrawerView);
-    void initWithModel(DraftBoard& draftBoard, CommandProcessor& commandProcessor, unsigned int localPlayerIndex);
+    void initWithModel(DraftBoard& draftBoard, AbstractCommandProcessor& AbstractCommandProcessor, unsigned int localPlayerIndex);
 
     bool onDrawerButtonPressed(EventMouse* event, EventNode* target);
 };

@@ -2,7 +2,7 @@
 
 #include "cocos2d.h"
 #include "../InteractableCardContainer.h"
-#include "CommandSystem/CommandProcessor.h"
+#include "CommandSystem/AbstractCommandProcessor.h"
 #include "LocalPlayerBoardView.h"
 #include "CustomMacros.h"
 
@@ -12,14 +12,14 @@ class GameBoardView : public Node
 {
 private:
     GameState& m_gameState;
-    CommandProcessor& m_commandProcessor;
+    AbstractCommandProcessor& m_AbstractCommandProcessor;
 
     LocalPlayerBoardView* m_localPlayerView;
 
 public:
-    GameBoardView(GameState& gameState, CommandProcessor& commandProcesser): m_gameState{gameState}, m_commandProcessor{commandProcesser} {}
+    GameBoardView(GameState& gameState, AbstractCommandProcessor& commandProcesser): m_gameState{gameState}, m_AbstractCommandProcessor{commandProcesser} {}
 
-    CREATE_FUNC_TWO_PARAM(GameBoardView, GameState&, CommandProcessor&);
+    CREATE_FUNC_TWO_PARAM(GameBoardView, GameState&, AbstractCommandProcessor&);
     virtual bool init() override;
 };
 

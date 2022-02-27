@@ -4,7 +4,7 @@
 
 class AbstractCommand
 {
-    friend class CommandProcessor;
+    friend class AbstractCommandProcessor;
 protected:
     unsigned int m_playerIndex;
     unsigned int m_commandIndex;

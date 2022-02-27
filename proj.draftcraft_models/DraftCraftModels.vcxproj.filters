@@ -70,9 +70,6 @@
     <ClInclude Include="CommandSystem\AbstractCommand.h">
       <Filter>Source Files\CommandSystem</Filter>
     </ClInclude>
-    <ClInclude Include="CommandSystem\CommandProcessor.h">
-      <Filter>Source Files\CommandSystem</Filter>
-    </ClInclude>
     <ClInclude Include="Model\PhaseStack.h">
       <Filter>Source Files\Models</Filter>
     </ClInclude>
@@ -93,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="Exceptions\ModelLogicError.h">
       <Filter>Source Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandSystem\AbstractCommandProcessor.h">
+      <Filter>Source Files\CommandSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -129,9 +129,6 @@
     <ClCompile Include="CommandSystem\AbstractCommand.cpp">
       <Filter>Source Files\CommandSystem</Filter>
     </ClCompile>
-    <ClCompile Include="CommandSystem\CommandProcessor.cpp">
-      <Filter>Source Files\CommandSystem</Filter>
-    </ClCompile>
     <ClCompile Include="Model\PhaseStack.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
@@ -146,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="MatchMaking\TestMatchMaker.cpp">
       <Filter>Source Files\MatchMaking</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandSystem\AbstractCommandProcessor.cpp">
+      <Filter>Source Files\CommandSystem</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

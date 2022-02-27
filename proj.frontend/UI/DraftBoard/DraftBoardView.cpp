@@ -102,7 +102,7 @@ bool DraftBoardView::onCardClicked(EventMouse* mouseEvent, CardView* cardView, s
     if (playerIndex < 0)
         throw ViewLogicError{ "Mouse down on draft card when model indicates no one is drafting." };
     DraftAtIndexCommand draftAtIndexCommand{ cardIndex, static_cast<unsigned int>(playerIndex) };
-    m_commandProcessor.ProcessCommandFromClient(draftAtIndexCommand);
+    m_AbstractCommandProcessor.ProcessCommandFromClient(draftAtIndexCommand);
     return true;
 }
 
@@ -112,6 +112,6 @@ bool DraftBoardView::onSkipButtonClicked(Ref* buttonRef)
     if (playerIndex < 0)
         throw ViewLogicError{ "Skip buton pressed when model indicates no one is drafting." };
     DraftSkipPileCommand skipPileCommand{ static_cast<unsigned int>(playerIndex) };
-    m_commandProcessor.ProcessCommandFromClient(skipPileCommand);
+    m_AbstractCommandProcessor.ProcessCommandFromClient(skipPileCommand);
     return true;
 }
