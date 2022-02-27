@@ -24,7 +24,7 @@ namespace Test
 			
 			vector<string> expectedValues{ "test_187", "test_0", "test_129" };
 			const Card* cardPointer{ nullptr };
-			unsigned int expectedCardsLeft = 100;
+			size_t expectedCardsLeft = 100;
 			Assert::AreEqual(expectedCardsLeft, draftDeck.cardsLeft());
 
 			for (auto expectedValue : expectedValues)
