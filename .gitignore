@@ -98,3 +98,13 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+
+#Generated VS Projects
+*.vcxproj
+*.vcxproj.filters
+*.sln
+
+#Cmake Cache
+CmakeFiles/
+CmakeCache.txt
+cmake_install.cmake
