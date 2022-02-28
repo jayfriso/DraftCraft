@@ -1,9 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Program Files/CMake/share/cmake-3.22/Modules/CMakePackageConfigHelpers.cmake
-C:/Program Files/CMake/share/cmake-3.22/Modules/ExternalProject.cmake
-C:/Program Files/CMake/share/cmake-3.22/Modules/GNUInstallDirs.cmake
-C:/Program Files/CMake/share/cmake-3.22/Modules/WriteBasicConfigVersionFile.cmake
-C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/thirdparty/json-3.10.4/CMakeLists.txt
-C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/thirdparty/json-3.10.4/cmake/config.cmake.in
-C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/thirdparty/json-3.10.4/cmake/nlohmann_jsonConfigVersion.cmake.in
-C:/Projects/GameProjectsLocal/Cocos2dx/DraftCraft/thirdparty/json-3.10.4/cmake/pkg-config.pc.in
