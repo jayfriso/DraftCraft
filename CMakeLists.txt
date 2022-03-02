@@ -23,7 +23,7 @@
 # THE SOFTWARE.
 # ****************************************************************************/
 
-cmake_minimum_required(VERSION 3.15)
+set(CMAKE_GENERATOR_PLATFORM win32)
 
 set(APP_NAME DraftCraft)
 project(${APP_NAME})
@@ -124,19 +124,24 @@ target_compile_features(${APP_NAME} PUBLIC cxx_std_17)
 
 # Libraries ==========================
 add_subdirectory(proj.draftcraft_models)
-target_link_libraries(${APP_NAME} PUBLIC DraftCraft_Models)
+
+target_link_libraries(${APP_NAME} 
+    PUBLIC DraftCraft_Models
+    PUBLIC cocos2d
+)
 
 add_subdirectory(proj.test)
 add_dependencies(DraftCraft_Tests DraftCraft_Models)
 
-#json library
-#add_subdirectory(thirdparty/json-3.10.4)
-#target_link_libraries(${APP_NAME} cocos2d nlohmann_json)
 # ====================================
+
 # Include directories
 target_include_directories(${APP_NAME}
-        PRIVATE proj.frontend
-        PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
+    PRIVATE proj.frontend
+    PRIVATE proj.frontend/Utils/
+    PRIVATE proj.frontend/Exceptions/
+    PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
+    PRIVATE proj.draftcraft_models/src/
 )
 
 # mark app resources

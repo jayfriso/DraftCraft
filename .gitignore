@@ -103,6 +103,7 @@ bld/
 *.vcxproj
 *.vcxproj.filters
 *.sln
+*.vcxproj.user
 
 #Cmake Cache
 CmakeFiles/
