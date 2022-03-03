@@ -101,7 +101,7 @@ bool DraftBoardView::onCardClicked(EventMouse* mouseEvent, CardView* cardView, s
     int playerIndex = getViewModel()->draftingPlayerIndex();
     if (playerIndex < 0)
         throw ViewLogicError{ "Mouse down on draft card when model indicates no one is drafting." };
-    DraftAtIndexCommand draftAtIndexCommand{ cardIndex, static_cast<unsigned int>(playerIndex) };
+    DraftAtIndexCommand draftAtIndexCommand{ static_cast<unsigned int>(cardIndex), static_cast<unsigned int>(playerIndex) };
     m_AbstractCommandProcessor.ProcessCommandFromClient(draftAtIndexCommand);
     return true;
 }

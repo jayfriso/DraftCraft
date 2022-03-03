@@ -23,10 +23,13 @@
 # THE SOFTWARE.
 # ****************************************************************************/
 
-cmake_minimum_required(VERSION 3.6)
+
+set(MONGO_CXX_PATH C:/cpp/mongo-cxx-driver/)
+set(BOOST_PATH C:/cpp/boost_1_77_0/)
+
+set(CMAKE_GENERATOR_PLATFORM win32)
 
 set(APP_NAME DraftCraft)
-
 project(${APP_NAME})
 
 if(XCODE)
@@ -40,12 +43,9 @@ if(NOT DEFINED BUILD_ENGINE_DONE) # to test DraftCraft into root project
     set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
 
     include(CocosBuildSet)
+    include(CustomFunctions)
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
 endif()
-
-# record sources, headers, resources...
-set(GAME_SOURCE)
-set(GAME_HEADER)
 
 set(GAME_RES_FOLDER
     "${CMAKE_CURRENT_SOURCE_DIR}/Resources"
@@ -55,13 +55,10 @@ if(APPLE OR WINDOWS)
 endif()
 
 # add cross-platforms source files and header files 
-list(APPEND GAME_SOURCE
-     proj.frontend/AppDelegate.cpp
-     )
-list(APPEND GAME_HEADER
-     proj.frontend/AppDelegate.h
-     )
+file(GLOB_RECURSE  GAME_SOURCE CONFIGURE_DEPENDS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/proj.frontend/*.cpp)
+file(GLOB_RECURSE  GAME_HEADER CONFIGURE_DEPENDS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/proj.frontend/*.h)
 
+# Platform specific source code
 if(ANDROID)
     # change APP_NAME to the share library name for Android, it's value depend on AndroidManifest.xml
     set(APP_NAME MyGame)
@@ -114,7 +111,7 @@ elseif(APPLE)
     list(APPEND GAME_SOURCE ${common_res_files})
 endif()
 
-# mark app complie info and libs info
+# mark app compile info and libs info
 set(all_code_files
     ${GAME_HEADER}
     ${GAME_SOURCE}
@@ -127,14 +124,34 @@ else()
     target_link_libraries(${APP_NAME} -Wl,--whole-archive cpp_android_spec -Wl,--no-whole-archive)
 endif()
 
-#json library
-add_subdirectory(thirdparty/json-3.10.4)
+# Set cpp standard to 17
+target_compile_features(${APP_NAME} PUBLIC cxx_std_17)
 
-target_link_libraries(${APP_NAME} cocos2d nlohmann_json)
+# Libraries ==========================
+add_subdirectory(proj.draftcraft_models)
 
+target_link_libraries(${APP_NAME} 
+    PRIVATE DraftCraft_Models
+    PRIVATE cocos2d
+    PRIVATE ${MONGO_CXX_PATH}lib/mongocxx.lib
+    PRIVATE ${MONGO_CXX_PATH}lib/bsoncxx.lib
+)
+
+add_subdirectory(proj.test)
+add_dependencies(DraftCraft_Tests DraftCraft_Models)
+
+# ====================================
+
+# Include directories
 target_include_directories(${APP_NAME}
-        PRIVATE proj.frontend
-        PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
+    PRIVATE proj.frontend
+    PRIVATE proj.frontend/Utils/
+    PRIVATE proj.frontend/Exceptions/
+    PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
+    PRIVATE proj.draftcraft_models/src/
+    PRIVATE ${MONGO_CXX_PATH}/include/bsoncxx/v_noabi
+    PRIVATE ${MONGO_CXX_PATH}/include/mongocxx/v_noabi
+    PRIVATE ${BOOST_PATH}
 )
 
 # mark app resources
@@ -158,4 +175,5 @@ endif()
 if(LINUX OR WINDOWS)
     cocos_get_resource_path(APP_RES_DIR ${APP_NAME})
     cocos_copy_target_res(${APP_NAME} LINK_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
+    copy_dll_post_step_for_folder(${APP_NAME} ${MONGO_CXX_PATH}bin/)
 endif()
