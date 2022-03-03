@@ -23,6 +23,10 @@
 # THE SOFTWARE.
 # ****************************************************************************/
 
+
+set(MONGO_CXX_PATH C:/cpp/mongo-cxx-driver/)
+set(BOOST_PATH C:/cpp/boost_1_77_0/)
+
 set(CMAKE_GENERATOR_PLATFORM win32)
 
 set(APP_NAME DraftCraft)
@@ -39,6 +43,7 @@ if(NOT DEFINED BUILD_ENGINE_DONE) # to test DraftCraft into root project
     set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
 
     include(CocosBuildSet)
+    include(CustomFunctions)
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
 endif()
 
@@ -126,8 +131,10 @@ target_compile_features(${APP_NAME} PUBLIC cxx_std_17)
 add_subdirectory(proj.draftcraft_models)
 
 target_link_libraries(${APP_NAME} 
-    PUBLIC DraftCraft_Models
-    PUBLIC cocos2d
+    PRIVATE DraftCraft_Models
+    PRIVATE cocos2d
+    PRIVATE ${MONGO_CXX_PATH}lib/mongocxx.lib
+    PRIVATE ${MONGO_CXX_PATH}lib/bsoncxx.lib
 )
 
 add_subdirectory(proj.test)
@@ -142,6 +149,9 @@ target_include_directories(${APP_NAME}
     PRIVATE proj.frontend/Exceptions/
     PRIVATE ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
     PRIVATE proj.draftcraft_models/src/
+    PRIVATE ${MONGO_CXX_PATH}/include/bsoncxx/v_noabi
+    PRIVATE ${MONGO_CXX_PATH}/include/mongocxx/v_noabi
+    PRIVATE ${BOOST_PATH}
 )
 
 # mark app resources
@@ -165,4 +175,5 @@ endif()
 if(LINUX OR WINDOWS)
     cocos_get_resource_path(APP_RES_DIR ${APP_NAME})
     cocos_copy_target_res(${APP_NAME} LINK_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
+    copy_dll_post_step_for_folder(${APP_NAME} ${MONGO_CXX_PATH}bin/)
 endif()
